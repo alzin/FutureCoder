@@ -1,0 +1,32 @@
+{
+  "shared": {
+    "lang": "en",
+    "headerSection": {
+      "navItems": [
+        {
+          "id": 1,
+          "name": "Bolgs",
+          "href": "/blogs"
+        },
+        {
+          "id": 2,
+          "name": "Courses",
+          "href": "/courses"
+        }
+      ],
+      "langList": [
+        {
+          "id": 1,
+          "value": "en",
+          "name":"English"
+        },
+        {
+          "id": 2,
+          "value": "ar",
+          "name":"Arabic"
+        }
+      ],
+      "logIn": "log In"
+    }
+  }
+}

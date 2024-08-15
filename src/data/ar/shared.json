@@ -1,0 +1,33 @@
+{
+  "shared": {
+    "lang": "ar",
+    "headerSection": {
+      "navItems": [
+        {
+          "id": 1,
+          "name": "المدونات",
+          "href":"/blogs"
+        },
+        {
+          "id": 2,
+          "name": "الدروس",
+          "href":"/courses"
+        }
+      ],
+      "langList": [
+        {
+          "id": 1,
+          "value": "en",
+          "name":"إنكليزي"
+        },
+        {
+          "id": 2,
+          "value": "ar",
+          "name":"عربي"
+        }
+      ],
+      "logIn":"تسجيل الدخول"
+    }
+
+  }
+}

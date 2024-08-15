@@ -1,0 +1,21 @@
+{
+  "homePage": {
+    "pageName":"Home",
+    "link":"/",
+    "lang": "en",
+    "array":[
+      {
+        "id":"1",
+        "name":"a"
+      },
+      {
+        "id":"2",
+        "name":"b"
+      }
+    ]
+  },
+  "object":{
+    "id":"1",
+    "name":"o"
+  }
+}
