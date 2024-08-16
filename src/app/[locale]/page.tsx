@@ -14,7 +14,10 @@ export default function HomePage() {
       lang: t.raw("shared.lang"),
     },
     heroSection: {
-
+      title: t.raw("homePage.heroSection.title"),
+      paragraph: t.raw("homePage.heroSection.paragraph"),
+      lessonBtn: t.raw("homePage.heroSection.lessonBtn"),
+      heroImage: t.raw("homePage.heroSection.heroImage"),
     },
 
   }

@@ -1,7 +1,13 @@
 {
-    "homePage": {
-      "pageName":"Home",
-      "link":"/",
-      "lang": "ar"
+  "homePage": {
+    "pageName": "Home",
+    "link": "/",
+    "lang": "ar",
+    "heroSection": {
+      "title": "تمكين الأطفال العرب من البرمجة باللغة العربية",
+      "paragraph": "اكتشف طريقة ممتعة وتفاعلية لتعلم أطفالك البرمجة باللغة العربية",
+      "lessonBtn": "حجز درس مجاني",
+      "heroImage": ""
     }
+  }
 }

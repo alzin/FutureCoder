@@ -3,19 +3,11 @@
     "pageName":"Home",
     "link":"/",
     "lang": "en",
-    "array":[
-      {
-        "id":"1",
-        "name":"a"
-      },
-      {
-        "id":"2",
-        "name":"b"
-      }
-    ]
-  },
-  "object":{
-    "id":"1",
-    "name":"o"
+    "heroSection":{
+      "title":"Empower Arab Kids to code in Arabic",
+      "paragraph":"Discover a fun and interactive way for your kids to learn programming in Arabic",
+      "lessonBtn":"Book a free lesson",
+      "heroImage":""
+    }
   }
 }

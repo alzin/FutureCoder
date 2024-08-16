@@ -1,7 +1,7 @@
 
 // sections
 import Header from "@/sections/Header";
-
+import Hero from "@/sections/Hero";
 const Home = ({ data }: any) => {
 
     if (!data?.headerSection) {
@@ -11,6 +11,7 @@ const Home = ({ data }: any) => {
     return (
         <>
             <Header data={data.headerSection} />
+            <Hero data={data.heroSection}/>
         </>
     );
 }
