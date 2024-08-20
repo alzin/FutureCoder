@@ -8,6 +8,68 @@
       "paragraph": "اكتشف طريقة ممتعة وتفاعلية لتعلم أطفالك البرمجة باللغة العربية",
       "lessonBtn": "حجز درس مجاني",
       "heroImage": ""
+    },
+    "featuresSection": {
+      "title": "",
+      "description": "",
+      "features": [
+        {
+          "id": 1,
+          "image": "",
+          "title": "",
+          "description": ""
+        },
+        {
+          "id": 2,
+          "image": "",
+          "title": "",
+          "description": ""
+        }
+      ],
+      "signInBtn": ""
+    },
+    "coursesSection": {
+      "title": "",
+      "description": "",
+      "viewAllBtn": "",
+      "courses": [
+        {
+          "id": 1,
+          "title": "",
+          "prise": "",
+          "href": "",
+          "image": ""
+        },
+        {
+          "id": 2,
+          "title": "",
+          "prise": "",
+          "href": "",
+          "image": ""
+        }
+      ]
+    },
+    "testimonialSection": {
+      "testimonials": [
+        {
+          "id": 1,
+          "rate": 5,
+          "opinion": "",
+          "firstName": "",
+          "lastName": "",
+          "work": "",
+          "imageProfile": ""
+        },
+        {
+          "id": 2,
+          "rate": 3,
+          "opinion": "",
+          "firstName": "",
+          "lastName": "",
+          "work": "",
+          "imageProfile": ""
+        }
+      ]
     }
   }
 }
