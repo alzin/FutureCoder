@@ -23,69 +23,22 @@ export default function HomePage() {
     },
 
     featuresSection: {
-      title: "",
-      description: "",
-      features: [
-        {
-          id: 1,
-          image: "",
-          title: "",
-          description: ""
-        },
-        {
-          id: 2,
-          image: "",
-          title: "",
-          description: ""
-        }
-      ],
-      signInBtn: ""
+      title: t.raw("homePage.featuresSection.title"),
+      description: t.raw("homePage.featuresSection.description"),
+      features: t.raw("homePage.featuresSection.features"),
+      signInBtn: t.raw("homePage.featuresSection.signInBtn")
     },
 
     coursesSection: {
-      title: "",
-      description: "",
-      viewAllBtn: "",
-      courses: [
-        {
-          id: 1,
-          title: "",
-          prise: "",
-          href: "",
-          image: ""
-        },
-        {
-          id: 2,
-          title: "",
-          prise: "",
-          href: "",
-          image: ""
-        },
-      ]
-
+      title: t.raw("homePage.coursesSection.title"),
+      description: t.raw("homePage.coursesSection.description"),
+      viewAllBtn: t.raw("homePage.coursesSection.viewAllBtn"),
+      href: t.raw("homePage.coursesSection.href"),
+      courses: t.raw("homePage.coursesSection.courses")
     },
 
     testimonialSection: {
-      testimonials: [
-        {
-          id: 1,
-          rate: 5,
-          opinion: "",
-          firstName: "",
-          lastName: "",
-          work: "",
-          imageProfile: ""
-        },
-        {
-          id: 2,
-          rate: 3,
-          opinion: "",
-          firstName: "",
-          lastName: "",
-          work: "",
-          imageProfile: ""
-        },
-      ],
+      testimonials: t.raw("homePage.testimonialSection.testimonials")
     },
 
     footerSection: {

@@ -1,6 +1,7 @@
 import React from 'react';
 import Container from '@/components/Container';
-import {Button} from "@nextui-org/react";
+import { Button } from "@nextui-org/react";
+import Image from 'next/image';
 
 interface HeroProps {
     data: Record<string, any>;
@@ -15,7 +16,9 @@ const Hero: React.FC<HeroProps> = ({ data }) => {
                     <p className='text-base xl:text-xl my-7'>{data.paragraph}</p>
                     <Button>{data.lessonBtn}</Button>
                 </div>
-                <div className='xl:w-[43%] w-full bg-gray-500 h-auto aspect-square'></div>
+                <div className='xl:w-[43%] w-full h-auto aspect-square relative'>
+                    <Image src={data.heroImage} alt='hero image' fill  className='object-cover'/>
+                </div>
             </section>
         </Container>
     );

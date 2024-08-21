@@ -10,7 +10,7 @@ interface FooterProps {
 const Footer: React.FC<FooterProps> = ({ data }) => {
     return (
         <Container>
-            <footer className='w-full'>
+            <footer className='w-full mt-20'>
                 <div className='py-10 border-b-2 flex items-start justify-between w-full flex-col lg:flex-row'>
                     <div>
                         <span className=' font-extrabold text-xl'>Logo</span>

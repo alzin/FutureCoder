@@ -7,45 +7,80 @@
       "title": "تمكين الأطفال العرب من البرمجة باللغة العربية",
       "paragraph": "اكتشف طريقة ممتعة وتفاعلية لتعلم أطفالك البرمجة باللغة العربية",
       "lessonBtn": "حجز درس مجاني",
-      "heroImage": ""
+      "heroImage": "/images/image.png"
     },
     "featuresSection": {
-      "title": "",
-      "description": "",
+      "title": "اجعل طفلك قائدًا مستقبليًا وليس مجرد مبرمج من خلال مسار التعلم لدينا",
+      "description": "تقدم منصتنا دورات تفاعلية وموارد للآباء ودعم مجتمعي، كل ذلك باللغة العربية. ابدأ رحلة البرمجة لطفلك اليوم!",
       "features": [
         {
           "id": 1,
-          "image": "",
-          "title": "",
-          "description": ""
+          "image": "/images/image.png",
+          "title": "الدورات التفاعلية",
+          "description": "دورات برمجة تفاعلية وجذابة مصممة للأطفال."
         },
         {
           "id": 2,
-          "image": "",
-          "title": "",
-          "description": ""
+          "image": "/images/image.png",
+          "title": "موارد الوالدين",
+          "description": "احصل على موارد مفيدة لدعم رحلة التعلم لطفلك. "
+        },
+        {
+          "id": 3,
+          "image": "/images/image.png",
+          "title": "دعم المجتمع",
+          "description": "التواصل مع مجتمع داعم من الآباء والأمهات ذوي التفكير المماثل."
         }
       ],
-      "signInBtn": ""
+      "signInBtn": "تسجيل الدخول"
     },
     "coursesSection": {
-      "title": "",
-      "description": "",
-      "viewAllBtn": "",
+      "title": "الدورات",
+      "description": "اكتشف مجموعتنا الواسعة من دورات البرمجة للأطفال.",
+      "viewAllBtn": "عرض الكل",
+      "href": "/courses",
       "courses": [
         {
           "id": 1,
-          "title": "",
-          "prise": "",
-          "href": "",
-          "image": ""
+          "title": "مقدمة في الترميز",
+          "prise": "99$",
+          "href": "/courses",
+          "image": "/images/image.png"
         },
         {
           "id": 2,
-          "title": "",
-          "prise": "",
-          "href": "",
-          "image": ""
+          "title": "مقدمة في الترميز",
+          "prise": "99$",
+          "href": "/courses",
+          "image": "/images/image.png"
+        },
+        {
+          "id": 3,
+          "title": "مقدمة في الترميز",
+          "prise": "99$",
+          "href": "/courses",
+          "image": "/images/image.png"
+        },
+        {
+          "id": 4,
+          "title": "مقدمة في الترميز",
+          "prise": "99$",
+          "href": "/courses",
+          "image": "/images/image.png"
+        },
+        {
+          "id": 5,
+          "title": "مقدمة في الترميز",
+          "prise": "99$",
+          "href": "/courses",
+          "image": "/images/image.png"
+        },
+        {
+          "id": 6,
+          "title": "مقدمة في الترميز",
+          "prise": "99$",
+          "href": "/courses",
+          "image": "/images/image.png"
         }
       ]
     },
@@ -54,20 +89,20 @@
         {
           "id": 1,
           "rate": 5,
-          "opinion": "",
-          "firstName": "",
-          "lastName": "",
-          "work": "",
-          "imageProfile": ""
+          "opinion": "لقد استفاد طفلي كثيرًا من هذه المنصة. لقد سهّل تعلم البرمجة باللغة العربية عليهم فهم المفاهيم وتطبيقها في سيناريوهات الحياة الواقعية.",
+          "firstName": "احمد",
+          "lastName": "علي",
+          "work": "مهندس البرمجيات",
+          "imageProfile": "/images/image.png"
         },
         {
           "id": 2,
           "rate": 3,
-          "opinion": "",
-          "firstName": "",
-          "lastName": "",
-          "work": "",
-          "imageProfile": ""
+          "opinion": "لقد استفاد طفلي كثيرًا من هذه المنصة. لقد سهّل تعلم البرمجة باللغة العربية عليهم فهم المفاهيم وتطبيقها في سيناريوهات الحياة الواقعية.",
+          "firstName": "احمد",
+          "lastName": "علي",
+          "work": "مهندس البرمجيات",
+          "imageProfile": "/images/image.png"
         }
       ]
     }
