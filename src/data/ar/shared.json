@@ -6,28 +6,63 @@
         {
           "id": 1,
           "name": "المدونات",
-          "href":"/blogs"
+          "href": "/blogs"
         },
         {
           "id": 2,
           "name": "الدروس",
-          "href":"/courses"
+          "href": "/courses"
         }
       ],
       "langList": [
         {
           "id": 1,
           "value": "en",
-          "name":"إنكليزي"
+          "name": "إنكليزي"
         },
         {
           "id": 2,
           "value": "ar",
-          "name":"عربي"
+          "name": "عربي"
         }
       ],
-      "logIn":"تسجيل الدخول"
+      "logIn": "تسجيل الدخول"
+    },
+    "footerSection": {
+      "links": [
+        {
+          "id": 1,
+          "name": "الصفحة الرئيسية",
+          "href": "/"
+        },
+        {
+          "id": 2,
+          "name": "المدونات",
+          "href": "/blogs"
+        },
+        {
+          "id": 3,
+          "name": "الدروس",
+          "href": "/courses"
+        }
+      ],
+      "subscribe": "اشترك",
+      "placeHolder": "أدخل بريدك الإلكتروني",
+      "submitButton": "إرسال",
+      "subscribeExplain": "بالاشتراك فإنك توافق على سياسة الخصوصية الخاصة بنا",
+      "policyLinks": [
+        {
+          "id": 1,
+          "name": "سياسة الخصوصية",
+          "href": "/"
+        },
+        {
+          "id": 2,
+          "name": "شروط الخدمة",
+          "href": "/"
+        }
+      ],
+      "copyWrite": "&copy 2024"
     }
-
   }
 }

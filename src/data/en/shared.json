@@ -27,6 +27,42 @@
         }
       ],
       "logIn": "log In"
+    },
+    "footerSection": {
+      "links": [
+        {
+          "id": 1,
+          "name": "Home",
+          "href": "/"
+        },
+        {
+          "id": 2,
+          "name": "Bolgs",
+          "href": "/blogs"
+        },
+        {
+          "id": 3,
+          "name": "Courses",
+          "href": "/courses"
+        }
+      ],
+      "subscribe": "Subscribe",
+      "placeHolder": "Enter your email",
+      "submitButton": "submit",
+      "subscribeExplain": "By subscribing, you agree to our Privacy Policy",
+      "policyLinks": [
+        {
+          "id": 1,
+          "name": "Privacy Policy",
+          "href": "/"
+        },
+        {
+          "id": 2,
+          "name": "Terms of Service",
+          "href": "/"
+        }
+      ],
+      "copyWrite": "&copy 2024"
     }
   }
 }
