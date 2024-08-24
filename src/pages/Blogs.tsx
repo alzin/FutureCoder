@@ -1,9 +1,24 @@
+// sections
+import Header from "@/sections/Header";
+import Footer from "@/sections/Footer";
+import Container from "@/components/Container";
 
-const Blogs = () => {
+
+const Blogs = ({ data }: any) => {
+
+    if (!data?.headerSection) {
+        return "loading ... "
+    }
+
     return (
-        <div className='blogsPage'>
-            Blogs
-        </div>
+        <>
+            <Header data={data.headerSection} />
+            <Container>
+                Blogs Page
+            </Container>
+            <Footer data={data.footerSection} />
+
+        </>
     )
 }
 

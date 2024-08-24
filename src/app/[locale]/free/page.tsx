@@ -16,7 +16,7 @@ export default function FreeLessonPage() {
     },
 
     bookFreeSection: {
-      
+      courses: t.raw("homePage.coursesSection.courses")
     },
 
     footerSection: {
