@@ -63,7 +63,7 @@ const Header = ({ data }: any) => {
             {/* log in */}
             <NavbarContent justify="end">
                 <NavbarItem>
-                    <Button as={Link} href="#" variant="flat">
+                    <Button as={Link} href="/login" variant="flat">
                         {data.logIn}
                     </Button>
                 </NavbarItem>
