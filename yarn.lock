@@ -113,7 +113,7 @@
 
 "@internationalized/date@^3.5.4", "@internationalized/date@^3.5.5":
   version "3.5.5"
-  resolved "https://registry.npmjs.org/@internationalized/date/-/date-3.5.5.tgz"
+  resolved "https://registry.yarnpkg.com/@internationalized/date/-/date-3.5.5.tgz#7d34cb9da35127f98dd669fc926bb37e771e177f"
   integrity sha512-H+CfYvOZ0LTJeeLOqm19E3uj/4YjrmOFtBufDHPfvtI80hFAMqtrp7oCACpe4Cil5l8S0Qu/9dYfZc/5lY8WQQ==
   dependencies:
     "@swc/helpers" "^0.5.0"
@@ -1393,6 +1393,20 @@
     "@react-types/shared" "^3.24.1"
     "@swc/helpers" "^0.5.0"
 
+"@react-aria/i18n@^3.12.2":
+  version "3.12.2"
+  resolved "https://registry.yarnpkg.com/@react-aria/i18n/-/i18n-3.12.2.tgz#f1e63ddb5227bc1c8a17cd3475235851e428dd0b"
+  integrity sha512-PvEyC6JWylTpe8dQEWqQwV6GiA+pbTxHQd//BxtMSapRW3JT9obObAnb/nFhj3HthkUvqHyj0oO1bfeN+mtD8A==
+  dependencies:
+    "@internationalized/date" "^3.5.5"
+    "@internationalized/message" "^3.1.4"
+    "@internationalized/number" "^3.5.3"
+    "@internationalized/string" "^3.2.3"
+    "@react-aria/ssr" "^3.9.5"
+    "@react-aria/utils" "^3.25.2"
+    "@react-types/shared" "^3.24.1"
+    "@swc/helpers" "^0.5.0"
+
 "@react-aria/interactions@3.21.3":
   version "3.21.3"
   resolved "https://registry.npmjs.org/@react-aria/interactions/-/interactions-3.21.3.tgz"
@@ -1779,6 +1793,17 @@
   dependencies:
     "@react-aria/ssr" "^3.9.5"
     "@react-stately/utils" "^3.10.2"
+    "@react-types/shared" "^3.24.1"
+    "@swc/helpers" "^0.5.0"
+    clsx "^2.0.0"
+
+"@react-aria/utils@^3.25.2":
+  version "3.25.2"
+  resolved "https://registry.yarnpkg.com/@react-aria/utils/-/utils-3.25.2.tgz#2cce329849617b2df6a34f0931abe431f60aaedc"
+  integrity sha512-GdIvG8GBJJZygB4L2QJP1Gabyn2mjFsha73I2wSe+o4DYeGWoJiMZRM06PyTIxLH4S7Sn7eVDtsSBfkc2VY/NA==
+  dependencies:
+    "@react-aria/ssr" "^3.9.5"
+    "@react-stately/utils" "^3.10.3"
     "@react-types/shared" "^3.24.1"
     "@swc/helpers" "^0.5.0"
     clsx "^2.0.0"
@@ -2198,6 +2223,13 @@
   version "3.10.2"
   resolved "https://registry.npmjs.org/@react-stately/utils/-/utils-3.10.2.tgz"
   integrity sha512-fh6OTQtbeQC0ywp6LJuuKs6tKIgFvt/DlIZEcIpGho6/oZG229UnIk6TUekwxnDbumuYyan6D9EgUtEMmT8UIg==
+  dependencies:
+    "@swc/helpers" "^0.5.0"
+
+"@react-stately/utils@^3.10.3":
+  version "3.10.3"
+  resolved "https://registry.yarnpkg.com/@react-stately/utils/-/utils-3.10.3.tgz#ed1bf00a8419750fc11ccba73350b97e30f3f707"
+  integrity sha512-moClv7MlVSHpbYtQIkm0Cx+on8Pgt1XqtPx6fy9rQFb2DNc9u1G3AUVnqA17buOkH1vLxAtX4MedlxMWyRCYYA==
   dependencies:
     "@swc/helpers" "^0.5.0"
 
@@ -4603,6 +4635,11 @@ queue-microtask@^1.2.2:
   resolved "https://registry.npmjs.org/queue-microtask/-/queue-microtask-1.2.3.tgz"
   integrity sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==
 
+react-date-object@^2.1.8:
+  version "2.1.9"
+  resolved "https://registry.yarnpkg.com/react-date-object/-/react-date-object-2.1.9.tgz#9eb0f70b2b424e32bb437226fc5e435d1fd6a4f1"
+  integrity sha512-BHxD/quWOTo9fLKV/cfL/M31ePoj4a1JaJ/CnOf8Ndg3mrkh4x9wEMMkCfTrzduxDOgU8ZgR8uarhqI5G71sTg==
+
 react-dom@^18:
   version "18.3.1"
   resolved "https://registry.npmjs.org/react-dom/-/react-dom-18.3.1.tgz"
@@ -4611,10 +4648,23 @@ react-dom@^18:
     loose-envify "^1.1.0"
     scheduler "^0.23.2"
 
+react-element-popper@^2.1.6:
+  version "2.1.7"
+  resolved "https://registry.yarnpkg.com/react-element-popper/-/react-element-popper-2.1.7.tgz#924aac2dd8d8f0efa344987690fa462cab00e710"
+  integrity sha512-tuM2OxKlW32h+6uFSK6EENHPeZ2OGgOipHfOAl+VLWEv9/j3QkSGbD+ADX3A9uJlmq24i37n28RjJmAbGTfpEg==
+
 react-is@^16.13.1:
   version "16.13.1"
   resolved "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
+
+react-multi-date-picker@^4.5.2:
+  version "4.5.2"
+  resolved "https://registry.yarnpkg.com/react-multi-date-picker/-/react-multi-date-picker-4.5.2.tgz#d618c0d682efd2eb99c12eee3012f61368e2b427"
+  integrity sha512-FgWjZB3Z6IA6XpcWiLPk85PwcRUhOiYhKK42o5k672gD/n2I6rzPfQ8bUrldOIiF/Z7FfOCdH7a6FeubzqteLg==
+  dependencies:
+    react-date-object "^2.1.8"
+    react-element-popper "^2.1.6"
 
 react-remove-scroll-bar@^2.3.6:
   version "2.3.6"

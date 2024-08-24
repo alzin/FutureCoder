@@ -7,6 +7,7 @@
       "title": "Empower Arab Kids to code in Arabic",
       "paragraph": "Discover a fun and interactive way for your kids to learn programming in Arabic",
       "lessonBtn": "Book a free lesson",
+      "hrefLesson":"/free",
       "heroImage": "/images/image.png"
     },
     "featuresSection": {

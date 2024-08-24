@@ -19,6 +19,7 @@ export default function HomePage() {
       title: t.raw("homePage.heroSection.title"),
       paragraph: t.raw("homePage.heroSection.paragraph"),
       lessonBtn: t.raw("homePage.heroSection.lessonBtn"),
+      hrefLesson:t.raw("homePage.heroSection.hrefLesson"),
       heroImage: t.raw("homePage.heroSection.heroImage"),
     },
 
