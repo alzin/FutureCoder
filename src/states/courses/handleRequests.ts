@@ -1,7 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import {Api,token} from "../Api";
 
-
 const headers = {
   "Content-Type": "application/json",
   "Accept": "application/json",
@@ -10,12 +9,12 @@ const headers = {
 };
 
 
-// get all blogs
-export const getBlogs = createAsyncThunk(
-  "blogs/getBlogs",
+// get all courses
+export const getCourses:any = createAsyncThunk(
+  "courses/getCourses",
   async ({ currentPage }: { currentPage: number }, { rejectWithValue }) => {
     try {
-      const response = await fetch(`${Api}/blogs?page=${currentPage}`, {
+      const response = await fetch(`${Api}/courses?page=${currentPage}`, {
         method: "GET",
         headers,
       });
@@ -24,7 +23,7 @@ export const getBlogs = createAsyncThunk(
       if (response.ok) {
         return data;
       } else {
-        return rejectWithValue(data);
+        return rejectWithValue(data.message);
       }
     } catch (error: any) {
       return rejectWithValue(error.message);
@@ -32,12 +31,12 @@ export const getBlogs = createAsyncThunk(
   }
 );
 
-// get blog by id
-export const getBlogById = createAsyncThunk(
-  "blogs/getBlogById",
-  async ({ blogId }: { blogId: string }, { rejectWithValue }) => {
+// get course by id
+export const getCourseById = createAsyncThunk(
+  "courses/getCourseById",
+  async ({ courseId }: { courseId: string }, { rejectWithValue }) => {
     try {
-      const response = await fetch(`${Api}/blogs?id=${blogId}`, {
+      const response = await fetch(`${Api}/courses?id=${courseId}`, {
         method: "GET",
         headers,
       });
@@ -54,18 +53,41 @@ export const getBlogById = createAsyncThunk(
   }
 );
 
-// add blog
-export const addBlog = createAsyncThunk(
-  "blogs/addBlog",
+// get courses by age
+export const getCoursesByAge:any = createAsyncThunk(
+  "courses/getCoursesByAge",
+  async ({ age }: { age: number }, { rejectWithValue }) => {
+    try {
+      const response = await fetch(`${Api}/courses/courseById?age=${age}`, {
+        method: "GET",
+        headers,
+      });
+      const data = await response.json();
+
+      if (response.ok) {
+        console.log(data)
+        return data;
+      } else {
+        return rejectWithValue(data.message);
+      }
+    } catch (error: any) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+// add course
+export const addCourse = createAsyncThunk(
+  "courses/addCourse",
   async (
-    { blogData }: { blogData: FormData },
+    { courseData }: { courseData: FormData },
     { rejectWithValue }
   ) => {
     try {
-      const response = await fetch(`${Api}/blogs`, {
+      const response = await fetch(`${Api}/courses`, {
         method: "POST",
         headers,
-        body: JSON.stringify(blogData),
+        body: JSON.stringify(courseData),
       });
       const data = await response.json();
 
@@ -80,20 +102,20 @@ export const addBlog = createAsyncThunk(
   }
 );
 
-//  update blog
-export const updateBlog = createAsyncThunk(
-  "blogs/updateBlog",
-  async ({ newBlogData, blogId }: { newBlogData: FormData, blogId: string }, { rejectWithValue }) => {
+//  update course
+export const updateCourse = createAsyncThunk(
+  "courses/updateCourse",
+  async ({ newCourseData, courseId }: { newCourseData: FormData, courseId: string }, { rejectWithValue }) => {
 
-    newBlogData.append("_method", "put");
+    newCourseData.append("_method", "put");
 
     try {
-      const response = await fetch(`${Api}/blogs/${blogId}`, {
+      const response = await fetch(`${Api}/courses/${courseId}`, {
         method: "POST",
         headers: {
           
         },
-        body: JSON.stringify(newBlogData),
+        body: JSON.stringify(newCourseData),
       });
       const data = await response.json();
 
@@ -108,13 +130,13 @@ export const updateBlog = createAsyncThunk(
   }
 );
 
-// delete blog
-export const deleteBlog = createAsyncThunk(
-  "blogs/deleteBlog",
-  async ({ blogId }: { blogId: string }, { rejectWithValue }) => {
+// delete Course
+export const deleteCourse = createAsyncThunk(
+  "courses/deleteCourse",
+  async ({ courseId }: { courseId: string }, { rejectWithValue }) => {
 
     try {
-      const response = await fetch(`${Api}/blogs?id=${blogId}`, {
+      const response = await fetch(`${Api}/courses?id=${courseId}`, {
         method: "DELETE",
         headers,
       });

@@ -35,3 +35,10 @@ export const getNestedTranslation = (keyParts: string[], t: TranslationFunction)
     const value = t(fullPath);
     return value as Record<string, any>;
 }; 
+
+
+export const logFormDataValues = (formData: FormData) => {
+    Array.from(formData.entries()).forEach(([name, value]) => {
+        console.log(`Name: ${name}, Value: ${value}`);
+    });
+}

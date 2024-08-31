@@ -1,21 +1,20 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import {Api,token} from "../Api";
 
-
 const headers = {
   "Content-Type": "application/json",
   "Accept": "application/json",
-  "Authorization": `Bearer 1|${token}`
+  "Authorization": `Bearer 1|${token}`,
   // 'Content-Type': 'multipart/form-data'
 };
 
 
-// get all blogs
-export const getBlogs = createAsyncThunk(
-  "blogs/getBlogs",
+// get all subscribers
+export const getSubscribers:any= createAsyncThunk(
+  "subscribers/getSubscribers",
   async ({ currentPage }: { currentPage: number }, { rejectWithValue }) => {
     try {
-      const response = await fetch(`${Api}/blogs?page=${currentPage}`, {
+      const response = await fetch(`${Api}/subscribers?page=${currentPage}`, {
         method: "GET",
         headers,
       });
@@ -24,7 +23,7 @@ export const getBlogs = createAsyncThunk(
       if (response.ok) {
         return data;
       } else {
-        return rejectWithValue(data);
+        return rejectWithValue(data.message);
       }
     } catch (error: any) {
       return rejectWithValue(error.message);
@@ -32,12 +31,12 @@ export const getBlogs = createAsyncThunk(
   }
 );
 
-// get blog by id
-export const getBlogById = createAsyncThunk(
-  "blogs/getBlogById",
+// get subscriber by id
+export const getSubscriberById = createAsyncThunk(
+  "subscribers/getSubscriberById",
   async ({ blogId }: { blogId: string }, { rejectWithValue }) => {
     try {
-      const response = await fetch(`${Api}/blogs?id=${blogId}`, {
+      const response = await fetch(`${Api}/subscriber?id=${blogId}`, {
         method: "GET",
         headers,
       });
@@ -54,25 +53,25 @@ export const getBlogById = createAsyncThunk(
   }
 );
 
-// add blog
-export const addBlog = createAsyncThunk(
-  "blogs/addBlog",
+// add subscriber
+export const addSubscriber:any = createAsyncThunk(
+  "subscribers/addSubscriber",
   async (
-    { blogData }: { blogData: FormData },
+    { subscriber }: { subscriber: Subscriber },
     { rejectWithValue }
   ) => {
     try {
-      const response = await fetch(`${Api}/blogs`, {
+      const response = await fetch(`${Api}/subscribers`, {
         method: "POST",
         headers,
-        body: JSON.stringify(blogData),
+        body: JSON.stringify(subscriber),
       });
       const data = await response.json();
 
       if (response.ok) {
         return data;
       } else {
-        return rejectWithValue(data);
+        return rejectWithValue(data.message);
       }
     } catch (error: any) {
       return rejectWithValue(error.message);
@@ -80,20 +79,20 @@ export const addBlog = createAsyncThunk(
   }
 );
 
-//  update blog
-export const updateBlog = createAsyncThunk(
-  "blogs/updateBlog",
-  async ({ newBlogData, blogId }: { newBlogData: FormData, blogId: string }, { rejectWithValue }) => {
+//  update subscriber
+export const updateSubscriber = createAsyncThunk(
+  "subscribers/updateSubscriber",
+  async ({ newSubscriber, subscriberId }: { newSubscriber: FormData, subscriberId: string }, { rejectWithValue }) => {
 
-    newBlogData.append("_method", "put");
+    newSubscriber.append("_method", "put");
 
     try {
-      const response = await fetch(`${Api}/blogs/${blogId}`, {
+      const response = await fetch(`${Api}/subscriber/${subscriberId}`, {
         method: "POST",
         headers: {
           
         },
-        body: JSON.stringify(newBlogData),
+        body: JSON.stringify(newSubscriber),
       });
       const data = await response.json();
 
@@ -108,13 +107,13 @@ export const updateBlog = createAsyncThunk(
   }
 );
 
-// delete blog
-export const deleteBlog = createAsyncThunk(
-  "blogs/deleteBlog",
-  async ({ blogId }: { blogId: string }, { rejectWithValue }) => {
+// delete subscriber
+export const deleteSubscriber = createAsyncThunk(
+  "subscribers/deleteBlog",
+  async ({ subscriberId }: { subscriberId: string }, { rejectWithValue }) => {
 
     try {
-      const response = await fetch(`${Api}/blogs?id=${blogId}`, {
+      const response = await fetch(`${Api}/subscriber?id=${subscriberId}`, {
         method: "DELETE",
         headers,
       });

@@ -10,12 +10,12 @@ const headers = {
 };
 
 
-// get all blogs
-export const getBlogs = createAsyncThunk(
-  "blogs/getBlogs",
+// get all guestUsers
+export const getGuestUsers = createAsyncThunk(
+  "guestUsers/getGuestUsers",
   async ({ currentPage }: { currentPage: number }, { rejectWithValue }) => {
     try {
-      const response = await fetch(`${Api}/blogs?page=${currentPage}`, {
+      const response = await fetch(`${Api}/guestUsers?page=${currentPage}`, {
         method: "GET",
         headers,
       });
@@ -32,12 +32,12 @@ export const getBlogs = createAsyncThunk(
   }
 );
 
-// get blog by id
-export const getBlogById = createAsyncThunk(
-  "blogs/getBlogById",
-  async ({ blogId }: { blogId: string }, { rejectWithValue }) => {
+// get guestUser by id
+export const getGuestUserById = createAsyncThunk(
+  "guestUsers/getGuestUserById",
+  async ({ guestUserId }: { guestUserId: string }, { rejectWithValue }) => {
     try {
-      const response = await fetch(`${Api}/blogs?id=${blogId}`, {
+      const response = await fetch(`${Api}/guestUsers?id=${guestUserId}`, {
         method: "GET",
         headers,
       });
@@ -54,18 +54,18 @@ export const getBlogById = createAsyncThunk(
   }
 );
 
-// add blog
-export const addBlog = createAsyncThunk(
-  "blogs/addBlog",
+// add guest user
+export const addGuestUser = createAsyncThunk(
+  "guestUsers/addGuestUser",
   async (
-    { blogData }: { blogData: FormData },
+    { guestUserData }: { guestUserData: FormData },
     { rejectWithValue }
   ) => {
     try {
-      const response = await fetch(`${Api}/blogs`, {
+      const response = await fetch(`${Api}/guestUsers`, {
         method: "POST",
         headers,
-        body: JSON.stringify(blogData),
+        body: JSON.stringify(guestUserData),
       });
       const data = await response.json();
 
@@ -80,20 +80,20 @@ export const addBlog = createAsyncThunk(
   }
 );
 
-//  update blog
-export const updateBlog = createAsyncThunk(
-  "blogs/updateBlog",
-  async ({ newBlogData, blogId }: { newBlogData: FormData, blogId: string }, { rejectWithValue }) => {
+//  update guest user
+export const updateGuestUser = createAsyncThunk(
+  "guestUsers/updateGuestUser",
+  async ({ newGuestUserData, guestUserId }: { newGuestUserData: FormData, guestUserId: string }, { rejectWithValue }) => {
 
-    newBlogData.append("_method", "put");
+    newGuestUserData.append("_method", "put");
 
     try {
-      const response = await fetch(`${Api}/blogs/${blogId}`, {
+      const response = await fetch(`${Api}/guestUsers/${guestUserId}`, {
         method: "POST",
         headers: {
           
         },
-        body: JSON.stringify(newBlogData),
+        body: JSON.stringify(newGuestUserData),
       });
       const data = await response.json();
 
@@ -108,13 +108,13 @@ export const updateBlog = createAsyncThunk(
   }
 );
 
-// delete blog
-export const deleteBlog = createAsyncThunk(
-  "blogs/deleteBlog",
-  async ({ blogId }: { blogId: string }, { rejectWithValue }) => {
+// delete guest user
+export const deleteGuestUser = createAsyncThunk(
+  "guestUsers/deleteGuestUser",
+  async ({ guestUserId }: { guestUserId: string }, { rejectWithValue }) => {
 
     try {
-      const response = await fetch(`${Api}/blogs?id=${blogId}`, {
+      const response = await fetch(`${Api}/guestUsers?id=${guestUserId}`, {
         method: "DELETE",
         headers,
       });
