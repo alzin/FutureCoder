@@ -49,7 +49,7 @@ const Header = ({ data }: any) => {
             </NavbarContent>
 
             {/* logo */}
-            <NavbarContent justify="center" className="w-full">
+            <NavbarContent justify="center" className="w-full ">
                 <NavbarBrand className="flex items-center justify-center">
                     <Link color="foreground" href="/">
                         <p className="font-bold text-inherit">LOGO</p>

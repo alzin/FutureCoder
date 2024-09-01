@@ -1,6 +1,6 @@
 
 type Subscriber = {
-    email: string
+    email: string | undefined
 }
 
 type Course = {
@@ -16,3 +16,11 @@ type Course = {
     course_start_date?: string,
 }
 
+type BookingFreeCourse = {
+    FirstName: string | undefined,
+    LastName: string | undefined,
+    Age: string | undefined,
+    Email: string | undefined,
+    CourseId: string | undefined,
+    CourseTimeId:string | undefined,
+}

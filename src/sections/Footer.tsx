@@ -49,7 +49,7 @@ const Footer: React.FC<FooterProps> = ({ data }) => {
                     <div className='mt-5 lg:mt-0 w-full sm:w-fit'>
                         <span>{data.subscribe}</span>
                         <form className='flex items-center justify-between gap-2 py-3 flex-col sm:flex-row w-full' onSubmit={handleSubmit}>
-                            <input className='border-2 rounded-2xl w-full sm:w-fit outline-blue-500 p-2' value={subscriber.email} onChange={(e) => setSubscriber({ email: e.target.value })} required type="email" placeholder={data.placeHolder} />
+                            <Input  value={subscriber.email} onChange={(e) => setSubscriber({ email: e.target.value })} required type="email" placeholder={data.placeHolder} />
                             <Button type='submit' isDisabled={loading} isLoading={loading} className='w-full sm:w-fit'>{data.submitButton}</Button>
                         </form>
                         <span className='text-xs'>{data.subscribeExplain}</span>

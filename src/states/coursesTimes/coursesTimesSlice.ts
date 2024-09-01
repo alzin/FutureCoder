@@ -56,12 +56,16 @@ export const coursesTimesSlice = createSlice({
     builder
     .addCase(getCourseDatesByCourseId.pending, (state, { payload }) => {
       state.courseDates = null
+      state.loading = true
     })
     .addCase(getCourseDatesByCourseId.fulfilled, (state, { payload }) => {
       state.courseDates = payload
+      console.log(payload)
+      state.loading = false
       // toast.success("Succsessfull getCourseDatesByCourseId");
     })
     .addCase(getCourseDatesByCourseId.rejected, (state, { payload }) => {
+      state.loading = false
       toast.error(payload as string);
     });
 
@@ -73,6 +77,7 @@ export const coursesTimesSlice = createSlice({
     })
     .addCase(getCourseTimesByDate.fulfilled, (state, { payload }) => {
       state.courseTimes = payload
+      console.log(payload)
       // toast.success("Succsessfull getCourseTimesByDate");
     })
     .addCase(getCourseTimesByDate.rejected, (state, { payload }) => {

@@ -56,12 +56,15 @@ export const coursesSlice = createSlice({
     builder
     .addCase(getCoursesByAge.pending, (state, { payload }) => {
       state.coursesByAge = null
+      state.loading = true
     })
     .addCase(getCoursesByAge.fulfilled, (state, { payload }) => {
       state.coursesByAge = payload
+      state.loading = false
       // toast.success("Succsessfull getCoursesByAge");
     })
     .addCase(getCoursesByAge.rejected, (state, { payload }) => {
+      state.loading = false
       toast.error(payload as string);
     });
 

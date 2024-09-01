@@ -79,3 +79,24 @@
        display: none !important;
     }
 }
+
+.rmdp-week{
+    width: 500px;
+    height: 50px;
+}
+
+@media (max-width:1024px) {
+
+    .rmdp-week{
+        width: fit-content;
+        gap: 20px;
+        height: fit-content;
+    }
+}
+
+@media (max-width:500px) {
+
+    .rmdp-week{
+        gap: 5px;
+    }
+}
