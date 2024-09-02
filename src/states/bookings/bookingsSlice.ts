@@ -63,7 +63,7 @@ export const bookingsSlice = createSlice({
       })
       .addCase(addBooking.fulfilled, (state, { payload }) => {
         state.loading = false;
-        toast.success("Succsessfull addBooking");
+        toast.success("Successfull, Please check your email to Confirm  Reservation")
       })
       .addCase(addBooking.rejected, (state, { payload }) => {
         state.loading = false;

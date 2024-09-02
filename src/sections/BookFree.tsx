@@ -25,7 +25,7 @@ const BookFree: React.FC<BookFreeProps> = ({ data, lang }) => {
         Age: "",
         Email: "",
         CourseId: "",
-        CourseTimeId:""
+        SessionTimings:""
     });
 
     return (

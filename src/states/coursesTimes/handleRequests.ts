@@ -83,7 +83,7 @@ export const getCourseTimesByDate:any = createAsyncThunk(
   "coursesTimes/getCourseTimesByDate",
   async ({ courseId, date }: { courseId: string, date: string }, { rejectWithValue }) => {
     try {
-      const response = await fetch(`${Api}/courses_time/timeOfCourse/${courseId}/${date}`, {
+      const response = await fetch(`${Api}/courses_time/availableTimes/${courseId}/${date}`, {
         method: "GET",
         headers,
       });

@@ -76,7 +76,7 @@ export const coursesTimesSlice = createSlice({
       state.courseTimes = null
     })
     .addCase(getCourseTimesByDate.fulfilled, (state, { payload }) => {
-      state.courseTimes = payload
+      state.courseTimes = payload.data
       console.log(payload)
       // toast.success("Succsessfull getCourseTimesByDate");
     })

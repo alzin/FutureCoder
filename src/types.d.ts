@@ -22,5 +22,5 @@ type BookingFreeCourse = {
     Age: string | undefined,
     Email: string | undefined,
     CourseId: string | undefined,
-    CourseTimeId:string | undefined,
+    SessionTimings:string | undefined,
 }

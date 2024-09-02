@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
+import { toast } from 'react-toastify';
 // import gregorian_ar from "react-date-object/locales/gregorian_ar"
 // import gregorian_en from "react-date-object/locales/gregorian_en"
 
@@ -7,8 +8,8 @@ import { Calendar, DateObject } from 'react-multi-date-picker';
 import { Button } from '@nextui-org/react';
 import LoadingData from '@/components/LoadingData';
 import { getCourseTimesByDate } from '@/states/coursesTimes/handleRequests';
-// import { addBooking } from '@/states/bookings/handleRequests';
-
+import { addBooking } from '@/states/bookings/handleRequests';
+import { useRouter } from 'next/navigation';
 
 interface CourseCalendar {
     bookingData: BookingFreeCourse;
@@ -18,12 +19,14 @@ interface CourseCalendar {
 const CourseCalendar: React.FC<CourseCalendar> = ({ bookingData, setBookingData }) => {
 
     const dispatch = useDispatch()
-    const { courseDates, courseTimes } = useSelector((state: any) => state.coursesTimes)
+    const { courseDates, courseTimes, loading } = useSelector((state: any) => state.coursesTimes)
     const [reservation, setReservation] = useState("")
     const [date, setDate] = useState("")
+    const router = useRouter()
 
     const handelSelectTime = (value: any) => {
-        setReservation("Date :" + date.toString() + " Time : " + value.startTime +" - "+ value.endTime)
+        setReservation("Date :" + date.toString() + " Time : " + value.startTime + " - " + value.endTime)
+        setBookingData({ ...bookingData, SessionTimings: value.id })
     }
 
     function createDateObject(dateString: string): DateObject {
@@ -32,6 +35,9 @@ const CourseCalendar: React.FC<CourseCalendar> = ({ bookingData, setBookingData 
         return new DateObject(jsDate);
     }
 
+    const isFull = () => {
+        return !!bookingData.FirstName && !!bookingData.LastName && bookingData.Age && !!bookingData.Email && !!bookingData.CourseId && bookingData.SessionTimings
+    }
     const isValidDate = ({ date }: any) => {
         const availableDateObjects: DateObject[] = courseDates?.map(createDateObject);
         const isAvailable = availableDateObjects.some(availableDate =>
@@ -68,16 +74,22 @@ const CourseCalendar: React.FC<CourseCalendar> = ({ bookingData, setBookingData 
 
     const handleBookingCourse = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
+
+        if (!isFull()) {
+            toast.warning("Please Select Time for free session")
+            return
+        }
+
         console.log(bookingData)
 
-        // dispatch(addBooking({ bookingData })).unwrap().then(
-        //     () => {
-        //         setBookingData({})
-        //     },
-        //     (error: any) => {
-        //         console.error("Failed :", error);
-        //     }
-        // );
+        dispatch(addBooking({ bookingData })).unwrap().then(
+            () => {
+                router.push("/")
+            },
+            (error: any) => {
+                console.error("Failed :", error);
+            }
+        );
     }
 
     return (
@@ -112,7 +124,7 @@ const CourseCalendar: React.FC<CourseCalendar> = ({ bookingData, setBookingData 
 
             <form className="w-full space-y-5 gap-2 mt-100 max-w-lg" onSubmit={handleBookingCourse}>
 
-                <Button type='submit'>Book a free course</Button>
+                <Button isLoading={loading} type='submit'>Book a free course</Button>
             </form>
 
         </div>

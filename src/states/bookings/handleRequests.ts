@@ -61,7 +61,7 @@ export const addBooking:any = createAsyncThunk(
     { rejectWithValue }
   ) => {
     try {
-      const response = await fetch(`${Api}/free_lessons`, {
+      const response = await fetch(`${Api}/free_lessons/createSession`, {
         method: "POST",
         headers,
         body: JSON.stringify(bookingData),
