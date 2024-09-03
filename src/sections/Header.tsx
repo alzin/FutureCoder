@@ -38,21 +38,18 @@ const Header = ({ data }: any) => {
             {/* items */}
             <NavbarContent className="hidden sm:flex gap-4" justify="center">
                 {data.navItems.map((item:any)  => (
-                    <>
                         <NavbarItem key={item.id}>
                             <Link color="foreground" href={item.href}>
                                 {item.name}
                             </Link>
                         </NavbarItem>
-                        {/* languages */}
-                    </>
                 ))}
                 <SelectLanguage lang={data.langList} localeActive={data.lang} />
 
             </NavbarContent>
 
             {/* logo */}
-            <NavbarContent justify="center" className="w-full">
+            <NavbarContent justify="center" className="w-full ">
                 <NavbarBrand className="flex items-center justify-center">
                     <Link color="foreground" href="/">
                         <p className="font-bold text-inherit">LOGO</p>
