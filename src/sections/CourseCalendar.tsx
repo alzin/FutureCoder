@@ -99,6 +99,7 @@ const CourseCalendar: React.FC<CourseCalendar> = ({ bookingData, setBookingData 
                     <Calendar
                         zIndex={1}
                         // locale={lang === 'ar' ? gregorian_ar : gregorian_en}
+                        minDate={new DateObject(new Date())}
                         monthYearSeparator='-'
                         format='YYYY-MM-DD'
                         value={date}

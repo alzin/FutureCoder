@@ -2,7 +2,6 @@
 import React, { useState } from 'react';
 import Container from '@/components/Container';
 import Stepper from '@/components/Stepper';
-
 // sections
 import FreeLessonForm from './FreeLessonForm';
 import CoursesByAge from './CoursesByAge';
@@ -25,15 +24,25 @@ const BookFree: React.FC<BookFreeProps> = ({ data, lang }) => {
         Age: "",
         Email: "",
         CourseId: "",
-        SessionTimings:""
+        SessionTimings: ""
     });
+
+
+    const [userData, setUserData] = useState<GuestUserData>({
+        firstName: "",
+        lastName: "",
+        age: NaN,
+        email: "",
+        timeZone: ""
+    });
+
 
     return (
         <Container>
             <div id="BookFreeLesson" className='mt-10 w-full flex items-center justify-center flex-col'>
                 <Stepper currentStep={currentStep} setCurrentStep={setCurrentStep}>
                     <Stepper.Step label="Step 1" description="">
-                        <FreeLessonForm bookingData={bookingData} setBookingData={setBookingData} currentStep={currentStep} setCurrentStep={setCurrentStep} />
+                        <FreeLessonForm userData={userData} setUserData={setUserData} currentStep={currentStep} setCurrentStep={setCurrentStep} />
                     </Stepper.Step>
 
                     <Stepper.Step label="Step 2" description="">
@@ -41,7 +50,7 @@ const BookFree: React.FC<BookFreeProps> = ({ data, lang }) => {
                     </Stepper.Step>
 
                     <Stepper.Step label="Step 3" description="">
-                       <CourseCalendar bookingData={bookingData} setBookingData={setBookingData}/>
+                        <CourseCalendar bookingData={bookingData} setBookingData={setBookingData} />
                     </Stepper.Step>
                 </Stepper>
             </div>

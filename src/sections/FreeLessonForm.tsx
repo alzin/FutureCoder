@@ -1,32 +1,63 @@
 "use client"
 import { Button } from '@nextui-org/react';
 import { useDispatch, useSelector } from 'react-redux';
-import { ChangeEvent } from 'react';
-
+import { ChangeEvent, useEffect, useState } from 'react';
 import { getCoursesByAge } from '@/states/courses/handleRequests';
+import timezones from 'timezones-list';
+import dynamic from 'next/dynamic';
+import useCurrentTimezone from '@/hooks/useCurrentTimezone';
+
+const Select = dynamic(
+  () => import('react-select').then((mod) => mod.default),
+  {
+    ssr: false,
+    loading: () => null,
+  },
+);
+
 
 interface FreeLessonFormProps {
-  bookingData: BookingFreeCourse;
-  setBookingData: React.Dispatch<React.SetStateAction<BookingFreeCourse>>;
+  userData: GuestUserData;
+  setUserData: React.Dispatch<React.SetStateAction<GuestUserData>>;
   currentStep: number
   setCurrentStep: React.Dispatch<React.SetStateAction<number>>
 }
 
-const FreeLessonForm: React.FC<FreeLessonFormProps> = ({ bookingData, setBookingData, currentStep, setCurrentStep }) => {
+interface TimezoneOption {
+  value: string;
+  label: string;
+}
+
+const timezoneOptions: TimezoneOption[] = timezones.map(item => {
+  return { value: item.tzCode, label: item.label }
+})
+
+
+const FreeLessonForm: React.FC<FreeLessonFormProps> = ({ userData, setUserData, currentStep, setCurrentStep }) => {
 
   const dispatch = useDispatch()
   const { coursesByAge, loading } = useSelector((state: any) => state.courses)
 
+
+  const [selectedTimezone, setSelectedTimezone] = useState<TimezoneOption | null>(null);
+
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
-    setBookingData({ ...bookingData, [name]: value })
+    setUserData(prev => ({ ...prev, [name]: value }));
   }
+
+  const handleChangeTimeZone = (
+    option: any | null
+  ) => {
+    console.log(option)
+    setSelectedTimezone(option);
+  };
 
   const handleGetCoursesByAge = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    console.log(bookingData)
+    console.log(userData)
 
-    dispatch(getCoursesByAge({ age: bookingData.Age })).unwrap().then(
+    dispatch(getCoursesByAge({ age: userData.age })).unwrap().then(
       () => {
         setCurrentStep(prev => Math.min(3 - 1, prev + 1))
       },
@@ -37,6 +68,8 @@ const FreeLessonForm: React.FC<FreeLessonFormProps> = ({ bookingData, setBooking
 
   }
 
+
+
   return (
     <form className="w-full flex items-center flex-col gap-10 my-5 mb-20 max-w-lg" onSubmit={handleGetCoursesByAge}>
       <input
@@ -45,7 +78,7 @@ const FreeLessonForm: React.FC<FreeLessonFormProps> = ({ bookingData, setBooking
         className='p-2 outline-blue-400 w-full bg-gray-100 hover:bg-gray-200 rounded-xl'
         name='Age'
         required
-        value={bookingData.Age}
+        value={userData.age || ""}
         onChange={handleChange}
       />
 
@@ -55,7 +88,7 @@ const FreeLessonForm: React.FC<FreeLessonFormProps> = ({ bookingData, setBooking
         placeholder="Enter your First Name"
         name="FirstName"
         required
-        value={bookingData.FirstName}
+        value={userData.firstName}
         onChange={handleChange}
       />
       <input
@@ -64,7 +97,7 @@ const FreeLessonForm: React.FC<FreeLessonFormProps> = ({ bookingData, setBooking
         name="LastName"
         className='p-2 outline-blue-400 w-full bg-gray-100 hover:bg-gray-200 rounded-xl'
         required
-        value={bookingData.LastName}
+        value={userData.lastName}
         onChange={handleChange}
       />
       <input
@@ -73,8 +106,16 @@ const FreeLessonForm: React.FC<FreeLessonFormProps> = ({ bookingData, setBooking
         className='p-2 outline-blue-400 w-full bg-gray-100 hover:bg-gray-200 rounded-xl'
         name='Email'
         required
-        value={bookingData.Email}
+        value={userData.email}
         onChange={handleChange}
+      />
+
+      <Select
+        options={timezoneOptions}
+        onChange={handleChangeTimeZone}
+        placeholder="Select Timezone"
+        value={selectedTimezone}
+        className='p-2 outline-blue-400 w-full bg-gray-100 hover:bg-gray-200 rounded-xl'
       />
 
       <Button

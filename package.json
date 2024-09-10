@@ -24,9 +24,12 @@
     "react-dom": "^18",
     "react-multi-date-picker": "^4.5.2",
     "react-redux": "^9.1.2",
+    "react-select": "^5.8.0",
+    "react-timezone-select": "^3.2.8",
     "react-toastify": "^10.0.5",
     "rtl-detect": "^1.1.2",
-    "swiper": "^11.1.10"
+    "swiper": "^11.1.10",
+    "timezones-list": "^3.0.3"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.5.0",
