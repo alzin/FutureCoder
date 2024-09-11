@@ -1,5 +1,6 @@
 import Home from "@/pages/Home";
 import { useTranslations } from "next-intl";
+import { Suspense } from 'react'
 
 export default function HomePage() {
 
