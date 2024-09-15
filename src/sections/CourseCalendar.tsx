@@ -10,16 +10,20 @@ import LoadingData from '@/components/LoadingData';
 import { getCourseTimesByDate } from '@/states/coursesTimes/handleRequests';
 import { addBooking } from '@/states/bookings/handleRequests';
 import { useRouter } from 'next/navigation';
-
+import useLocalStorage from '@/hooks/useLocalStorage';
 interface CourseCalendar {
     bookingData: BookingFreeCourse;
     setBookingData: React.Dispatch<React.SetStateAction<BookingFreeCourse>>;
+    timeZone: string
 }
 
-const CourseCalendar: React.FC<CourseCalendar> = ({ bookingData, setBookingData }) => {
+const CourseCalendar: React.FC<CourseCalendar> = ({ bookingData, setBookingData, timeZone }) => {
 
     const dispatch = useDispatch()
-    const { courseDates, courseTimes, loading } = useSelector((state: any) => state.coursesTimes)
+    const { getValueAsOpj, setValue, clearAll } = useLocalStorage()
+    const { courseDates, courseTimes, } = useSelector((state: any) => state.coursesTimes)
+    const { loading } = useSelector((state: any) => state.bookings)
+
     const [reservation, setReservation] = useState("")
     const [date, setDate] = useState("")
     const router = useRouter()
@@ -36,7 +40,7 @@ const CourseCalendar: React.FC<CourseCalendar> = ({ bookingData, setBookingData 
     }
 
     const isFull = () => {
-        return !!bookingData.FirstName && !!bookingData.LastName && bookingData.Age && !!bookingData.Email && !!bookingData.CourseId && bookingData.SessionTimings
+        return !!bookingData.guestUserId && !!bookingData.CourseId && bookingData.SessionTimings
     }
     const isValidDate = ({ date }: any) => {
         const availableDateObjects: DateObject[] = courseDates?.map(createDateObject);
@@ -58,12 +62,9 @@ const CourseCalendar: React.FC<CourseCalendar> = ({ bookingData, setBookingData 
     const handleGetCourseTimesByDate = (value: any) => {
         setDate(value.toString())
 
-        console.log("courseId", bookingData.CourseId)
-        console.log("parsedDate", value.toString())
-
-        dispatch(getCourseTimesByDate({ courseId: bookingData.CourseId, date: value.toString() })).unwrap().then(
+        dispatch(getCourseTimesByDate({ courseId: bookingData.CourseId, date: value.toString(), userId: bookingData.guestUserId })).unwrap().then(
             () => {
-                // setTimes(allTimes[parsedDate])
+                clearAll()
             },
             (error: any) => {
                 console.error("Failed :", error);
@@ -99,6 +100,7 @@ const CourseCalendar: React.FC<CourseCalendar> = ({ bookingData, setBookingData 
                     <Calendar
                         zIndex={1}
                         // locale={lang === 'ar' ? gregorian_ar : gregorian_en}
+                        minDate={new DateObject(new Date())}
                         monthYearSeparator='-'
                         format='YYYY-MM-DD'
                         value={date}
@@ -106,7 +108,7 @@ const CourseCalendar: React.FC<CourseCalendar> = ({ bookingData, setBookingData 
                         mapDays={courseDates && isValidDate}
                     />
                     <div className='h-full w-40 flex flex-col items-center justify-start text-sm pb-2'>
-                        <p className='pt-4 pb-3 border-b-2 w-full text-center'>Times</p>
+                        <p className='pt-4 pb-3 border-b-2 w-full text-center'>Times {timeZone}</p>
                         <div className='overflow-y-auto overflow-x-hidden gap-2 scroll flex flex-col items-center w-full p-2' style={{ scrollbarWidth: "thin" }}>
                             {date && <LoadingData data={courseTimes} emptyMessage='Not Found Times for this Date'>
                                 {courseTimes?.map((item: any, index: number) =>

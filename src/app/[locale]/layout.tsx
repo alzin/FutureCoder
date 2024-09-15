@@ -7,7 +7,6 @@ import { getLangDir } from 'rtl-detect';
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import DataProvider from "@/components/DataProvider";
-
 import "./globals.css";
 
 // const inter = Inter({ subsets: ["latin"] });
@@ -70,7 +69,7 @@ export default function RootLayout({
         >
           <DataProvider>
             <NextUIProvider>
-              {children}
+                {children}
             </NextUIProvider>
           </DataProvider>
         </NextIntlClientProvider>

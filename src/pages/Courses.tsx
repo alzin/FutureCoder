@@ -2,8 +2,7 @@
 // sections
 import Header from "@/sections/Header";
 import Footer from "@/sections/Footer";
-import Container from "@/components/Container";
-
+import AllCourses from "@/sections/AllCourses";
 
 const Courses = ({ data }: any) => {
 
@@ -14,9 +13,7 @@ const Courses = ({ data }: any) => {
     return (
         <>
             <Header data={data.headerSection} />
-            <Container>
-                Courses Page
-            </Container>
+            <AllCourses />
             <Footer data={data.footerSection} />
         </>
     )

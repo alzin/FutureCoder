@@ -5,11 +5,16 @@
       "navItems": [
         {
           "id": 1,
+          "name": "Home",
+          "href": "/"
+        },
+        {
+          "id": 2,
           "name": "Bolgs",
           "href": "/blogs"
         },
         {
-          "id": 2,
+          "id": 3,
           "name": "Courses",
           "href": "/courses"
         }

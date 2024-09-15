@@ -31,8 +31,8 @@ export const coursesSlice = createSlice({
       })
       .addCase(getCourses.fulfilled, (state, { payload }) => {
         state.courses = payload[0].data.data
-        state.totalCount = payload[0].total
-        console.log(payload[0].data.data)
+        state.totalCount = payload[0].data.total
+        // console.log(payload[0].data.data)
         // toast.success("Succsessfull getCourses");
       })
       .addCase(getCourses.rejected, (state, { payload }) => {

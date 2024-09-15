@@ -5,11 +5,16 @@
       "navItems": [
         {
           "id": 1,
+          "name": "الصفحة الرئيسية",
+          "href": "/"
+        },
+        {
+          "id": 2,
           "name": "المدونات",
           "href": "/blogs"
         },
         {
-          "id": 2,
+          "id": 3,
           "name": "الدروس",
           "href": "/courses"
         }

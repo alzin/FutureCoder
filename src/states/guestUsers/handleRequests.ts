@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import {Api,token} from "../Api";
+import { Api, token } from "../Api";
 
 
 const headers = {
@@ -54,15 +54,36 @@ export const getGuestUserById = createAsyncThunk(
   }
 );
 
+export const checkVerification: any = createAsyncThunk(
+  "guestUsers/checkVerification",
+  async ({ guestUserId }: { guestUserId: string }, { rejectWithValue }) => {
+    try {
+      const response = await fetch(`${Api}/guest_users?id=${guestUserId}`, {
+        method: "GET",
+        headers,
+      });
+      const data = await response.json();
+
+      if (response.ok) {
+        return data[0].data.email_verified;
+      } else {
+        return rejectWithValue(data.mesage);
+      }
+    } catch (error: any) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
 // add guest user
-export const addGuestUser = createAsyncThunk(
+export const addGuestUser: any = createAsyncThunk(
   "guestUsers/addGuestUser",
   async (
     { guestUserData }: { guestUserData: FormData },
     { rejectWithValue }
   ) => {
     try {
-      const response = await fetch(`${Api}/guestUsers`, {
+      const response = await fetch(`${Api}/guest_users`, {
         method: "POST",
         headers,
         body: JSON.stringify(guestUserData),
@@ -72,7 +93,7 @@ export const addGuestUser = createAsyncThunk(
       if (response.ok) {
         return data;
       } else {
-        return rejectWithValue(data);
+        return rejectWithValue(data.message);
       }
     } catch (error: any) {
       return rejectWithValue(error.message);
@@ -91,7 +112,7 @@ export const updateGuestUser = createAsyncThunk(
       const response = await fetch(`${Api}/guestUsers/${guestUserId}`, {
         method: "POST",
         headers: {
-          
+
         },
         body: JSON.stringify(newGuestUserData),
       });

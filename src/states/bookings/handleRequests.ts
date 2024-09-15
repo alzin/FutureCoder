@@ -71,7 +71,7 @@ export const addBooking:any = createAsyncThunk(
       if (response.ok) {
         return data;
       } else {
-        return rejectWithValue(data);
+        return rejectWithValue(data.message);
       }
     } catch (error: any) {
       return rejectWithValue(error.message);
