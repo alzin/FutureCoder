@@ -17,18 +17,20 @@ type Course = {
 }
 
 type BookingFreeCourse = {
-    FirstName: string | undefined,
-    LastName: string | undefined,
-    Age: string | undefined,
-    Email: string | undefined,
+    guestUserId: string | undefined
     CourseId: string | undefined,
     SessionTimings: string | undefined,
 }
 
+type TimezoneOption = {
+    value: string;
+    label: string;
+}
+
 type GuestUserData = {
-    firstName: string | undefined,
-    lastName: string | undefined,
-    age: string | undefined,
-    email: string | undefined,
-    timeZone: string | undefined
+    firstName: string | null,
+    lastName: string | null,
+    age: string | null,
+    email: string | null,
+    timeZone: TimezoneOption | null | opject
 }

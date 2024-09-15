@@ -1,12 +1,11 @@
 "use client"
 import { Button } from '@nextui-org/react';
-import { useDispatch, useSelector } from 'react-redux';
-import { ChangeEvent, useEffect, useState } from 'react';
-import { getCoursesByAge } from '@/states/courses/handleRequests';
+import { ChangeEvent, useState } from 'react';
 import timezones from 'timezones-list';
 import dynamic from 'next/dynamic';
 import useLocalStorage from '@/hooks/useLocalStorage';
-
+import { addGuestUser } from '@/states/guestUsers/handleRequests';
+import { useDispatch, useSelector } from 'react-redux';
 // import useCurrentTimezone from '@/hooks/useCurrentTimezone';
 
 const Select = dynamic(
@@ -21,6 +20,7 @@ const Select = dynamic(
 interface FreeLessonFormProps {
   userData: GuestUserData;
   setUserData: React.Dispatch<React.SetStateAction<GuestUserData>>;
+  setBookingData: React.Dispatch<React.SetStateAction<BookingFreeCourse>>;
   currentStep: number
   setCurrentStep: React.Dispatch<React.SetStateAction<number>>
 }
@@ -35,12 +35,13 @@ const timezoneOptions: TimezoneOption[] = timezones.map(item => {
 })
 
 
-const FreeLessonForm: React.FC<FreeLessonFormProps> = ({ userData, setUserData, currentStep, setCurrentStep }) => {
+const FreeLessonForm: React.FC<FreeLessonFormProps> = ({ userData, setUserData, setBookingData, currentStep, setCurrentStep }) => {
 
+  const { loading } = useSelector((state: any) => state.guestUsers)
+  const { setValue } = useLocalStorage()
   const dispatch = useDispatch()
-  const { loading } = useSelector((state: any) => state.courses)
-  const { getValue, setValue, clearAll } = useLocalStorage()
-  const [selectedTimezone, setSelectedTimezone] = useState<TimezoneOption | null>(null);
+
+  const [selectedTimezone, setSelectedTimezone] = useState<TimezoneOption | null>(userData.timeZone);
 
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -53,30 +54,36 @@ const FreeLessonForm: React.FC<FreeLessonFormProps> = ({ userData, setUserData, 
     option: any | null
   ) => {
     setSelectedTimezone(option);
-    setUserData(prev => ({ ...prev, "timeZone": option.value }));
-    setValue("timeZone", option.value)
+    setUserData(prev => ({ ...prev, "timeZone": option }));
+    setValue("timeZone", option, "opj")
   };
 
   const handleCreateGuestUser = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    console.log(userData)
-    setCurrentStep(prev => {
-      setValue("currentStep", String(Math.min(3 - 1, prev + 1)))
-      return Math.min(3 - 1, prev + 1)
-    })
-    // dispatch(getCoursesByAge({ age: userData.age })).unwrap().then(
-    //   () => {
-    //     setCurrentStep(prev =>{
-    //       setValue("currentStep",String(Math.min(3 - 1, prev + 1)))
-    //       return  Math.min(3 - 1, prev + 1)
-    //     })
-    //   },
-    //   (error: any) => {
-    //     console.error("Failed :", error);
-    //   }
-    // );
-  }
 
+    const guestUserData = {
+      age: userData.age,
+      email: userData.email,
+      firstName: userData.firstName,
+      lastName: userData.lastName,
+      timeZone: userData.timeZone.value
+    }
+
+    dispatch(addGuestUser({ guestUserData })).unwrap().then(
+      (payload: any) => {
+        setValue("userId", payload.id)
+        setBookingData(prev => ({ ...prev, guestUserId: payload.id }))
+        setCurrentStep(prev => {
+          setValue("currentStep", String(Math.min(4 - 1, prev + 1)))
+          return Math.min(4 - 1, prev + 1)
+        })
+      },
+      (error: any) => {
+        console.error("Failed :", error);
+      }
+    );
+
+  }
 
 
   return (
@@ -87,7 +94,7 @@ const FreeLessonForm: React.FC<FreeLessonFormProps> = ({ userData, setUserData, 
         className='p-2 outline-blue-400 w-full bg-gray-100 hover:bg-gray-200 rounded-xl'
         name='age'
         required
-        value={userData.age}
+        value={userData.age!}
         onChange={handleChange}
       />
 
@@ -97,7 +104,7 @@ const FreeLessonForm: React.FC<FreeLessonFormProps> = ({ userData, setUserData, 
         placeholder="Enter your First Name"
         name="firstName"
         required
-        value={userData.firstName}
+        value={userData.firstName!}
         onChange={handleChange}
       />
       <input
@@ -106,7 +113,7 @@ const FreeLessonForm: React.FC<FreeLessonFormProps> = ({ userData, setUserData, 
         name="lastName"
         className='p-2 outline-blue-400 w-full bg-gray-100 hover:bg-gray-200 rounded-xl'
         required
-        value={userData.lastName}
+        value={userData.lastName!}
         onChange={handleChange}
       />
       <input
@@ -115,12 +122,11 @@ const FreeLessonForm: React.FC<FreeLessonFormProps> = ({ userData, setUserData, 
         className='p-2 outline-blue-400 w-full bg-gray-100 hover:bg-gray-200 rounded-xl'
         name='email'
         required
-        value={userData.email}
+        value={userData.email!}
         onChange={handleChange}
       />
 
       <Select
-        defaultInputValue={getValue("timeZone")}
         options={timezoneOptions}
         onChange={handleChangeTimeZone}
         placeholder="Select Timezone"

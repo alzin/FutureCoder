@@ -57,6 +57,7 @@ export const getCourseById = createAsyncThunk(
 export const getCoursesByAge:any = createAsyncThunk(
   "courses/getCoursesByAge",
   async ({ age }: { age: number }, { rejectWithValue }) => {
+    console.log(age)
     try {
       const response = await fetch(`${Api}/courses/courseById?age=${age}`, {
         method: "GET",

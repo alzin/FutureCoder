@@ -1,5 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getGuestUsers, getGuestUserById, addGuestUser, updateGuestUser, deleteGuestUser } from "./handleRequests";
+import {
+  getGuestUsers, getGuestUserById, checkVerification
+  , addGuestUser, updateGuestUser, deleteGuestUser
+} from "./handleRequests";
 import { toast } from "react-toastify";
 
 
@@ -21,7 +24,7 @@ export const guestUsersSlice = createSlice({
   },
 
   extraReducers: (builder) => {
-    
+
     // getGuestUsers
     builder
       .addCase(getGuestUsers.pending, (state, { payload }) => {
@@ -42,19 +45,39 @@ export const guestUsersSlice = createSlice({
 
     // getGuestUserById
     builder
-    .addCase(getGuestUserById.pending, (state, { payload }) => {
-      state.loading = true
-      state.findGuestUsers = null
-    })
-    .addCase(getGuestUserById.fulfilled, (state, { payload }) => {
-      state.loading = false;
-      state.findGuestUsers = payload
-      // toast.success("Succsessfull getGuestUserById");
-    })
-    .addCase(getGuestUserById.rejected, (state, { payload }) => {
-      state.loading = false;
-      toast.error(payload as string);
-    });
+      .addCase(getGuestUserById.pending, (state, { payload }) => {
+        state.loading = true
+        state.findGuestUsers = null
+      })
+      .addCase(getGuestUserById.fulfilled, (state, { payload }) => {
+        state.loading = false;
+        state.findGuestUsers = payload
+        // toast.success("Succsessfull getGuestUserById");
+      })
+      .addCase(getGuestUserById.rejected, (state, { payload }) => {
+        state.loading = false;
+        toast.error(payload as string);
+      });
+
+    // checkVerification
+    builder
+      .addCase(checkVerification.pending, (state, { payload }) => {
+        state.loading = true
+      })
+      .addCase(checkVerification.fulfilled, (state, { payload }) => {
+        state.loading = false;
+        if (!payload) {
+          toast.warning("Please Verify Your Email");
+        }
+
+      })
+      .addCase(checkVerification.rejected, (state, { payload }) => {
+        state.loading = false;
+        toast.error(payload as string);
+      });
+
+
+
 
     // addGuestUser
     builder
@@ -70,19 +93,19 @@ export const guestUsersSlice = createSlice({
         toast.error(payload as string);
       });
 
-      // updateGuestUser
+    // updateGuestUser
     builder
-    .addCase(updateGuestUser.pending, (state, { payload }) => {
-      state.loading = true
-    })
-    .addCase(updateGuestUser.fulfilled, (state, { payload }) => {
-      state.loading = false;
-      toast.success("Succsessfull updateGuestUser");
-    })
-    .addCase(updateGuestUser.rejected, (state, { payload }) => {
-      state.loading = false;
-      toast.error(payload as string);
-    });
+      .addCase(updateGuestUser.pending, (state, { payload }) => {
+        state.loading = true
+      })
+      .addCase(updateGuestUser.fulfilled, (state, { payload }) => {
+        state.loading = false;
+        toast.success("Succsessfull updateGuestUser");
+      })
+      .addCase(updateGuestUser.rejected, (state, { payload }) => {
+        state.loading = false;
+        toast.error(payload as string);
+      });
 
     // deleteGuestUser
     builder

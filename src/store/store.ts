@@ -8,9 +8,6 @@ import guestUsersSlice  from "@/states/guestUsers/guestUsersSlice";
 import bookingsSlice  from "@/states/bookings/bookingsSlice";
 import toggleSlice  from "@/states/toggle/toggleSlice";
 
-
-
-
 export const store = configureStore({
   reducer: {
     blogs: blogsSlice,
@@ -20,7 +17,6 @@ export const store = configureStore({
     guestUsers: guestUsersSlice,
     bookings: bookingsSlice,
     toggle: toggleSlice,
-
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(),
 });

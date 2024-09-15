@@ -56,11 +56,11 @@ export const getCoursesTimesById = createAsyncThunk(
 );
 
 // get Course Dates By CourseId
-export const getCourseDatesByCourseId:any = createAsyncThunk(
+export const getCourseDatesByCourseId: any = createAsyncThunk(
   "coursesTimes/getCourseDatesByCourseId",
-  async ({ courseId }: { courseId: string }, { rejectWithValue }) => {
+  async ({ courseId, userId }: { courseId: string, userId: string }, { rejectWithValue }) => {
     try {
-      const response = await fetch(`${Api}/courses_time/courseDays/${courseId}`, {
+      const response = await fetch(`${Api}/courses_time/courseDays/${courseId}/${userId}`, {
         method: "GET",
         headers,
       });
@@ -79,11 +79,11 @@ export const getCourseDatesByCourseId:any = createAsyncThunk(
 );
 
 // get Course Times By Date
-export const getCourseTimesByDate:any = createAsyncThunk(
+export const getCourseTimesByDate: any = createAsyncThunk(
   "coursesTimes/getCourseTimesByDate",
-  async ({ courseId, date }: { courseId: string, date: string }, { rejectWithValue }) => {
+  async ({ courseId, date, userId }: { courseId: string, date: string, userId: string }, { rejectWithValue }) => {
     try {
-      const response = await fetch(`${Api}/courses_time/availableTimes/${courseId}/${date}`, {
+      const response = await fetch(`${Api}/courses_time/availableTimes/${courseId}/${date}/${userId}`, {
         method: "GET",
         headers,
       });

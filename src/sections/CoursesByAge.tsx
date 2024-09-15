@@ -4,7 +4,9 @@ import { Button, Card, CardBody, Image, CardFooter } from '@nextui-org/react';
 
 import LoadingData from '@/components/LoadingData';
 import { getCourseDatesByCourseId } from '@/states/coursesTimes/handleRequests';
-
+import { useEffect } from 'react';
+import { getCoursesByAge } from '@/states/courses/handleRequests';
+import useLocalStorage from '@/hooks/useLocalStorage';
 
 interface CoursesByAgeProps {
     bookingData: BookingFreeCourse;
@@ -15,17 +17,23 @@ interface CoursesByAgeProps {
 const CoursesByAge: React.FC<CoursesByAgeProps> = ({ bookingData, setBookingData, setCurrentStep }) => {
 
     const dispatch = useDispatch()
+    const { getValueAsStr, setValue } = useLocalStorage()
     const { coursesByAge } = useSelector((state: any) => state.courses)
     const { loading } = useSelector((state: any) => state.coursesTimes)
+    const age = getValueAsStr("age")
+
+    useEffect(() => {
+        dispatch(getCoursesByAge({ age }))
+    }, [dispatch, age])
+
 
     const handleGetDatesByCourseId = (courseId: string) => {
 
-        console.log(courseId)
-        setBookingData({ ...bookingData, CourseId: courseId })
+        setBookingData(prev => ({ ...prev, CourseId: courseId }))
 
-        dispatch(getCourseDatesByCourseId({ courseId })).unwrap().then(
+        dispatch(getCourseDatesByCourseId({ courseId, userId: bookingData.guestUserId })).unwrap().then(
             () => {
-                setCurrentStep(prev => Math.min(3 - 1, prev + 1))
+                setCurrentStep(prev => Math.min(4 - 1, prev + 1))
             },
             (error: any) => {
                 console.error("Failed :", error);

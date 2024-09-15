@@ -5,12 +5,12 @@ import dynamic from 'next/dynamic';
 
 const Stepper = dynamic(() => import('@/components/Stepper'), {
     ssr: false,
-    loading: () => <Loading/>,
+    loading: () => <Loading />,
 });
 
 const Step = dynamic(() => import('@/components/Stepper').then(mod => mod.Step), {
     ssr: false,
-    loading: () => <Loading/>,
+    loading: () => <Loading />,
 });
 
 
@@ -33,25 +33,22 @@ interface BookFreeProps {
 
 const BookFree: React.FC<BookFreeProps> = ({ data, lang }) => {
 
-    const { getValue, setValue, clearAll } = useLocalStorage()
-    const [currentStep, setCurrentStep] = useState(Number(getValue("currentStep")));
+    const { getValueAsStr, getValueAsOpj, setValue, clearAll } = useLocalStorage()
+    const [currentStep, setCurrentStep] = useState(Number(getValueAsStr("currentStep")));
 
     const [bookingData, setBookingData] = useState<BookingFreeCourse>({
-        FirstName: "",
-        LastName: "",
-        Age: "",
-        Email: "",
+        guestUserId: getValueAsStr("userId"),
         CourseId: "",
         SessionTimings: ""
     });
 
 
     const [userData, setUserData] = useState<GuestUserData>({
-        firstName: getValue("firstName"),
-        lastName: getValue("lastName"),
-        age: getValue("age"),
-        email: getValue("email"),
-        timeZone: getValue("timeZone")
+        firstName: getValueAsStr("firstName"),
+        lastName: getValueAsStr("lastName"),
+        age: getValueAsStr("age"),
+        email: getValueAsStr("email"),
+        timeZone: getValueAsOpj("timeZone")
     });
 
     return (
@@ -60,11 +57,11 @@ const BookFree: React.FC<BookFreeProps> = ({ data, lang }) => {
                 <Suspense fallback={<Loading />}>
                     <Stepper currentStep={currentStep} setCurrentStep={setCurrentStep}>
                         <Step label="Step 1">
-                            <FreeLessonForm userData={userData} setUserData={setUserData} currentStep={currentStep} setCurrentStep={setCurrentStep} />
+                            <FreeLessonForm userData={userData} setUserData={setUserData} setBookingData={setBookingData} currentStep={currentStep} setCurrentStep={setCurrentStep} />
                         </Step>
 
                         <Step label="Step 2">
-                            <VerifyEmail setCurrentStep={setCurrentStep}/>
+                            <VerifyEmail userData={userData} setCurrentStep={setCurrentStep} />
                         </Step>
 
                         <Step label="Step 3">
@@ -72,7 +69,7 @@ const BookFree: React.FC<BookFreeProps> = ({ data, lang }) => {
                         </Step>
 
                         <Step label="Step 4">
-                            <CourseCalendar bookingData={bookingData} setBookingData={setBookingData} />
+                            <CourseCalendar timeZone={userData.timeZone?.value || ""} bookingData={bookingData} setBookingData={setBookingData} />
                         </Step>
                     </Stepper>
                 </Suspense>
