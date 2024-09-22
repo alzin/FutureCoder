@@ -8,7 +8,7 @@
       "paragraph": "Discover a fun and interactive way for your kids to learn programming in Arabic",
       "lessonBtn": "Book a free lesson",
       "hrefLesson":"/free",
-      "heroImage": "https://i.postimg.cc/jjfjwTWs/image.png"
+      "heroImage": "/images/hero.webp"
     },
     "featuresSection": {
       "title": "Let your child a Future Leader not only a coder through our learning path",
@@ -16,19 +16,19 @@
       "features": [
         {
           "id": 1,
-          "image": "/images/image.png",
+          "image": "/images/1.webp",
           "title": "Interactive Courses",
           "description": "Engaging and interactive coding courses designed for kids."
         },
         {
           "id": 2,
-          "image": "/images/image.png",
+          "image": "/images/2.webp",
           "title": "Parent Resources",
           "description": "Access helpful resources to support your child's learning journey. "
         },
         {
           "id": 3,
-          "image": "/images/image.png",
+          "image": "/images/3.webp",
           "title": "Community Support",
           "description": "Connect with a supportive community of like-minded parents."
         }
