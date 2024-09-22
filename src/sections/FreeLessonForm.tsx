@@ -25,14 +25,14 @@ interface FreeLessonFormProps {
   setCurrentStep: React.Dispatch<React.SetStateAction<number>>
 }
 
-interface TimezoneOption {
-  value: string;
-  label: string;
-}
+// interface TimezoneOption {
+//   value: string;
+//   label: string;
+// }
 
-const timezoneOptions: TimezoneOption[] = timezones.map(item => {
-  return { value: item.tzCode, label: item.label }
-})
+// const timezoneOptions: TimezoneOption[] = timezones.map(item => {
+//   return { value: item.tzCode, label: item.label }
+// })
 
 
 const FreeLessonForm: React.FC<FreeLessonFormProps> = ({ userData, setUserData, setBookingData, currentStep, setCurrentStep }) => {
@@ -41,7 +41,7 @@ const FreeLessonForm: React.FC<FreeLessonFormProps> = ({ userData, setUserData, 
   const { setValue } = useLocalStorage()
   const dispatch = useDispatch()
 
-  const [selectedTimezone, setSelectedTimezone] = useState<TimezoneOption | null>(userData.timeZone);
+  // const [selectedTimezone, setSelectedTimezone] = useState<TimezoneOption | null>(userData.timeZone);
 
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -50,13 +50,13 @@ const FreeLessonForm: React.FC<FreeLessonFormProps> = ({ userData, setUserData, 
     setValue(name, value)
   }
 
-  const handleChangeTimeZone = (
-    option: any | null
-  ) => {
-    setSelectedTimezone(option);
-    setUserData(prev => ({ ...prev, "timeZone": option }));
-    setValue("timeZone", option, "opj")
-  };
+  // const handleChangeTimeZone = (
+  //   option: any | null
+  // ) => {
+  //   setSelectedTimezone(option);
+  //   setUserData(prev => ({ ...prev, "timeZone": option }));
+  //   setValue("timeZone", option, "opj")
+  // };
 
   const handleCreateGuestUser = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -66,13 +66,11 @@ const FreeLessonForm: React.FC<FreeLessonFormProps> = ({ userData, setUserData, 
       email: userData.email,
       firstName: userData.firstName,
       lastName: userData.lastName,
-      timeZone: userData.timeZone.value
+      timeZone: userData.timeZone
     }
 
     dispatch(addGuestUser({ guestUserData })).unwrap().then(
-      (payload: any) => {
-        setValue("userId", payload.id)
-        setBookingData(prev => ({ ...prev, guestUserId: payload.id }))
+      () => {
         setCurrentStep(prev => {
           setValue("currentStep", String(Math.min(4 - 1, prev + 1)))
           return Math.min(4 - 1, prev + 1)
@@ -94,7 +92,7 @@ const FreeLessonForm: React.FC<FreeLessonFormProps> = ({ userData, setUserData, 
         className='p-2 outline-blue-400 w-full bg-gray-100 hover:bg-gray-200 rounded-xl'
         name='age'
         required
-        value={userData.age!}
+        value={userData.age}
         onChange={handleChange}
       />
 
@@ -104,7 +102,7 @@ const FreeLessonForm: React.FC<FreeLessonFormProps> = ({ userData, setUserData, 
         placeholder="Enter your First Name"
         name="firstName"
         required
-        value={userData.firstName!}
+        value={userData.firstName}
         onChange={handleChange}
       />
       <input
@@ -113,7 +111,7 @@ const FreeLessonForm: React.FC<FreeLessonFormProps> = ({ userData, setUserData, 
         name="lastName"
         className='p-2 outline-blue-400 w-full bg-gray-100 hover:bg-gray-200 rounded-xl'
         required
-        value={userData.lastName!}
+        value={userData.lastName}
         onChange={handleChange}
       />
       <input
@@ -122,18 +120,18 @@ const FreeLessonForm: React.FC<FreeLessonFormProps> = ({ userData, setUserData, 
         className='p-2 outline-blue-400 w-full bg-gray-100 hover:bg-gray-200 rounded-xl'
         name='email'
         required
-        value={userData.email!}
+        value={userData.email}
         onChange={handleChange}
       />
 
-      <Select
+      {/* <Select
         options={timezoneOptions}
         onChange={handleChangeTimeZone}
         placeholder="Select Timezone"
         value={selectedTimezone}
         required
         className='p-2 outline-blue-400 w-full bg-gray-100 hover:bg-gray-200 rounded-xl'
-      />
+      /> */}
 
       <Button
         isLoading={loading}

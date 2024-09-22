@@ -27,10 +27,16 @@ type TimezoneOption = {
     label: string;
 }
 
+type CourseData = {
+    course_id: string,
+    timezone: string
+}
+
+
 type GuestUserData = {
-    firstName: string | null,
-    lastName: string | null,
-    age: string | null,
-    email: string | null,
-    timeZone: TimezoneOption | null | opject
+    firstName: string,
+    lastName: string,
+    age: string,
+    email: string,
+    timeZone: string
 }

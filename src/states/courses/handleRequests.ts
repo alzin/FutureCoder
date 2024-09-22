@@ -21,6 +21,7 @@ export const getCourses:any = createAsyncThunk(
       const data = await response.json();
 
       if (response.ok) {
+        console.log(data)
         return data;
       } else {
         return rejectWithValue(data.message);
@@ -66,7 +67,6 @@ export const getCoursesByAge:any = createAsyncThunk(
       const data = await response.json();
 
       if (response.ok) {
-        console.log(data)
         return data;
       } else {
         return rejectWithValue(data.message);
@@ -153,3 +153,4 @@ export const deleteCourse = createAsyncThunk(
     }
   }
 );
+
