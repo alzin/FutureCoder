@@ -103,11 +103,11 @@ export const getCourseTimesByDate: any = createAsyncThunk(
 // get all course times by timeZone
 export const getCouseseTimeByTimezone: any = createAsyncThunk(
   "courses/getCouseseTimeByTimezone",
-  async (
-    { courseData}: { courseData:FormData},
+  async (courseData: { courseData: FormData },
     { rejectWithValue }
   ) => {
     try {
+      console.log(courseData)
       const response = await fetch(`${Api}/courses_time/timezone`, {
         method: "POST",
         headers,

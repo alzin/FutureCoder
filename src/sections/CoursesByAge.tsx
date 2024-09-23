@@ -3,7 +3,6 @@ import { Button, Card, CardBody, Image, CardFooter, Pagination } from '@nextui-o
 
 
 import LoadingData from '@/components/LoadingData';
-import { getCouseseTimeByTimezone } from '@/states/coursesTimes/handleRequests';
 import { useEffect } from 'react';
 import { getCourses } from '@/states/courses/handleRequests';
 import useLocalStorage from '@/hooks/useLocalStorage';
@@ -12,39 +11,34 @@ import Link from 'next/link';
 
 
 interface CoursesByAgeProps {
-    courseData: CourseData;
-    setCourseData: React.Dispatch<React.SetStateAction<CourseData>>;
+    bookingData: BookingFreeCourse;
+    setBookingData: React.Dispatch<React.SetStateAction<BookingFreeCourse>>;
     setCurrentStep: React.Dispatch<React.SetStateAction<number>>
 }
 
-const CoursesByAge: React.FC<CoursesByAgeProps> = ({ courseData, setCourseData, setCurrentStep }) => {
+const CoursesByAge: React.FC<CoursesByAgeProps> = ({ bookingData, setBookingData, setCurrentStep }) => {
 
     const dispatch = useDispatch()
     const { setValue } = useLocalStorage()
     const { courses, currentPage, totalCount } = useSelector((state: any) => state.courses)
-    const { loading } = useSelector((state: any) => state.coursesTimes)
 
     useEffect(() => {
         dispatch(getCourses({ currentPage }))
     }, [dispatch, currentPage])
-
 
     const handleChangePage = (page: number) => {
         dispatch(setCurrentPage(page))
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-
     const handleSelectCourse = (courseId: string) => {
-        setValue("course_id", courseId)
-        setCourseData(prev => ({ ...prev, course_id: courseId }))
-
+        setValue("courseId", courseId)
+        setBookingData(prev => ({ ...prev, courseId }))
         setCurrentStep(prev => {
             setValue("currentStep", String(Math.min(4 - 1, prev + 1)))
             return Math.min(4 - 1, prev + 1)
         })
     }
-
 
     return (
         <div id="CoursesByAge" className='w-full'>
@@ -72,7 +66,6 @@ const CoursesByAge: React.FC<CoursesByAgeProps> = ({ courseData, setCourseData, 
                                 <Button
                                     className='w-full'
                                     onClick={() => handleSelectCourse(item.id)}
-                                    isLoading={loading && item.id === courseData.course_id}
                                 >
                                     Show Dates and Times
                                 </Button>

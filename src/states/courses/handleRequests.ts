@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import {Api,token} from "../Api";
+import { Api, token } from "../Api";
 
 const headers = {
   "Content-Type": "application/json",
@@ -10,7 +10,7 @@ const headers = {
 
 
 // get all courses
-export const getCourses:any = createAsyncThunk(
+export const getCourses: any = createAsyncThunk(
   "courses/getCourses",
   async ({ currentPage }: { currentPage: number }, { rejectWithValue }) => {
     try {
@@ -21,7 +21,6 @@ export const getCourses:any = createAsyncThunk(
       const data = await response.json();
 
       if (response.ok) {
-        console.log(data)
         return data;
       } else {
         return rejectWithValue(data.message);
@@ -55,7 +54,7 @@ export const getCourseById = createAsyncThunk(
 );
 
 // get courses by age
-export const getCoursesByAge:any = createAsyncThunk(
+export const getCoursesByAge: any = createAsyncThunk(
   "courses/getCoursesByAge",
   async ({ age }: { age: number }, { rejectWithValue }) => {
     console.log(age)
@@ -114,7 +113,7 @@ export const updateCourse = createAsyncThunk(
       const response = await fetch(`${Api}/courses/${courseId}`, {
         method: "POST",
         headers: {
-          
+
         },
         body: JSON.stringify(newCourseData),
       });

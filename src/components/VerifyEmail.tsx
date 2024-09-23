@@ -1,35 +1,10 @@
-import React, { useState } from 'react'
-import { Button } from '@nextui-org/react'
-import useLocalStorage from '@/hooks/useLocalStorage'
-import { checkVerification } from '@/states/guestUsers/handleRequests';
-import { useDispatch, useSelector } from 'react-redux';
+
 
 interface VerifyEmailProps {
-    userData: GuestUserData
+    bookingData: BookingFreeCourse
 }
 
-const VerifyEmail: React.FC<VerifyEmailProps> = ({ userData }) => {
-
-    const dispatch = useDispatch()
-    const { loading } = useSelector((state: any) => state.guestUsers)
-    const { getValueAsStr, setValue } = useLocalStorage()
-
-    const handleContinue = () => {
-        console.log('verification email')
-
-        // dispatch(checkVerification({ guestUserId: getValueAsStr("userId") })).unwrap().then(
-        //     (payload: any) => {
-        //         if (payload) {
-        //             console.log("verification succsessful")
-        //         }
-
-        //     },
-        //     (error: any) => {
-        //         console.error("Failed :", error);
-        //     }
-        // );
-
-    }
+const VerifyEmail: React.FC<VerifyEmailProps> = ({ bookingData }) => {
 
     return (
         <div className="flex items-center justify-center w-full">
@@ -37,7 +12,6 @@ const VerifyEmail: React.FC<VerifyEmailProps> = ({ userData }) => {
                 <h2 className="text-2xl font-bold text-center mb-6 text-blue-500">Verify Your Email</h2>
                 <>
                     <p className="mb-4 text-center">We sent a verification link to your email address. Please check it</p>
-                    {/* <Button isLoading={loading} onClick={handleContinue} color="primary" size="lg">Continue</Button> */}
                 </>
             </div>
         </div>

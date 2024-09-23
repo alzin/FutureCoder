@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import {Api,token} from "../Api";
+import { Api, token } from "../Api";
 
 const headers = {
   "Content-Type": "application/json",
@@ -54,7 +54,7 @@ export const getBookingById = createAsyncThunk(
 );
 
 // add Booking
-export const addBooking:any = createAsyncThunk(
+export const addBooking: any = createAsyncThunk(
   "bookings/addBooking",
   async (
     { bookingData }: { bookingData: FormData },
@@ -90,7 +90,7 @@ export const updateBooking = createAsyncThunk(
       const response = await fetch(`${Api}/free_lessons/${bookingId}`, {
         method: "POST",
         headers: {
-          
+
         },
         body: JSON.stringify(newBookingData),
       });

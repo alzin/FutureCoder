@@ -17,26 +17,16 @@ type Course = {
 }
 
 type BookingFreeCourse = {
-    guestUserId: string | undefined
-    CourseId: string | undefined,
-    SessionTimings: string | undefined,
+    firstName: string,
+    lastName: string,
+    email: string,
+    age: string,
+    timeZone: string,
+    courseId: string,
+    sessionTimings: string
 }
 
 type TimezoneOption = {
     value: string;
     label: string;
-}
-
-type CourseData = {
-    course_id: string,
-    timezone: string
-}
-
-
-type GuestUserData = {
-    firstName: string,
-    lastName: string,
-    age: string,
-    email: string,
-    timeZone: string
 }
