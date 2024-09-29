@@ -4,16 +4,25 @@ type Subscriber = {
 }
 
 type Course = {
+    id: string,
     title?: string,
     teacher?: string,
     description?: string,
-    image?: string,
+    imagePath?: string,
     price?: number,
     min_age?: number,
     max_age?: number,
     course_outline?: string,
     duration_in_session?: number,
     course_start_date?: string,
+}
+
+type Blog = {
+    id: string,
+    title?: string,
+    description?: string,
+    ImagePath?: string,
+    created_at: string
 }
 
 type BookingFreeCourse = {

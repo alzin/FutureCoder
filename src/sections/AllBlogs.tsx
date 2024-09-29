@@ -3,19 +3,18 @@
 import Container from "@/components/Container";
 import { Pagination } from "@nextui-org/react";
 import { useDispatch, useSelector } from 'react-redux';
-import { getCourses } from '@/states/courses/handleRequests';
+import { getBlogs } from "@/states/blogs/handleRequests";
 import { useEffect } from "react";
 import LoadingData from '@/components/LoadingData';
-import { setCurrentPage } from "@/states/courses/coursesSlice";
-import { CourseDetailsCard } from "@/components/CourseCard";
-
-const AllCourses: React.FC = () => {
+import { setCurrentPage } from "@/states/blogs/blogsSlice";
+import { BlogsCard } from "@/components/BlogsCard";
+const AllBlogs: React.FC = () => {
 
     const dispatch = useDispatch()
-    const { courses, currentPage, totalCount } = useSelector((state: any) => state.courses)
+    const { blogs, currentPage, totalCount } = useSelector((state: any) => state.blogs)
 
     useEffect(() => {
-        dispatch(getCourses({ currentPage }))
+        dispatch(getBlogs({ currentPage }))
     }, [dispatch, currentPage])
 
 
@@ -25,10 +24,10 @@ const AllCourses: React.FC = () => {
 
     return (
         <Container>
-            <LoadingData data={courses} emptyMessage="Courses is Empty" className="min-h-[calc(100vh-400px)] w-full mt-[100px]">
+            <LoadingData data={blogs} emptyMessage="Blogs is Empty" className="min-h-[calc(100vh-400px)] w-full mt-[100px]">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                    {courses?.map((item: any) => (
-                        <CourseDetailsCard key={item.id} courseData={item} />
+                    {blogs?.map((item: any) => (
+                        <BlogsCard key={item.id} blogData={item} />
                     ))}
                 </div>
 
@@ -39,4 +38,4 @@ const AllCourses: React.FC = () => {
     );
 };
 
-export default AllCourses;
+export default AllBlogs;

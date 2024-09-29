@@ -2,7 +2,7 @@
 import Header from "@/sections/Header";
 import Footer from "@/sections/Footer";
 import Container from "@/components/Container";
-
+import AllBlogs from "@/sections/AllBlogs";
 
 const Blogs = ({ data }: any) => {
 
@@ -13,9 +13,7 @@ const Blogs = ({ data }: any) => {
     return (
         <>
             <Header data={data.headerSection} />
-            <Container>
-                Blogs Page
-            </Container>
+            <AllBlogs />
             <Footer data={data.footerSection} />
 
         </>

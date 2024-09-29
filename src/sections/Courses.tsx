@@ -4,12 +4,13 @@ import React, { useEffect } from 'react';
 import Link from 'next/link';
 import { Navigation, Pagination, A11y } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Card, CardBody, CardFooter, Image, Button } from "@nextui-org/react";
+import { Button } from "@nextui-org/react";
 import { useDispatch, useSelector } from 'react-redux';
 
 
 import Container from '@/components/Container';
 import LoadingData from '@/components/LoadingData';
+import { SimpleCourseCard } from '@/components/CourseCard';
 import { getCourses } from '@/states/courses/handleRequests';
 
 import 'swiper/css';
@@ -65,30 +66,7 @@ const Courses: React.FC<CoursesProps> = ({ data }) => {
                     >
                         {courses?.map((item: any) => (
                             <SwiperSlide key={item.id}>
-                                <Card shadow="none" className='sm:mb-0 mb-7'>
-                                    <CardBody className="overflow-visible p-0">
-                                        <Image
-                                            shadow='none'
-                                            radius="lg"
-                                            width="100%"
-                                            height={300}
-                                            alt={item.title}
-                                            className="w-full object-cover aspect-auto"
-                                            src={item.imagePath}
-                                        />
-                                    </CardBody>
-                                    <CardFooter className="text-small flex-col">
-                                        <div className='flex items-center justify-between py-3 w-full'>
-                                            <p className='text-sm text-center'>{item.title}</p>
-                                            <p className="text-sm text-center">{item.price}</p>
-                                        </div>
-                                        <Button className='w-full'>
-                                            <Link href={data.href} className='w-full'>
-                                                {data.viewAllBtn}
-                                            </Link>
-                                        </Button>
-                                    </CardFooter>
-                                </Card>
+                                <SimpleCourseCard courseData={item} />
                             </SwiperSlide>
                         ))}
 

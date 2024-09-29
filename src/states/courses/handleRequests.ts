@@ -32,7 +32,7 @@ export const getCourses: any = createAsyncThunk(
 );
 
 // get course by id
-export const getCourseById = createAsyncThunk(
+export const getCourseById: any = createAsyncThunk(
   "courses/getCourseById",
   async ({ courseId }: { courseId: string }, { rejectWithValue }) => {
     try {
@@ -45,7 +45,7 @@ export const getCourseById = createAsyncThunk(
       if (response.ok) {
         return data;
       } else {
-        return rejectWithValue(data);
+        return rejectWithValue(data.message);
       }
     } catch (error: any) {
       return rejectWithValue(error.message);

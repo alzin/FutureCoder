@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import {Api,token} from "../Api";
+import { Api, token } from "../Api";
 
 
 const headers = {
@@ -11,7 +11,7 @@ const headers = {
 
 
 // get all blogs
-export const getBlogs = createAsyncThunk(
+export const getBlogs: any = createAsyncThunk(
   "blogs/getBlogs",
   async ({ currentPage }: { currentPage: number }, { rejectWithValue }) => {
     try {
@@ -33,7 +33,7 @@ export const getBlogs = createAsyncThunk(
 );
 
 // get blog by id
-export const getBlogById = createAsyncThunk(
+export const getBlogById: any = createAsyncThunk(
   "blogs/getBlogById",
   async ({ blogId }: { blogId: string }, { rejectWithValue }) => {
     try {
@@ -91,7 +91,7 @@ export const updateBlog = createAsyncThunk(
       const response = await fetch(`${Api}/blogs/${blogId}`, {
         method: "POST",
         headers: {
-          
+
         },
         body: JSON.stringify(newBlogData),
       });
