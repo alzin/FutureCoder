@@ -4,10 +4,11 @@ type Subscriber = {
 }
 
 type Course = {
+    id: string,
     title?: string,
     teacher?: string,
     description?: string,
-    image?: string,
+    imagePath?: string,
     price?: number,
     min_age?: number,
     max_age?: number,
@@ -16,21 +17,25 @@ type Course = {
     course_start_date?: string,
 }
 
+type Blog = {
+    id: string,
+    title?: string,
+    description?: string,
+    ImagePath?: string,
+    created_at: string
+}
+
 type BookingFreeCourse = {
-    guestUserId: string | undefined
-    CourseId: string | undefined,
-    SessionTimings: string | undefined,
+    firstName: string,
+    lastName: string,
+    email: string,
+    age: string,
+    timeZone: string,
+    courseId: string,
+    sessionTimings: string
 }
 
 type TimezoneOption = {
     value: string;
     label: string;
-}
-
-type GuestUserData = {
-    firstName: string | null,
-    lastName: string | null,
-    age: string | null,
-    email: string | null,
-    timeZone: TimezoneOption | null | opject
 }

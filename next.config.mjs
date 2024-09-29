@@ -4,7 +4,12 @@ import createNextIntlPlugin from 'next-intl/plugin';
 
 const nextConfig = {
   images: {
-    domains: ['i.postimg.cc'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**',
+      },
+    ]
   },
 };
 

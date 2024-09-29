@@ -21,7 +21,7 @@ export const blogsSlice = createSlice({
   },
 
   extraReducers: (builder) => {
-    
+
     // getBlogs
     builder
       .addCase(getBlogs.pending, (state, { payload }) => {
@@ -31,8 +31,8 @@ export const blogsSlice = createSlice({
       })
       .addCase(getBlogs.fulfilled, (state, { payload }) => {
         state.loading = false;
-        state.blogs = payload
-        state.totalCount = payload
+        state.blogs = payload.data
+        state.totalCount = payload.total
         // toast.success("Succsessfull getBlogs");
       })
       .addCase(getBlogs.rejected, (state, { payload }) => {
@@ -42,19 +42,19 @@ export const blogsSlice = createSlice({
 
     // getBlogById
     builder
-    .addCase(getBlogById.pending, (state, { payload }) => {
-      state.loading = true
-      state.findBlog = null
-    })
-    .addCase(getBlogById.fulfilled, (state, { payload }) => {
-      state.loading = false;
-      state.findBlog = payload
-      // toast.success("Succsessfull getBlogById");
-    })
-    .addCase(getBlogById.rejected, (state, { payload }) => {
-      state.loading = false;
-      toast.error(payload as string);
-    });
+      .addCase(getBlogById.pending, (state, { payload }) => {
+        state.loading = true
+        state.findBlog = null
+      })
+      .addCase(getBlogById.fulfilled, (state, { payload }) => {
+        state.loading = false;
+        state.findBlog = payload
+        // toast.success("Succsessfull getBlogById");
+      })
+      .addCase(getBlogById.rejected, (state, { payload }) => {
+        state.loading = false;
+        toast.error(payload as string);
+      });
 
     // addBlog
     builder
@@ -70,19 +70,19 @@ export const blogsSlice = createSlice({
         toast.error(payload as string);
       });
 
-      // updateBlog
+    // updateBlog
     builder
-    .addCase(updateBlog.pending, (state, { payload }) => {
-      state.loading = true
-    })
-    .addCase(updateBlog.fulfilled, (state, { payload }) => {
-      state.loading = false;
-      toast.success("Succsessfull updateBlog");
-    })
-    .addCase(updateBlog.rejected, (state, { payload }) => {
-      state.loading = false;
-      toast.error(payload as string);
-    });
+      .addCase(updateBlog.pending, (state, { payload }) => {
+        state.loading = true
+      })
+      .addCase(updateBlog.fulfilled, (state, { payload }) => {
+        state.loading = false;
+        toast.success("Succsessfull updateBlog");
+      })
+      .addCase(updateBlog.rejected, (state, { payload }) => {
+        state.loading = false;
+        toast.error(payload as string);
+      });
 
     // deleteBlog
     builder

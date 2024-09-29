@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Container from '@/components/Container';
 import dynamic from 'next/dynamic';
 
@@ -22,7 +22,7 @@ import useLocalStorage from '@/hooks/useLocalStorage';
 import { Suspense } from 'react'
 import Loading from "@/components/Loading";
 import VerifyEmail from '@/components/VerifyEmail';
-
+import useCurrentTimezone from '@/hooks/useCurrentTimezone';
 
 
 interface BookFreeProps {
@@ -33,23 +33,23 @@ interface BookFreeProps {
 
 const BookFree: React.FC<BookFreeProps> = ({ data, lang }) => {
 
-    const { getValueAsStr, getValueAsOpj, setValue, clearAll } = useLocalStorage()
-    const [currentStep, setCurrentStep] = useState(Number(getValueAsStr("currentStep")));
+    const { getValue } = useLocalStorage()
+    const [currentStep, setCurrentStep] = useState(Number(getValue("currentStep")));
+    const { timeZone } = useCurrentTimezone()
 
     const [bookingData, setBookingData] = useState<BookingFreeCourse>({
-        guestUserId: getValueAsStr("userId"),
-        CourseId: "",
-        SessionTimings: ""
+        firstName: getValue("firstName"),
+        lastName: getValue("lastName"),
+        email: getValue("email"),
+        age: getValue("age"),
+        timeZone: getValue("timeZone"),
+        courseId: getValue("courseId"),
+        sessionTimings: getValue("sessionTimings")
     });
 
-
-    const [userData, setUserData] = useState<GuestUserData>({
-        firstName: getValueAsStr("firstName"),
-        lastName: getValueAsStr("lastName"),
-        age: getValueAsStr("age"),
-        email: getValueAsStr("email"),
-        timeZone: getValueAsOpj("timeZone")
-    });
+    useEffect(() => {
+        setBookingData(prev => ({ ...prev, timeZone: timeZone }))
+    }, [timeZone])
 
     return (
         <Container>
@@ -57,19 +57,19 @@ const BookFree: React.FC<BookFreeProps> = ({ data, lang }) => {
                 <Suspense fallback={<Loading />}>
                     <Stepper currentStep={currentStep} setCurrentStep={setCurrentStep}>
                         <Step label="Step 1">
-                            <FreeLessonForm userData={userData} setUserData={setUserData} setBookingData={setBookingData} currentStep={currentStep} setCurrentStep={setCurrentStep} />
-                        </Step>
-
-                        <Step label="Step 2">
-                            <VerifyEmail userData={userData} setCurrentStep={setCurrentStep} />
-                        </Step>
-
-                        <Step label="Step 3">
                             <CoursesByAge bookingData={bookingData} setBookingData={setBookingData} setCurrentStep={setCurrentStep} />
                         </Step>
 
-                        <Step label="Step 4">
-                            <CourseCalendar timeZone={userData.timeZone?.value || ""} bookingData={bookingData} setBookingData={setBookingData} />
+                        <Step label="Step 2">
+                            <CourseCalendar bookingData={bookingData} setBookingData={setBookingData} setCurrentStep={setCurrentStep} />
+                        </Step>
+
+                        <Step label="Step 3">
+                            <FreeLessonForm bookingData={bookingData} setBookingData={setBookingData} setCurrentStep={setCurrentStep} />
+                        </Step>
+
+                        <Step label="Finished">
+                            <VerifyEmail bookingData={bookingData} />
                         </Step>
                     </Stepper>
                 </Suspense>

@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getCoursesTimes, getCoursesTimesById,getCourseDatesByCourseId,getCourseTimesByDate, addCoursesTimes, updateCoursesTimes, deleteCoursesTimes } from "./handleRequests";
+import { getCoursesTimes, getCoursesTimesById, getCourseDatesByCourseId, getCourseTimesByDate, addCoursesTimes, updateCoursesTimes, deleteCoursesTimes, getCouseseTimeByTimezone } from "./handleRequests";
 import { toast } from "react-toastify";
 
 
@@ -23,7 +23,7 @@ export const coursesTimesSlice = createSlice({
   },
 
   extraReducers: (builder) => {
-    
+
     // getCoursesTimes
     builder
       .addCase(getCoursesTimes.pending, (state, { payload }) => {
@@ -41,48 +41,64 @@ export const coursesTimesSlice = createSlice({
 
     // getCoursesTimesById
     builder
-    .addCase(getCoursesTimesById.pending, (state, { payload }) => {
-      state.findCoursesTimes = null
-    })
-    .addCase(getCoursesTimesById.fulfilled, (state, { payload }) => {
-      state.findCoursesTimes = payload
-      // toast.success("Succsessfull getCoursesTimesById");
-    })
-    .addCase(getCoursesTimesById.rejected, (state, { payload }) => {
-      toast.error(payload as string);
-    });
+      .addCase(getCoursesTimesById.pending, (state, { payload }) => {
+        state.findCoursesTimes = null
+      })
+      .addCase(getCoursesTimesById.fulfilled, (state, { payload }) => {
+        state.findCoursesTimes = payload
+        // toast.success("Succsessfull getCoursesTimesById");
+      })
+      .addCase(getCoursesTimesById.rejected, (state, { payload }) => {
+        toast.error(payload as string);
+      });
 
     // getCourseDatesByCourseId
     builder
-    .addCase(getCourseDatesByCourseId.pending, (state, { payload }) => {
-      state.courseDates = null
-      state.loading = true
-    })
-    .addCase(getCourseDatesByCourseId.fulfilled, (state, { payload }) => {
-      state.courseDates = payload
-      console.log(payload)
-      state.loading = false
-      // toast.success("Succsessfull getCourseDatesByCourseId");
-    })
-    .addCase(getCourseDatesByCourseId.rejected, (state, { payload }) => {
-      state.loading = false
-      toast.error(payload as string);
-    });
+      .addCase(getCourseDatesByCourseId.pending, (state, { payload }) => {
+        state.courseDates = null
+        state.loading = true
+      })
+      .addCase(getCourseDatesByCourseId.fulfilled, (state, { payload }) => {
+        state.courseDates = payload
+        console.log(payload)
+        state.loading = false
+        // toast.success("Succsessfull getCourseDatesByCourseId");
+      })
+      .addCase(getCourseDatesByCourseId.rejected, (state, { payload }) => {
+        state.loading = false
+        toast.error(payload as string);
+      });
 
 
     // getCourseTimesByDate
     builder
-    .addCase(getCourseTimesByDate.pending, (state, { payload }) => {
-      state.courseTimes = null
-    })
-    .addCase(getCourseTimesByDate.fulfilled, (state, { payload }) => {
-      state.courseTimes = payload.data
-      console.log(payload)
-      // toast.success("Succsessfull getCourseTimesByDate");
-    })
-    .addCase(getCourseTimesByDate.rejected, (state, { payload }) => {
-      toast.error(payload as string);
-    });
+      .addCase(getCourseTimesByDate.pending, (state, { payload }) => {
+        state.courseTimes = null
+      })
+      .addCase(getCourseTimesByDate.fulfilled, (state, { payload }) => {
+        state.courseTimes = payload.data
+        console.log(payload)
+        // toast.success("Succsessfull getCourseTimesByDate");
+      })
+      .addCase(getCourseTimesByDate.rejected, (state, { payload }) => {
+        toast.error(payload as string);
+      });
+
+    // getCouseseTimeByTimezone
+    builder
+      .addCase(getCouseseTimeByTimezone.pending, (state, { payload }) => {
+        state.courseTimes = null
+        state.loading = true
+      })
+      .addCase(getCouseseTimeByTimezone.fulfilled, (state, { payload }) => {
+        state.courseTimes = payload.data
+        state.loading = false
+      })
+      .addCase(getCouseseTimeByTimezone.rejected, (state, { payload }) => {
+        toast.error(payload as string);
+        state.loading = false
+
+      });
 
     // addCoursesTimes
     builder
@@ -98,19 +114,19 @@ export const coursesTimesSlice = createSlice({
         toast.error(payload as string);
       });
 
-      // updateCoursesTimes
+    // updateCoursesTimes
     builder
-    .addCase(updateCoursesTimes.pending, (state, { payload }) => {
-      state.loading = true
-    })
-    .addCase(updateCoursesTimes.fulfilled, (state, { payload }) => {
-      state.loading = false;
-      toast.success("Succsessfull updateCoursesTimes");
-    })
-    .addCase(updateCoursesTimes.rejected, (state, { payload }) => {
-      state.loading = false;
-      toast.error(payload as string);
-    });
+      .addCase(updateCoursesTimes.pending, (state, { payload }) => {
+        state.loading = true
+      })
+      .addCase(updateCoursesTimes.fulfilled, (state, { payload }) => {
+        state.loading = false;
+        toast.success("Succsessfull updateCoursesTimes");
+      })
+      .addCase(updateCoursesTimes.rejected, (state, { payload }) => {
+        state.loading = false;
+        toast.error(payload as string);
+      });
 
     // deleteCoursesTimes
     builder

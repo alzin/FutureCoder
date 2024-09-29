@@ -100,6 +100,32 @@ export const getCourseTimesByDate: any = createAsyncThunk(
   }
 );
 
+// get all course times by timeZone
+export const getCouseseTimeByTimezone: any = createAsyncThunk(
+  "courses/getCouseseTimeByTimezone",
+  async (courseData: { courseData: FormData },
+    { rejectWithValue }
+  ) => {
+    try {
+      console.log(courseData)
+      const response = await fetch(`${Api}/courses_time/timezone`, {
+        method: "POST",
+        headers,
+        body: JSON.stringify(courseData),
+      });
+      const data = await response.json();
+
+      if (response.ok) {
+        return data;
+      } else {
+        return rejectWithValue(data.message);
+      }
+    } catch (error: any) {
+      return rejectWithValue(error.message);
+    }
+  }
+)
+
 // add CoursesTimes
 export const addCoursesTimes = createAsyncThunk(
   "coursesTimes/addCoursesTimes",

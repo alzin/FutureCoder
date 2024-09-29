@@ -1,30 +1,22 @@
 // hooks/useCurrentTimezone.ts
-import { useEffect, useState } from 'react';
+import { useEffect, useState, } from 'react';
+import useLocalStorage from './useLocalStorage';
 
 interface TimezoneOption {
-    value: string;
-    label: string;
+    timeZone: string;
 }
 
 const useCurrentTimezone = (): TimezoneOption => {
-    const [timezone, setTimezone] = useState<string>("");
-    const [gmtOffset, setGMTOffset] = useState<string>("");
+    const [timeZone, setTimeZone] = useState<string>("");
+    const { setValue } = useLocalStorage()
 
     useEffect(() => {
-        // Get the current timezone
         const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
-        setTimezone(tz);
+        setTimeZone(tz);
+        setValue("timezone", tz)
+    }, [setValue, timeZone]);
 
-        // Calculate GMT offset
-        const offset = new Date().getTimezoneOffset();
-        const hours = Math.floor(Math.abs(offset) / 60);
-        setGMTOffset(hours < 0 ? `GMT${hours}` : `GMT+${hours}`);
-    }, []);
-
-    return {
-        value: timezone,
-        label: `${timezone} (${gmtOffset})`
-    };
+    return { timeZone };
 };
 
 export default useCurrentTimezone;

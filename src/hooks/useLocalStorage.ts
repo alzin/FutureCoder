@@ -1,28 +1,18 @@
 interface LocalStorageHook {
-  getValueAsStr: (key: string) => string;
-  getValueAsOpj: (key: string) => TimezoneOption | null |Object;
+  getValue: (key: string) => string;
   setValue: (key: string, value: string, type?: string) => void;
   clearAll: () => void;
 }
 
 const useLocalStorage = (): LocalStorageHook => {
 
-  const getValueAsStr = (key: string): string => {
+  const getValue = (key: string): string => {
 
     if (typeof window !== "undefined") {
       const value = window.localStorage.getItem(key);
       return value ?? "";
     }
     return ""
-  };
-
-  const getValueAsOpj = (key: string): TimezoneOption | null | Object => {
-
-    if (typeof window !== "undefined") {
-      const value: any = window.localStorage.getItem(key);
-      return JSON.parse(value) ?? null;
-    }
-    return null
   };
 
   const setValue = (key: string, value: string, type: string = "string"): void => {
@@ -40,7 +30,7 @@ const useLocalStorage = (): LocalStorageHook => {
     }
   };
 
-  return { getValueAsStr, getValueAsOpj, setValue, clearAll };
+  return { getValue, setValue, clearAll };
 
 };
 
