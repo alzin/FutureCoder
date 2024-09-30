@@ -1,10 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getBlogs, getBlogById, addBlog, updateBlog, deleteBlog } from "./handleRequests";
+import { getBlogs, getLastBlogs, getBlogById, addBlog, updateBlog, deleteBlog } from "./handleRequests";
 import { toast } from "react-toastify";
 
 
 const initialState = {
   blogs: null,
+  lastBlogs: null,
   findBlog: null,
   totalCount: 0,
   currentPage: 1,
@@ -36,6 +37,22 @@ export const blogsSlice = createSlice({
         // toast.success("Succsessfull getBlogs");
       })
       .addCase(getBlogs.rejected, (state, { payload }) => {
+        state.loading = false;
+        toast.error(payload as string);
+      });
+
+    // getLastBlogs
+    builder
+      .addCase(getLastBlogs.pending, (state, { payload }) => {
+        state.loading = true
+        state.lastBlogs = null
+      })
+      .addCase(getLastBlogs.fulfilled, (state, { payload }) => {
+        state.loading = false;
+        state.lastBlogs = payload
+        // toast.success("Succsessfull getLastBlogs");
+      })
+      .addCase(getLastBlogs.rejected, (state, { payload }) => {
         state.loading = false;
         toast.error(payload as string);
       });

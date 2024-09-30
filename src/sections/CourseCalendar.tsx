@@ -37,7 +37,9 @@ const CourseCalendar: React.FC<CourseCalendar> = ({ bookingData, setBookingData,
     }
 
     const handelSelectDate = (value: any) => {
-        setReservation(prev => ({ ...prev, date: value.toString() }))
+        setReservation({ time: "", date: value.toString() })
+        setValue("time", "")
+        setBookingData(prev => ({ ...prev, sessionTimings: "" }))
         setValue("date", value.toString())
     }
 

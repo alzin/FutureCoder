@@ -46,7 +46,6 @@ const OneBlog: React.FC<OneBlogProps> = ({ data, id }) => {
                     </div>
                 </div>
             </LoadingData>
-
         </Container>
     );
 };
