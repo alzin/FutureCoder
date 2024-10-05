@@ -32,6 +32,28 @@ export const getBlogs: any = createAsyncThunk(
   }
 );
 
+// getLastBlogs
+export const getLastBlogs: any = createAsyncThunk(
+  "blogs/getLastBlogs",
+  async (_, { rejectWithValue }) => {
+    try {
+      const response = await fetch(`${Api}/blogs/lastThree`, {
+        method: "GET",
+        headers,
+      });
+      const data = await response.json();
+
+      if (response.ok) {
+        return data;
+      } else {
+        return rejectWithValue(data.message);
+      }
+    } catch (error: any) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
 // get blog by id
 export const getBlogById: any = createAsyncThunk(
   "blogs/getBlogById",
