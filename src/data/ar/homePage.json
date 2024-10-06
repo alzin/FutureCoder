@@ -8,7 +8,7 @@
       "paragraph": "اكتشف طريقة ممتعة وتفاعلية لتعلم أطفالك البرمجة باللغة العربية",
       "lessonBtn": "حجز درس مجاني",
       "hrefLesson":"/free",
-      "heroImage": "/images/image.png"
+      "heroImage": "/images/hero.webp"
     },
     "featuresSection": {
       "title": "اجعل طفلك قائدًا مستقبليًا وليس مجرد مبرمج من خلال مسار التعلم لدينا",
@@ -16,19 +16,19 @@
       "features": [
         {
           "id": 1,
-          "image": "/images/image.png",
+          "image": "/images/1.webp",
           "title": "الدورات التفاعلية",
           "description": "دورات برمجة تفاعلية وجذابة مصممة للأطفال."
         },
         {
           "id": 2,
-          "image": "/images/image.png",
+          "image": "/images/2.webp",
           "title": "موارد الوالدين",
           "description": "احصل على موارد مفيدة لدعم رحلة التعلم لطفلك. "
         },
         {
           "id": 3,
-          "image": "/images/image.png",
+          "image": "/images/3.webp",
           "title": "دعم المجتمع",
           "description": "التواصل مع مجتمع داعم من الآباء والأمهات ذوي التفكير المماثل."
         }

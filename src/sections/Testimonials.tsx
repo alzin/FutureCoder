@@ -7,6 +7,7 @@ import { User } from "@nextui-org/react";
 import { useDispatch, useSelector } from 'react-redux';
 import { getTestimonials } from '@/states/testimonials/handleRequests';
 import { useEffect } from "react"
+import { motion } from 'framer-motion';
 
 import 'swiper/css';
 import 'swiper/css/navigation';

@@ -34,17 +34,17 @@ interface BookFreeProps {
 const BookFree: React.FC<BookFreeProps> = ({ data, lang }) => {
 
     const { getValue } = useLocalStorage()
-    const [currentStep, setCurrentStep] = useState(Number(getValue("currentStep")));
+    const [currentStep, setCurrentStep] = useState(0);
     const { timeZone } = useCurrentTimezone()
 
     const [bookingData, setBookingData] = useState<BookingFreeCourse>({
-        firstName: getValue("firstName"),
-        lastName: getValue("lastName"),
-        email: getValue("email"),
-        age: getValue("age"),
-        timeZone: getValue("timeZone"),
-        courseId: getValue("courseId"),
-        sessionTimings: getValue("sessionTimings")
+        firstName: "",
+        lastName: "",
+        email: "",
+        age: "",
+        timeZone: "",
+        courseId: "",
+        sessionTimings: ""
     });
 
     useEffect(() => {

@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getCourses, getCourseById, getCoursesByAge, addCourse, updateCourse, deleteCourse } from "./handleRequests";
+import { getCourses, getAvilableCourses, getCourseById, getCoursesByAge, addCourse, updateCourse, deleteCourse } from "./handleRequests";
 import { toast } from "react-toastify";
 
 
@@ -35,6 +35,21 @@ export const coursesSlice = createSlice({
         // toast.success("Succsessfull getCourses");
       })
       .addCase(getCourses.rejected, (state, { payload }) => {
+        toast.error(payload as string);
+      });
+
+    // getAvilableCourses
+    builder
+      .addCase(getAvilableCourses.pending, (state, { payload }) => {
+        state.courses = null
+        state.totalCount = 0
+      })
+      .addCase(getAvilableCourses.fulfilled, (state, { payload }) => {
+        state.courses = payload.data
+        state.totalCount = payload.total
+        // toast.success("Succsessfull getAvilableCourses");
+      })
+      .addCase(getAvilableCourses.rejected, (state, { payload }) => {
         toast.error(payload as string);
       });
 

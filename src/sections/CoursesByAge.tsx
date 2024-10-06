@@ -4,7 +4,7 @@ import { Button, Card, CardBody, Image, CardFooter, Pagination } from '@nextui-o
 
 import LoadingData from '@/components/LoadingData';
 import { useEffect } from 'react';
-import { getCourses } from '@/states/courses/handleRequests';
+import { getAvilableCourses } from '@/states/courses/handleRequests';
 import useLocalStorage from '@/hooks/useLocalStorage';
 import { setCurrentPage } from '@/states/courses/coursesSlice';
 import Link from 'next/link';
@@ -23,7 +23,7 @@ const CoursesByAge: React.FC<CoursesByAgeProps> = ({ bookingData, setBookingData
     const { courses, currentPage, totalCount } = useSelector((state: any) => state.courses)
 
     useEffect(() => {
-        dispatch(getCourses({ currentPage }))
+        dispatch(getAvilableCourses({ currentPage }))
     }, [dispatch, currentPage])
 
     const handleChangePage = (page: number) => {
@@ -70,11 +70,11 @@ const CoursesByAge: React.FC<CoursesByAgeProps> = ({ bookingData, setBookingData
                                     Show Dates and Times
                                 </Button>
 
-                                <Link className='w-full mt-2' href={`/courses/${item.id}`}>
+                                {/* <Link className='w-full mt-2' href={`/courses/${item.id}`}>
                                     <Button className='w-full'>
                                         Show Couses Details
                                     </Button>
-                                </Link>
+                                </Link> */}
                             </CardFooter>
                         </Card>
                     )}

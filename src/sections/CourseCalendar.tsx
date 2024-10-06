@@ -20,13 +20,13 @@ interface CourseCalendar {
 const CourseCalendar: React.FC<CourseCalendar> = ({ bookingData, setBookingData, setCurrentStep }) => {
 
     const dispatch = useDispatch()
-    const { setValue, getValue } = useLocalStorage()
+    const { setValue } = useLocalStorage()
     const { timeZone } = useCurrentTimezone()
     const { courseTimes } = useSelector((state: any) => state.coursesTimes)
     const { loading } = useSelector((state: any) => state.bookings)
     const [reservation, setReservation] = useState({
-        date: getValue("date"),
-        time: getValue("time")
+        date: "",
+        time: ""
     })
 
     const handelSelectTime = (value: any) => {

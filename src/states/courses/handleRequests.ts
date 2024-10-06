@@ -31,6 +31,29 @@ export const getCourses: any = createAsyncThunk(
   }
 );
 
+// get all courses
+export const getAvilableCourses: any = createAsyncThunk(
+  "courses/getAvilableCourses",
+  async ({ currentPage }: { currentPage: number }, { rejectWithValue }) => {
+    try {
+      const response = await fetch(`${Api}/courses/getCourseHaveTime?page=${currentPage}`, {
+        method: "GET",
+        headers,
+      });
+      const data = await response.json();
+
+      if (response.ok) {
+        return data;
+      } else {
+        return rejectWithValue(data.message);
+      }
+    } catch (error: any) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+
 // get course by id
 export const getCourseById: any = createAsyncThunk(
   "courses/getCourseById",
