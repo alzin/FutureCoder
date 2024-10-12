@@ -1,4 +1,4 @@
-import Home from "@/pages/Home";
+import Home from "@/all-pages/home";
 import { useTranslations } from "next-intl";
 import { Suspense } from 'react'
 
@@ -20,7 +20,7 @@ export default function HomePage() {
       title: t.raw("homePage.heroSection.title"),
       paragraph: t.raw("homePage.heroSection.paragraph"),
       lessonBtn: t.raw("homePage.heroSection.lessonBtn"),
-      hrefLesson:t.raw("homePage.heroSection.hrefLesson"),
+      hrefLesson: t.raw("homePage.heroSection.hrefLesson"),
       heroImage: t.raw("homePage.heroSection.heroImage"),
     },
 

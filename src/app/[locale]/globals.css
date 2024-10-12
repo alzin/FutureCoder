@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 
+
+/* ------------------------------- Custom CSS for Swiper in Courses -------------------------------*/
+
 .courses.swiper {
     width: 100%;
     height: 500px;
@@ -25,8 +28,6 @@
     height: 80% !important;
 }
 
-
-/* Custom CSS for Swiper */
 .courses .swiper-pagination {
     /* position: unset; */
     width: fit-content !important;
@@ -63,7 +64,9 @@
     background-color: #000 !important;
 }
 
-/* testimonials */
+
+/* -------------------------------Custom CSS for Swiper in Testimonials -------------------------------*/
+
 .testimonials .swiper-button-next,
 .testimonials .swiper-button-prev {
     width: 30px !important;
@@ -76,18 +79,25 @@
 
     .testimonials .swiper-button-next,
     .testimonials .swiper-button-prev {
-       display: none !important;
+        display: none !important;
     }
 }
 
-.rmdp-week{
+
+
+
+
+
+/* ------------------------------------------------------- */
+
+.rmdp-week {
     width: 500px;
     height: 50px;
 }
 
 @media (max-width:1024px) {
 
-    .rmdp-week{
+    .rmdp-week {
         width: fit-content;
         gap: 20px;
         height: fit-content;
@@ -96,7 +106,7 @@
 
 @media (max-width:500px) {
 
-    .rmdp-week{
+    .rmdp-week {
         gap: 5px;
     }
 }

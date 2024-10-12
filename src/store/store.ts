@@ -1,13 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-import blogsSlice from "@/states/blogs/blogsSlice";
-import subscribersSlice from "@/states/subscribers/subscribersSlice";
-import coursesSlice from "@/states/courses/coursesSlice";
-import coursesTimesSlice from "@/states/coursesTimes/coursesTimesSlice";
-import guestUsersSlice from "@/states/guestUsers/guestUsersSlice";
-import bookingsSlice from "@/states/bookings/bookingsSlice";
-import toggleSlice from "@/states/toggle/toggleSlice";
-import testimonialsSlice from "@/states/testimonials/testimonialsSlice";
+import blogsSlice from "@/services/blogs/blogsSlice";
+import subscribersSlice from "@/services/subscribers/subscribersSlice";
+import coursesSlice from "@/services/courses/coursesSlice";
+import coursesTimesSlice from "@/services/coursesTimes/coursesTimesSlice";
+import guestUsersSlice from "@/services/guestUsers/guestUsersSlice";
+import bookingsSlice from "@/services/bookings/bookingsSlice";
+import toggleSlice from "@/services/toggle/toggleSlice";
+import testimonialsSlice from "@/services/testimonials/testimonialsSlice";
 
 export const store = configureStore({
   reducer: {
