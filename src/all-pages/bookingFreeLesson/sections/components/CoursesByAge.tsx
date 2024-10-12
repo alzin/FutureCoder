@@ -7,8 +7,7 @@ import { useEffect } from 'react';
 import { getAvilableCourses } from '@/services/courses/handleRequests';
 import useLocalStorage from '@/hooks/useLocalStorage';
 import { setCurrentPage } from '@/services/courses/coursesSlice';
-import Link from 'next/link';
-
+import useCurrentTimezone from '@/hooks/useCurrentTimezone';
 
 interface CoursesByAgeProps {
     bookingData: BookingFreeCourse;
@@ -20,11 +19,14 @@ const CoursesByAge: React.FC<CoursesByAgeProps> = ({ bookingData, setBookingData
 
     const dispatch = useDispatch()
     const { setValue } = useLocalStorage()
+    const { timeZone } = useCurrentTimezone()
     const { courses, currentPage, totalCount } = useSelector((state: any) => state.courses)
 
     useEffect(() => {
-        dispatch(getAvilableCourses({ currentPage }))
-    }, [dispatch, currentPage])
+        if (timeZone) {
+            dispatch(getAvilableCourses({ currentPage, timeZone }))
+        }
+    }, [dispatch, currentPage, timeZone])
 
     const handleChangePage = (page: number) => {
         dispatch(setCurrentPage(page))

@@ -42,17 +42,17 @@ const Courses: React.FC<CoursesProps> = ({ data }) => {
         <Container>
             <div id="Courses" className='w-full mt-40'>
                 <motion.h2
-                    className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600 mb-4"
+                    className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-700 to-pink-600 mb-4"
                     initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 1 }}
                 >
                     {data.title}
                 </motion.h2>
                 <motion.div
                     className="flex items-center justify-between py-7 pb-16"
                     initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
                 >
                     <p className="text-lg text-purple-600">{data.description}</p>
@@ -93,7 +93,7 @@ const Courses: React.FC<CoursesProps> = ({ data }) => {
                                 <SwiperSlide key={course.id}>
                                     <motion.div
                                         initial={{ opacity: 0, y: 50 }}
-                                        animate={{ opacity: 1, y: 0 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
                                         exit={{ opacity: 0, y: -50 }}
                                         transition={{ duration: 0.5, delay: 0.1 * index }}
                                     >

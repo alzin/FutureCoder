@@ -18,6 +18,15 @@ import LoadingData from '@/shared-components/LoadingData';
 interface TestimonialsProps {
     data: Record<string, any>;
 }
+interface Testimonial {
+    id: string;
+    rating: number;
+    description: string;
+    user: {
+        firstName: string;
+        lastName: string;
+    }
+}
 
 const Testimonials: React.FC<TestimonialsProps> = ({ data }) => {
 
@@ -29,11 +38,65 @@ const Testimonials: React.FC<TestimonialsProps> = ({ data }) => {
     }, [dispatch])
 
 
+    const StarRating: React.FC<{ rate: number }> = ({ rate }) => (
+        <div className="flex items-center justify-center gap-1">
+            {[1, 2, 3, 4, 5].map((star) => (
+                <motion.span
+                    key={star}
+                    initial={{ opacity: 0, scale: 0 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.3, delay: star * 0.1 }}
+                    className={`text-4xl ${star <= rate ? 'text-yellow-400' : 'text-gray-300'}`}
+                >
+                    {star <= rate ? '★' : '☆'}
+                </motion.span>
+            ))}
+        </div>
+    );
+
+    const TestimonialCard: React.FC<{ item: Testimonial }> = ({ item }) => (
+        <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="flex flex-col items-center justify-center py-10 px-6 rounded-lg shadow-lg"
+        >
+            <StarRating rate={item.rating} />
+            <motion.h3
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="text-xl font-bold max-w-xl text-center mt-5 text-purple-700"
+            >
+                {item.description}
+            </motion.h3>
+            <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.5, delay: 0.5 }}
+                className="mt-5"
+            >
+                <User
+                    name={`${item.user.firstName} ${item.user.lastName}`}
+                    avatarProps={{
+                        src: `https://i.pravatar.cc/150?u=${item.id}`,
+                        className: "w-14 h-14 text-large"
+                    }}
+                />
+            </motion.div>
+        </motion.div>
+    );
     return (
         <Container>
             <div id="Testimonials" className='w-full mt-40'>
-                <h1 className='text-5xl font-bold mb-10'>Testimonials</h1>
-
+                <motion.h1
+                    className='mb-10 text-4xl text-purple-700 font-black'
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
+                >
+                    Testimonials
+                </motion.h1>
                 <LoadingData data={testimonials} emptyMessage="Testimonials is Empty">
                     <Swiper
                         slidesPerView={1}
@@ -45,22 +108,7 @@ const Testimonials: React.FC<TestimonialsProps> = ({ data }) => {
                     >
                         {testimonials?.map((item: any) => (
                             <SwiperSlide key={item.id}>
-                                <div className='flex items-center justify-start flex-col py-20 '>
-                                    <div className='flex items-center justify-center gap-2 pb-5'>
-                                        {Array.from({ length: item.rating }).map((_, index) => (
-                                            <span key={index} className='text-4xl'>&#9733;</span>
-                                        ))}
-                                        {Array.from({ length: 5 - item.rating }).map((_, index) => (
-                                            <span key={index} className='text-4xl'>&#9734;</span>
-                                        ))}
-                                    </div>
-                                    <h1 className='text-lg font-bold max-w-xl text-center'>{item.description}</h1>
-                                    <User
-                                        className='mt-5'
-                                        name={`${item.user.firstName} ${item.user.lastName}`}
-                                    />
-
-                                </div>
+                                <TestimonialCard item={item} />
                             </SwiperSlide>
                         ))}
                     </Swiper>

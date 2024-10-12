@@ -23,13 +23,13 @@ const Hero: React.FC<HeroProps> = ({ data }) => {
                 <motion.div
                     className='xl:w-[55%]'
                     initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
                 >
                     <motion.h1
                         className='text-4xl xl:text-6xl font-extrabold leading-snug text-purple-700'
                         initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
+                        whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.2 }}
                     >
                         {data.title}
@@ -37,7 +37,7 @@ const Hero: React.FC<HeroProps> = ({ data }) => {
                     <motion.p
                         className='text-base xl:text-xl my-7 text-purple-600'
                         initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
+                        whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.4 }}
                     >
                         {data.paragraph}
@@ -45,7 +45,7 @@ const Hero: React.FC<HeroProps> = ({ data }) => {
 
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
+                        whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.6 }}
                     >
                         <Link href={data.hrefLesson}>
@@ -61,20 +61,20 @@ const Hero: React.FC<HeroProps> = ({ data }) => {
                 <motion.div
                     className='xl:w-[43%] w-full h-auto aspect-square relative'
                     initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.5, delay: 0.8 }}
                 >
                     <Image src={data.heroImage} alt='hero image' fill className='object-cover rounded-2xl shadow-lg' />
                     <motion.div
                         className="absolute -top-5 -left-5 bg-yellow-400 rounded-full w-16 h-16 flex items-center justify-center"
-                        animate={{ rotate: 360 }}
+                        whileInView={{ rotate: 360 }}
                         transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
                     >
                         <span className="text-3xl">🚀</span>
                     </motion.div>
                     <motion.div
                         className="absolute -bottom-5 -right-5 bg-blue-400 rounded-full w-16 h-16 flex items-center justify-center"
-                        animate={{ rotate: -360 }}
+                        whileInView={{ rotate: -360 }}
                         transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
                     >
                         <span className="text-3xl">💻</span>

@@ -14,7 +14,6 @@ export const getCourses: any = createAsyncThunk(
       const data = await response.json();
 
       if (response.ok) {
-        console.log(data)
         return data;
 
       } else {
@@ -29,13 +28,15 @@ export const getCourses: any = createAsyncThunk(
 // get all courses
 export const getAvilableCourses: any = createAsyncThunk(
   "courses/getAvilableCourses",
-  async ({ currentPage }: { currentPage: number }, { rejectWithValue }) => {
+  async ({ currentPage, timeZone }: { currentPage: number, timeZone: string }, { rejectWithValue }) => {
     try {
       const response = await fetch(`${Api}/courses/getCourseHaveTime?page=${currentPage}`, {
-        method: "GET",
+        method: "POST",
         headers,
+        body: JSON.stringify({ timezone: timeZone }),
       });
       const data = await response.json();
+      console.log(data)
 
       if (response.ok) {
         return data;
@@ -75,7 +76,6 @@ export const getCourseById: any = createAsyncThunk(
 export const getCoursesByAge: any = createAsyncThunk(
   "courses/getCoursesByAge",
   async ({ age }: { age: number }, { rejectWithValue }) => {
-    console.log(age)
     try {
       const response = await fetch(`${Api}/courses/courseById?age=${age}`, {
         method: "GET",

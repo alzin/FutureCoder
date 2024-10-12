@@ -9,6 +9,7 @@
 .courses.swiper {
     width: 100%;
     height: 500px;
+    padding: 0 10px !important;
 
 }
 
@@ -31,6 +32,11 @@
 .courses .swiper-pagination {
     /* position: unset; */
     width: fit-content !important;
+    color: #7e22ce !important;
+}
+
+.swiper-pagination-bullet-active {
+    background-color: #7e22ce !important;
 }
 
 .courses .swiper-button-next,
@@ -39,7 +45,8 @@
     width: 30px !important;
     height: 30px !important;
     border-radius: 50%;
-    border: 1px solid black;
+    color: #7e22ce !important;
+    border: 1px solid #7e22ce !important;
     margin-top: -30px !important;
     z-index: 1000000000;
 }
@@ -57,12 +64,9 @@
 .swiper-button-next::after,
 .swiper-button-prev::after {
     font-size: 20px !important;
-    color: #000;
+    @apply text-purple-700
 }
 
-.swiper-pagination-bullet-active {
-    background-color: #000 !important;
-}
 
 
 /* -------------------------------Custom CSS for Swiper in Testimonials -------------------------------*/
@@ -72,7 +76,8 @@
     width: 30px !important;
     height: 30px !important;
     border-radius: 50%;
-    border: 1px solid black;
+    color: #7e22ce !important;
+    border: 1px solid #7e22ce !important;
 }
 
 @media (max-width:712px) {

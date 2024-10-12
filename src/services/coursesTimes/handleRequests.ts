@@ -99,7 +99,6 @@ export const getCouseseTimeByTimezone: any = createAsyncThunk(
     { rejectWithValue }
   ) => {
     try {
-      console.log(courseData)
       const response = await fetch(`${Api}/courses_time/timezone`, {
         method: "POST",
         headers,

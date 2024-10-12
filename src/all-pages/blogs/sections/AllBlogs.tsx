@@ -25,7 +25,7 @@ const AllBlogs: React.FC = () => {
 
     return (
         <Container>
-            <LoadingData data={blogs} emptyMessage="Blogs is Empty" className="min-h-[calc(100vh-400px)] w-full mt-[100px]">
+            <LoadingData data={blogs} emptyMessage="Blogs is Empty" className="min-h-[calc(100vh-200px)] w-full mt-[100px]">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                     {blogs?.map((item: any) => (
                         <BlogsCard key={item.id} blogData={item} />

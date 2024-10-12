@@ -8,7 +8,6 @@ import RobotLogo from "./components/RobotLogo"
 // import SelectLanguage from "./components/SelectLanguage";
 
 
-
 interface HeaderProps {
     data: any;
 }
@@ -55,7 +54,14 @@ const Header: React.FC<HeaderProps> = ({ data }) => {
                             className="flex items-center gap-1 text-purple-700 hover:text-purple-900"
                         >
                             <item.icon size={20} />
-                            {item.name}
+                            <motion.span
+                                key={item.id}
+                                whileHover={{ scale: 1.1 }}
+                                whileTap={{ scale: 0.95 }}
+                            >
+                                {item.name}
+                            </motion.span>
+
                         </Link>
                     </NavbarItem>
                 ))}

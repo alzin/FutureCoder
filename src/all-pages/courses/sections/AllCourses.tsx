@@ -25,7 +25,7 @@ const AllCourses: React.FC = () => {
 
     return (
         <Container>
-            <LoadingData data={courses} emptyMessage="Courses is Empty" className="min-h-[calc(100vh-400px)] w-full mt-[100px]">
+            <LoadingData data={courses} emptyMessage="Courses is Empty" className="min-h-[calc(100vh-200px)] w-full mt-[100px]">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                     {courses?.map((item: any) => (
                         <CourseCard key={item.id} courseData={item} />

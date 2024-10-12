@@ -1,3 +1,4 @@
+import dynamic from "next/dynamic";
 
 // Global Sections
 import Header from "@/shared-sections/Header";
@@ -9,12 +10,13 @@ import Features from "./sections/Features";
 import Courses from "./sections/Courses";
 import LastBlogs from "./sections/LastBlogs";
 import Testimonials from "./sections/Testimonials";
+import Loading from "@/shared-components/Loading";
 
 
-const Home = ({ data }: any) => {
+const index = ({ data }: any) => {
 
     if (!data?.headerSection) {
-        return "loading ... "
+        return <Loading />
     }
 
     return (
@@ -30,7 +32,7 @@ const Home = ({ data }: any) => {
     );
 }
 
-export default Home
+export default dynamic(() => Promise.resolve(index), { ssr: false, loading: () => <Loading />, });
 
 
 

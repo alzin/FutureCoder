@@ -14,7 +14,6 @@ import Loading from "@/shared-components/Loading";
 import Container from '@/shared-components/Container';
 
 import useCurrentTimezone from '@/hooks/useCurrentTimezone';
-import useLocalStorage from '@/hooks/useLocalStorage';
 
 
 const Stepper = dynamic(() => import('./components/Stepper'), {
@@ -37,7 +36,6 @@ interface BookFreeProps {
 
 const BookFree: React.FC<BookFreeProps> = ({ data, lang }) => {
 
-    const { getValue } = useLocalStorage()
     const [currentStep, setCurrentStep] = useState(0);
     const { timeZone } = useCurrentTimezone()
 

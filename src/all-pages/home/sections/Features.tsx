@@ -51,7 +51,7 @@ const Features: React.FC<FeaturesProps> = ({ data }) => {
                 <motion.h2
                     className="text-4xl font-black text-center text-purple-800 max-w-xl leading-[50px] mx-auto mb-4"
                     initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
                 >
                     {data.title}
@@ -59,7 +59,7 @@ const Features: React.FC<FeaturesProps> = ({ data }) => {
                 <motion.p
                     className="text-lg text-center mx-auto py-5 max-w-2xl leading-7 text-purple-600"
                     initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
                 >
                     {data.description}
@@ -67,14 +67,14 @@ const Features: React.FC<FeaturesProps> = ({ data }) => {
                 <motion.div
                     className="gap-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 w-full mt-10"
                     initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.4 }}
                 >
                     {data.features.map((item, index) => (
                         <motion.div
                             key={item.id}
                             initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
+                            whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: 0.2 * (index + 1) }}
                         >
                             <FeatureCard {...item} />

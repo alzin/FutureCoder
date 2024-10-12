@@ -1,10 +1,17 @@
+import dynamic from "next/dynamic";
 
-// sections
+// Global Sections
 import Header from "@/shared-sections/Header";
 import Footer from "@/shared-sections/Footer";
+
+// sections
 import AllCourses from "./sections/AllCourses";
 
-const Courses = ({ data }: any) => {
+import Loading from "@/shared-components/Loading";
+
+
+
+const index = ({ data }: any) => {
 
     if (!data?.headerSection) {
         return "loading ... "
@@ -19,4 +26,4 @@ const Courses = ({ data }: any) => {
     )
 }
 
-export default Courses
+export default dynamic(() => Promise.resolve(index), { ssr: false, loading: () => <Loading />, });
