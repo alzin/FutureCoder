@@ -99,6 +99,19 @@
     height: 50px;
 }
 
+.rmdp-header-values {
+    color: #a855f7 !important;
+    @apply text-xl font-extrabold
+}
+
+.rmdp-selected span {
+    background-color: #a855f7 !important;
+}
+
+.rmdp-week-day {
+    color: #a855f7 !important;
+}
+
 @media (max-width:1024px) {
 
     .rmdp-week {

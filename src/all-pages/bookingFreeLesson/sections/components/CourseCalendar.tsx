@@ -1,15 +1,20 @@
+
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
+import { Calendar, DateObject } from 'react-multi-date-picker';
+import { Button } from '@nextui-org/react';
+import { motion } from 'framer-motion';
+
 // import gregorian_ar from "react-date-object/locales/gregorian_ar"
 // import gregorian_en from "react-date-object/locales/gregorian_en"
 
-import { Calendar, DateObject } from 'react-multi-date-picker';
-import { Button } from '@nextui-org/react';
+
 import LoadingData from '@/shared-components/LoadingData';
 import { getCouseseTimeByTimezone } from '@/services/coursesTimes/handleRequests';
+
+// Hooks
 import useCurrentTimezone from '@/hooks/useCurrentTimezone';
-import useLocalStorage from '@/hooks/useLocalStorage';
 
 interface CourseCalendar {
     bookingData: BookingFreeCourse;
@@ -20,7 +25,6 @@ interface CourseCalendar {
 const CourseCalendar: React.FC<CourseCalendar> = ({ bookingData, setBookingData, setCurrentStep }) => {
 
     const dispatch = useDispatch()
-    const { setValue } = useLocalStorage()
     const { timeZone } = useCurrentTimezone()
     const { courseTimes } = useSelector((state: any) => state.coursesTimes)
     const { loading } = useSelector((state: any) => state.bookings)
@@ -31,16 +35,12 @@ const CourseCalendar: React.FC<CourseCalendar> = ({ bookingData, setBookingData,
 
     const handelSelectTime = (value: any) => {
         setReservation(prev => ({ ...prev, time: value.startTime + " - " + value.endTime }))
-        setValue("time", value.startTime + " - " + value.endTime)
         setBookingData(prev => ({ ...prev, sessionTimings: value.id }))
-        setValue("sessionTimings", value.id)
     }
 
     const handelSelectDate = (value: any) => {
         setReservation({ time: "", date: value.toString() })
-        setValue("time", "")
         setBookingData(prev => ({ ...prev, sessionTimings: "" }))
-        setValue("date", value.toString())
     }
 
     function createDateObject(dateString: any): DateObject {
@@ -73,10 +73,7 @@ const CourseCalendar: React.FC<CourseCalendar> = ({ bookingData, setBookingData,
             toast.warning("Please Select Time for free session")
             return
         }
-        setCurrentStep(prev => {
-            setValue("currentStep", String(Math.min(4 - 1, prev + 1)))
-            return Math.min(4 - 1, prev + 1)
-        })
+        setCurrentStep(prev => Math.min(4 - 1, prev + 1))
 
     }
 
@@ -87,7 +84,12 @@ const CourseCalendar: React.FC<CourseCalendar> = ({ bookingData, setBookingData,
     return (
         <div id="Calender" className='mt-[50px] mx-auto'>
             <LoadingData data={courseTimes} className='w-full' emptyMessage='Not Found Dates for this Course'>
-                <div className='flex items-center sm:items-start justify-center border-2 shadow-lg rounded h-full w-full sm:flex-row flex-col max-h-full sm:max-h-[367px]'>
+                <motion.div
+                    className='flex items-center sm:items-start justify-center border-2 shadow-lg rounded h-full w-full sm:flex-row flex-col max-h-full sm:max-h-[367px]'
+                    initial={{ opacity: 0, scale: .7 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.5 }}
+                >
                     <Calendar
                         zIndex={1}
                         // locale={lang === 'ar' ? gregorian_ar : gregorian_en}
@@ -102,22 +104,32 @@ const CourseCalendar: React.FC<CourseCalendar> = ({ bookingData, setBookingData,
                         <p className='pt-4 pb-3 border-b-2 w-full text-center'>Times {timeZone}</p>
                         <div className='max-h-[310px] overflow-y-auto overflow-x-hidden gap-2 scroll flex flex-col items-center w-full p-2' style={{ scrollbarWidth: "thin" }}>
                             {reservation.date && courseTimes?.filter((item: any) => item.SessionTimings === reservation.date).map((item: any, index: number) =>
-                                <Button key={index} color="primary" size="sm" className='m-0 min-h-8 w-full' onClick={() => handelSelectTime(item)}>{item.startTime} - {item.endTime}</Button>
+                                <Button key={index} color="primary" size="sm" className='m-0 min-h-8 w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-600 hover:to-pink-600 transition-colors duration-300' onClick={() => handelSelectTime(item)}>{item.startTime} - {item.endTime}</Button>
                             )}
                         </div>
 
                     </div>
-                </div>
+                </motion.div>
 
-                <div className='my-10 text-center block'>
-                    <p className='text-left'> Date : {reservation.date}</p>
-                    <p className='text-left'>Time : {reservation.time}</p>
-                </div>
+                <motion.div
+                    className='my-10 text-center block'
+                    initial={{ opacity: 0, x: -50 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: 0.5 }}
+                >
+                    <span className='text-left block'>
+                        <b className='text-purple-500 '>Date : </b>
+                        <p className='text-gray-500 inline'>{reservation.date}</p>
+                    </span>
+                    <span className='text-left block'>
+                        <b className='text-purple-500'>Time :</b>
+                        <p className='text-gray-500 inline'>{reservation.time}</p>
+                    </span>
+                </motion.div>
 
                 <form className="w-full block space-y-5 gap-2 mt-100 max-w-lg" onSubmit={handleSelectTimeAndNext}>
-                    <Button isLoading={loading} type='submit'>Next</Button>
+                    <Button isLoading={loading} className='bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-600 hover:to-pink-600 transition-colors duration-300' type='submit'>Next</Button>
                 </form>
-
             </LoadingData>
 
 

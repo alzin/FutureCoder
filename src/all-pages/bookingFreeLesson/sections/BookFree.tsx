@@ -1,32 +1,18 @@
 "use client"
+
 import React, { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
-import { Suspense } from 'react'
 
-
-// sections
-import FreeLessonForm from './components/FreeLessonForm';
-import CoursesByAge from './components/CoursesByAge';
+// Components
+import ReservationForm from './components/ReservationForm';
+import CoursesList from './components/CoursesList';
 import CourseCalendar from './components/CourseCalendar';
 import VerifyEmail from './components/VerifyEmail';
-
-import Loading from "@/shared-components/Loading";
+import Stepper, { Step } from './components/Stepper';
 import Container from '@/shared-components/Container';
 
+// Hooks
 import useCurrentTimezone from '@/hooks/useCurrentTimezone';
-
-
-const Stepper = dynamic(() => import('./components/Stepper'), {
-    ssr: false,
-    loading: () => <Loading />,
-});
-
-const Step = dynamic(() => import('./components/Stepper').then(mod => mod.Step), {
-    ssr: false,
-    loading: () => <Loading />,
-});
-
-
 
 interface BookFreeProps {
     data: Record<string, any>;
@@ -54,12 +40,12 @@ const BookFree: React.FC<BookFreeProps> = ({ data, lang }) => {
     }, [timeZone])
 
     return (
-        <Container>
-            <div id="BookFreeLesson" className='mt-10 w-full flex items-center justify-center flex-col'>
-                <Suspense fallback={<Loading />}>
+        <section>
+            <Container>
+                <div id="BookFreeLesson" className='mt-10 w-full flex items-center justify-center flex-col'>
                     <Stepper currentStep={currentStep} setCurrentStep={setCurrentStep}>
                         <Step label="Step 1">
-                            <CoursesByAge bookingData={bookingData} setBookingData={setBookingData} setCurrentStep={setCurrentStep} />
+                            <CoursesList bookingData={bookingData} setBookingData={setBookingData} setCurrentStep={setCurrentStep} />
                         </Step>
 
                         <Step label="Step 2">
@@ -67,16 +53,16 @@ const BookFree: React.FC<BookFreeProps> = ({ data, lang }) => {
                         </Step>
 
                         <Step label="Step 3">
-                            <FreeLessonForm bookingData={bookingData} setBookingData={setBookingData} setCurrentStep={setCurrentStep} />
+                            <ReservationForm bookingData={bookingData} setBookingData={setBookingData} setCurrentStep={setCurrentStep} />
                         </Step>
 
                         <Step label="Finished">
                             <VerifyEmail bookingData={bookingData} />
                         </Step>
                     </Stepper>
-                </Suspense>
-            </div>
-        </Container>
+                </div>
+            </Container>
+        </section>
     );
 };
 

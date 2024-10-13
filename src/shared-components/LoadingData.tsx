@@ -27,7 +27,7 @@ const LoadingData: React.FC<LoadingDataProps> = ({ children, data, emptyMessage 
 
           :
           <div className={`flex items-center justify-center py-5 ${className}`}>
-            <Spinner label="Loading ..." color="primary" labelColor="primary" />
+            <Spinner label="Loading ..." color="secondary" labelColor="secondary" />
           </div>
 
       }

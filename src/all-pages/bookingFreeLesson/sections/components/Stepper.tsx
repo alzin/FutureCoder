@@ -16,8 +16,8 @@ interface StepperProps {
 
 export const Step = ({ children, label }: StepProps) => (
   <div className="space-y-8 mb-8">
-    <div className="bg-white rounded-lg shadow-md p-6 flex items-center justify-start w-full min-h-[70vh] flex-col border-l-4 border-blue-500">
-      <h2 className="text-xl font-semibold text-gray-800 mb-2">{label}</h2>
+    <div className="bg-white rounded-lg shadow-md p-6 flex items-center justify-start w-full min-h-[70vh] flex-col border-l-4 border-purple-500">
+      <h2 className="text-xl font-semibold text-purple-700 mb-2">{label}</h2>
       {children}
     </div>
   </div>

@@ -42,7 +42,7 @@ const CoursesList: React.FC = () => {
                             </motion.div>
                         ))}
                     </div>
-                    <Pagination className="flex items-center justify-center mt-20" total={Math.ceil(totalCount / 5)} page={currentPage} onChange={handleChangePage} />
+                    <Pagination color='secondary' className="flex items-center justify-center mt-20" total={Math.ceil(totalCount / 5)} page={currentPage} onChange={handleChangePage} />
                 </LoadingData>
             </Container>
         </section>
