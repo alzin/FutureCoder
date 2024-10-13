@@ -1,6 +1,13 @@
 import Login from "@/all-pages/login";
 import { useTranslations } from "next-intl";
 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "login",
+  description: "login description",
+};
+
 export default function LoginPage() {
 
   const t = useTranslations()

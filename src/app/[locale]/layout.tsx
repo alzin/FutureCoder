@@ -1,15 +1,16 @@
+import "react-toastify/dist/ReactToastify.css";
 
 import type { Metadata } from "next";
-// import { Inter } from "next/font/google";
+import { Inter } from "next/font/google";
 import { NextUIProvider } from "@nextui-org/react";
 import { NextIntlClientProvider, useMessages } from "next-intl";
 import { getLangDir } from 'rtl-detect';
-import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
-import DataProvider from "@/shared-components/DataProvider";
-import "./globals.css";
 
-// const inter = Inter({ subsets: ["latin"] });
+import DataProvider from "@/shared-components/DataProvider";
+
+const inter = Inter({ subsets: ["latin"] });
+
 
 export const metadata: Metadata = {
   title: "home",
@@ -31,24 +32,9 @@ export default function RootLayout({
   const direction = getLangDir(params.locale);
   const messages = useMessages();
 
-  if (!params.locale) {
-    return <div>Loading...</div>;
-  }
-
-  // if (params.locale) {
-  //   notFound()
-  // }
-
-  // useEffect(() => {
-  //   Aos.init({
-  //     duration: 1400,
-  //     once: true,
-  //   });
-  // }, []);
-
   return (
     <html lang={params.locale} dir={direction}>
-      <body >
+      <body className={inter.className}>
         <ToastContainer
           position="bottom-right"
           autoClose={2000}
@@ -61,8 +47,6 @@ export default function RootLayout({
           pauseOnHover
           theme="colored"
         />
-
-        {/* className={inter.className} */}
         <NextIntlClientProvider
           locale={params.locale}
           messages={messages}

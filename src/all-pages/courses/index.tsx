@@ -5,22 +5,16 @@ import Header from "@/shared-sections/Header";
 import Footer from "@/shared-sections/Footer";
 
 // sections
-import AllCourses from "./sections/AllCourses";
+import CoursesList from "./sections/CoursesList";
 
 import Loading from "@/shared-components/Loading";
 
 
-
 const index = ({ data }: any) => {
-
-    if (!data?.headerSection) {
-        return "loading ... "
-    }
-
     return (
         <>
             <Header data={data.headerSection} />
-            <AllCourses />
+            <CoursesList />
             <Footer data={data.footerSection} />
         </>
     )

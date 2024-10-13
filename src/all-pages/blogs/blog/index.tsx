@@ -1,29 +1,27 @@
-// sections
+import dynamic from "next/dynamic";
+
+// Global Sections
 import Header from "@/shared-sections/Header";
 import Footer from "@/shared-sections/Footer";
-import OneBlog from "./sections/OneBlog";
+
+import BlogDetails from "./sections/BlogDetails";
+
+// Components
+import Loading from "@/shared-components/Loading";
 
 interface BlogProps {
     data: any,
     id: string
 }
 
-const Course: React.FC<BlogProps> = ({ data, id }) => {
-
-
-    if (!data?.headerSection) {
-        return "loading ... "
-    }
-
-
+const index: React.FC<BlogProps> = ({ data, id }) => {
     return (
         <>
             <Header data={data.headerSection} />
-            <OneBlog data={data} id={id} />
+            <BlogDetails data={data} id={id} />
             <Footer data={data.footerSection} />
-
         </>
     )
 }
 
-export default Course
+export default dynamic(() => Promise.resolve(index), { ssr: false, loading: () => <Loading />, });

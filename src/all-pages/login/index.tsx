@@ -1,20 +1,24 @@
-// sections
-import Container from "@/shared-components/Container";
-import Footer from "@/shared-sections/Footer";
-import Header from "@/shared-sections/Header";
+import dynamic from "next/dynamic";
 
-const Login = ({ data }: any) => {
+// Global Sections
+import Header from "@/shared-sections/Header";
+import Footer from "@/shared-sections/Footer";
+
+// sections
+import LogInForm from "./sections/LogInForm";
+
+// components
+import Loading from "@/shared-components/Loading";
+
+const index = ({ data }: any) => {
 
     return (
         <>
             <Header data={data.headerSection} />
-            <Container className="min-h-screen">
-                Login Page
-            </Container>
+            <LogInForm />
             <Footer data={data.footerSection} />
-
         </>
     )
 }
 
-export default Login
+export default dynamic(() => Promise.resolve(index), { ssr: false, loading: () => <Loading />, });

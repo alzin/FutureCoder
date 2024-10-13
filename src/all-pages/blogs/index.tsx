@@ -3,20 +3,16 @@ import dynamic from "next/dynamic";
 // sections
 import Header from "@/shared-sections/Header";
 import Footer from "@/shared-sections/Footer";
-import AllBlogs from "@/all-pages/blogs/sections/AllBlogs";
+
+import BlogsList from "./sections/BlogsList";
 
 import Loading from "@/shared-components/Loading";
 
 const index = ({ data }: any) => {
-
-    if (!data?.headerSection) {
-        return <Loading />
-    }
-
     return (
         <>
             <Header data={data.headerSection} />
-            <AllBlogs />
+            <BlogsList />
             <Footer data={data.footerSection} />
         </>
     )

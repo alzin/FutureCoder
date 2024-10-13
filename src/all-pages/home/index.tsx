@@ -4,21 +4,18 @@ import dynamic from "next/dynamic";
 import Header from "@/shared-sections/Header";
 import Footer from "@/shared-sections/Footer";
 
-// Home setions
+// Home Setions
 import Hero from "./sections/Hero";
 import Features from "./sections/Features";
 import Courses from "./sections/Courses";
 import LastBlogs from "./sections/LastBlogs";
 import Testimonials from "./sections/Testimonials";
+
+// Components
 import Loading from "@/shared-components/Loading";
 
 
 const index = ({ data }: any) => {
-
-    if (!data?.headerSection) {
-        return <Loading />
-    }
-
     return (
         <>
             <Header data={data.headerSection} />

@@ -54,10 +54,6 @@ export default function HomePage() {
 
   }
 
-  return (
-    <>
-      <Home data={homePageData} />
-    </>
-  )
+  return <Home data={homePageData} />
 }
 

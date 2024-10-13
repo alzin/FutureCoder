@@ -44,7 +44,6 @@ const LastBlogs: React.FC<LastBlogsProps> = ({ data }) => {
                             >
                                 <BlogsCard key={item.id} blogData={item} />
                             </motion.div>
-
                         ))}
                     </div>
                 </LoadingData>
