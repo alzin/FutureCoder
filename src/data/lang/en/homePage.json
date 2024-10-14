@@ -1,0 +1,111 @@
+{
+  "homePage": {
+    "pageName": "Home",
+    "link": "/",
+    "lang": "en",
+    "heroSection": {
+      "title": "Empower Arab Kids to code in Arabic",
+      "paragraph": "Discover a fun and interactive way for your kids to learn programming in Arabic",
+      "lessonBtn": "Book a free lesson",
+      "hrefLesson": "/booking-free",
+      "heroImage": "/images/hero.webp"
+    },
+    "featuresSection": {
+      "title": "Let your child a Future Leader not only a coder through our learning path",
+      "description": "our platform offers interactive courses, parent resources, and community support ,all in Arabic. Start your child's coding journey today!",
+      "features": [
+        {
+          "id": 1,
+          "image": "/images/1.webp",
+          "title": "Interactive Courses",
+          "description": "Engaging and interactive coding courses designed for kids."
+        },
+        {
+          "id": 2,
+          "image": "/images/2.webp",
+          "title": "Parent Resources",
+          "description": "Access helpful resources to support your child's learning journey. "
+        },
+        {
+          "id": 3,
+          "image": "/images/3.webp",
+          "title": "Community Support",
+          "description": "Connect with a supportive community of like-minded parents."
+        }
+      ],
+      "signInBtn": "Log In"
+    },
+    "coursesSection": {
+      "title": "Courses",
+      "description": "Explore our wide range of programming courses for kids.",
+      "viewAllBtn": "View all",
+      "href": "/courses",
+      "courses": [
+        {
+          "id": 1,
+          "title": "Introduction to Coding",
+          "prise": "99$",
+          "href": "/courses",
+          "image": "/images/image.png"
+        },
+        {
+          "id": 2,
+          "title": "Introduction to Coding",
+          "prise": "99$",
+          "href": "/courses",
+          "image": "/images/image.png"
+        },
+        {
+          "id": 3,
+          "title": "Introduction to Coding",
+          "prise": "99$",
+          "href": "/courses",
+          "image": "/images/image.png"
+        },
+        {
+          "id": 4,
+          "title": "Introduction to Coding",
+          "prise": "99$",
+          "href": "/courses",
+          "image": "/images/image.png"
+        },
+        {
+          "id": 5,
+          "title": "Introduction to Coding",
+          "prise": "99$",
+          "href": "/courses",
+          "image": "/images/image.png"
+        },
+        {
+          "id": 6,
+          "title": "Introduction to Coding",
+          "prise": "99$",
+          "href": "/courses",
+          "image": "/images/image.png"
+        }
+      ]
+    },
+    "testimonialSection": {
+      "testimonials": [
+        {
+          "id": 1,
+          "rate": 4,
+          "opinion": "My child has greatly benefited from this platform. Learning programming in Arabic has made it easier for them to grasp the concepts and apply them in real-life scenarios.",
+          "firstName": "Ahmed",
+          "lastName": "Ali",
+          "work": "Software Engineer",
+          "imageProfile": "/images/image.png"
+        },
+        {
+          "id": 2,
+          "rate": 3,
+          "opinion": "My child has greatly benefited from this platform. Learning programming in Arabic has made it easier for them to grasp the concepts and apply them in real-life scenarios.",
+          "firstName": "Ahmed",
+          "lastName": "Ali",
+          "work": "Software Engineer",
+          "imageProfile": "/images/image.png"
+        }
+      ]
+    }
+  }
+}

@@ -1,16 +1,10 @@
-'use client';
-
-import Link from 'next/link'
+import PageNotFound from "@/shared-components/404";
 
 export default function NotFound() {
     return (
         <html lang="en">
-            <body>
-                <div>
-                    <h2>Not Found</h2>
-                    <p>Could not find requested resource</p>
-                    <Link href="/">Return Home</Link>
-                </div>
+            <body className="overflow-hidden">
+                <PageNotFound />
             </body>
         </html>
     );

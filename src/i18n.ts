@@ -10,10 +10,10 @@ export default getRequestConfig(async ({ locale }) => {
 
   return {
     messages: {
-      ...(await import(`./data/${locale}/homePage.json`)),
-      ...(await import(`./data/${locale}/coursesPage.json`)),
-      ...(await import(`./data/${locale}/blogsPage.json`)),
-      ...(await import(`./data/${locale}/shared.json`)),
+      ...(await import(`./data/lang/${locale}/homePage.json`)),
+      ...(await import(`./data/lang/${locale}/coursesPage.json`)),
+      ...(await import(`./data/lang/${locale}/blogsPage.json`)),
+      ...(await import(`./data/lang/${locale}/shared.json`)),
     },
   };
 });

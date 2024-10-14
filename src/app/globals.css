@@ -1,0 +1,129 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+/* ------------------------------- Custom CSS for Swiper in Courses -------------------------------*/
+
+.courses.swiper {
+    width: 100%;
+    height: 500px;
+    padding: 0 10px !important;
+}
+
+.courses .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: gray; */
+
+
+}
+
+.courses .swiper-slide {
+    height: 80% !important;
+}
+
+.courses .swiper-pagination {
+    /* position: unset; */
+    width: fit-content !important;
+    color: #7e22ce !important;
+}
+
+.swiper-pagination-bullet-active {
+    background-color: #7e22ce !important;
+}
+
+.courses .swiper-button-next,
+.courses .swiper-button-prev {
+    position: sticky !important;
+    width: 30px !important;
+    height: 30px !important;
+    border-radius: 50%;
+    color: #7e22ce !important;
+    border: 1px solid #7e22ce !important;
+    margin-top: -30px !important;
+    z-index: 1000000000;
+}
+
+.courses .swiper-button-prev,
+.courses .swiper-button-next {
+    margin-left: auto;
+}
+
+.courses .swiper-button-prev {
+    margin-right: 50px !important;
+    /* left: 95% !important; */
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+    font-size: 20px !important;
+    @apply text-purple-700
+}
+
+
+
+/* -------------------------------Custom CSS for Swiper in Testimonials -------------------------------*/
+
+.testimonials .swiper-button-next,
+.testimonials .swiper-button-prev {
+    width: 30px !important;
+    height: 30px !important;
+    border-radius: 50%;
+    color: #7e22ce !important;
+    border: 1px solid #7e22ce !important;
+}
+
+@media (max-width:712px) {
+
+    .testimonials .swiper-button-next,
+    .testimonials .swiper-button-prev {
+        display: none !important;
+    }
+}
+
+
+
+
+
+
+/* ------------------------------------------------------- */
+
+.rmdp-week {
+    width: 500px;
+    height: 50px;
+}
+
+.rmdp-header-values {
+    color: #a855f7 !important;
+    @apply text-xl font-extrabold
+}
+
+.rmdp-selected span {
+    background-color: #a855f7 !important;
+}
+
+.rmdp-week-day {
+    color: #a855f7 !important;
+}
+
+@media (max-width:1024px) {
+
+    .rmdp-week {
+        width: fit-content;
+        gap: 20px;
+        height: fit-content;
+    }
+}
+
+@media (max-width:500px) {
+
+    .rmdp-week {
+        gap: 5px;
+    }
+}
