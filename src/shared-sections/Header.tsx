@@ -85,7 +85,7 @@ const Header: React.FC<HeaderProps> = ({ data }) => {
             </NavbarContent>
 
             {/* login buton */}
-            <NavbarContent justify="end">
+            {/* <NavbarContent justify="end">
                 <NavbarItem>
                     <Button
                         as={Link}
@@ -96,7 +96,7 @@ const Header: React.FC<HeaderProps> = ({ data }) => {
                         {data.logIn}
                     </Button>
                 </NavbarItem>
-            </NavbarContent>
+            </NavbarContent> */}
 
         </Navbar>
     );
