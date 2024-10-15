@@ -19,9 +19,9 @@ type Course = {
 
 type Blog = {
     id: string,
-    title?: string,
-    description?: string,
-    ImagePath?: string,
+    title: string,
+    description: string,
+    ImagePath: string,
     created_at: string
 }
 

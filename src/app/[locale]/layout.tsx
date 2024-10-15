@@ -13,8 +13,14 @@ const inter = Inter({ subsets: ["latin"] });
 
 
 export const metadata: Metadata = {
-  title: "home",
-  description: "home description",
+  title: {
+    default: "Future Coder Online School",
+    template: "%s - Future Coder Online School"
+  },
+  description: "Learn Programming For Kids",
+  twitter: {
+    card: "summary_large_image"
+  }
 };
 
 type Params = {
