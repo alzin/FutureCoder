@@ -102,13 +102,23 @@ const ReservationForm: React.FC<ReservationFormProps> = ({ bookingData, setBooki
         onChange={handleChange}
       />
 
-      <Button
-        isLoading={loading}
-        type='submit'
-        className="px-4 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-600 hover:to-pink-600 transition-colors duration-300 rounded"
-      >
-        submit
-      </Button>
+
+      <div className="w-full mt-24 flex items-center justify-between">
+        <Button
+          onClick={() => setCurrentStep(prev => Math.max(0, prev - 1))}
+          className='bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-600 hover:to-pink-600 transition-colors duration-300'
+        >
+          Previous
+        </Button>
+
+        <Button
+          isLoading={loading}
+          type='submit'
+          className="bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-600 hover:to-pink-600 transition-colors duration-300"
+        >
+          Next
+        </Button>
+      </div>
 
     </form>
   )

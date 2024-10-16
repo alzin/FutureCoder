@@ -34,5 +34,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
                 },
             },
         },
+        {
+            url: `${baseUrl}/login`,
+            lastModified: new Date(),
+            alternates: {
+                languages: {
+                    en: `${baseUrl}/en/login`,
+                    ar: `${baseUrl}/ar/login`,
+                },
+            },
+        },
+        {
+            url: `${baseUrl}/booking-free`,
+            lastModified: new Date(),
+            alternates: {
+                languages: {
+                    en: `${baseUrl}/en/booking-free`,
+                    ar: `${baseUrl}/ar/booking-free`,
+                },
+            },
+        },
     ]
 }

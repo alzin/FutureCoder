@@ -1,5 +1,12 @@
 import Blogs from "@/all-pages/blogs";
 import { useTranslations } from "next-intl";
+import type { Metadata } from "next";
+
+
+export const metadata: Metadata = {
+  title: "Blogs List",
+  description: "Blogs Description",
+};
 
 export default function BlogsPage() {
 

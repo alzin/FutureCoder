@@ -1,5 +1,12 @@
 import Courses from "@/all-pages/courses";
 import { useTranslations } from "next-intl";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Courses List",
+  description: "Courses Description",
+};
+
 
 export default function CoursesPage() {
   const t = useTranslations()

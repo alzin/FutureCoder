@@ -8,11 +8,9 @@ import { headers } from "@/constants/headers";
 interface BlogPageProps {
   params: { id: string }
 }
-
 interface Blogs {
   data: Blog[]
 }
-
 
 export async function generateStaticParams() {
   const response = await fetch(`${Api}/blogs`, { headers })
@@ -31,18 +29,25 @@ export async function generateMetadata({
     title: blog.title,
     description: blog.description,
     openGraph: {
+      type: "article",
       images: [
         {
-          url: blog.ImagePath
+          url: blog.ImagePath,
+          type: "image/png",
+          width: "1200",
+          height: "630"
         }
       ]
     }
   }
 }
 
-export default function BlogPage({ params }: { params: { id: string } }) {
+export default function BlogPage({
+  params: { id }
+}: BlogPageProps) {
+
   const t = useTranslations()
-  console.log(params.id)
+  console.log(id)
 
   const BlogPageData = {
     lang: t.raw("shared.lang"),
@@ -68,7 +73,7 @@ export default function BlogPage({ params }: { params: { id: string } }) {
 
   return (
     <>
-      <Blog data={BlogPageData} id={params.id} />
+      <Blog data={BlogPageData} id={id} />
     </>
   )
 }

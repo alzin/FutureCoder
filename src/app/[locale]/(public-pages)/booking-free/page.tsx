@@ -1,5 +1,11 @@
 import FreeLesson from "@/all-pages/bookingFreeLesson"
 import { useTranslations } from "next-intl";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Book A Free Lesson",
+  description: "Book A Free Lesson Description",
+};
 
 export default function FreeLessonPage() {
 

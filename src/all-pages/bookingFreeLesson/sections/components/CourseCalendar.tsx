@@ -82,7 +82,7 @@ const CourseCalendar: React.FC<CourseCalendar> = ({ bookingData, setBookingData,
     }, [dispatch, bookingData.timeZone, bookingData.courseId])
 
     return (
-        <div id="Calender" className='mt-[50px] mx-auto'>
+        <div id="Calender" className='mt-[50px] mx-auto w-full sm:w-fit'>
             <LoadingData data={courseTimes} className='w-full' emptyMessage='Not Found Dates for this Course'>
                 <motion.div
                     className='flex items-center sm:items-start justify-center border-2 shadow-lg rounded h-full w-full sm:flex-row flex-col max-h-full sm:max-h-[367px]'
@@ -127,13 +127,17 @@ const CourseCalendar: React.FC<CourseCalendar> = ({ bookingData, setBookingData,
                     </span>
                 </motion.div>
 
-                <form className="w-full block space-y-5 gap-2 mt-100 max-w-lg" onSubmit={handleSelectTimeAndNext}>
+                <form className="w-full mt-100 flex items-center justify-between" onSubmit={handleSelectTimeAndNext}>
+                    <Button
+                        onClick={() => setCurrentStep(prev => Math.max(0, prev - 1))}
+                        className='bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-600 hover:to-pink-600 transition-colors duration-300'
+                    >
+                        Previous
+                    </Button>
                     <Button isLoading={loading} className='bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-600 hover:to-pink-600 transition-colors duration-300' type='submit'>Next</Button>
+
                 </form>
             </LoadingData>
-
-
-
 
         </div>
     )

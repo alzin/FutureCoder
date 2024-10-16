@@ -10,7 +10,7 @@ const BlogsCard: React.FC<BlogsCardProps> = ({ blogData }) => {
     return (
         <motion.div
             whileHover={{ y: -10 }}
-            whileTap={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
             transition={{ duration: 0.3 }}
         >
             <Card className='sm:mb-0 mb-7 border-2 border-purple-200 hover:border-purple-400 transition-colors duration-300 overflow-hidden'>
