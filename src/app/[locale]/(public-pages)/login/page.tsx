@@ -4,8 +4,8 @@ import { useTranslations } from "next-intl";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "login",
-  description: "login description",
+  title: "Login",
+  description: "Login Description",
 };
 
 export default function LoginPage() {

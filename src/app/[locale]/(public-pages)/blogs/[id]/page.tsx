@@ -2,14 +2,52 @@ import type { Metadata } from "next";
 
 import Blog from "@/all-pages/blogs/blog";
 import { useTranslations } from "next-intl";
+import { Api } from "@/constants/api";
+import { headers } from "@/constants/headers";
 
-export const metadata: Metadata = {
-  title: "Blog",
-  description: "Blog description",
-};
+interface BlogPageProps {
+  params: { id: string }
+}
+interface Blogs {
+  data: Blog[]
+}
 
-export default function BlogPage({ params }: { params: { id: string } }) {
+export async function generateStaticParams() {
+  const response = await fetch(`${Api}/blogs`, { headers })
+  const { data }: Blogs = await response.json()
+  return data.map(({ id }) => id)
+}
+
+export async function generateMetadata({
+  params: { id }
+}: BlogPageProps): Promise<Metadata> {
+
+  const response = await fetch(`${Api}/blogs?id=${id}`, { headers })
+  const blog: Blog = await response.json()
+
+  return {
+    title: blog.title,
+    description: blog.description,
+    openGraph: {
+      type: "article",
+      images: [
+        {
+          url: blog.ImagePath,
+          type: "image/png",
+          width: "1200",
+          height: "630"
+        }
+      ]
+    }
+  }
+}
+
+export default function BlogPage({
+  params: { id }
+}: BlogPageProps) {
+
   const t = useTranslations()
+  console.log(id)
 
   const BlogPageData = {
     lang: t.raw("shared.lang"),
@@ -35,7 +73,7 @@ export default function BlogPage({ params }: { params: { id: string } }) {
 
   return (
     <>
-      <Blog data={BlogPageData} id={params.id} />
+      <Blog data={BlogPageData} id={id} />
     </>
   )
 }

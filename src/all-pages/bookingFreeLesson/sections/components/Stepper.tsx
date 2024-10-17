@@ -34,17 +34,29 @@ const Stepper = ({ children, currentStep, setCurrentStep }: StepperProps) => {
       </div>
 
       <div className="flex justify-between space-x-4">
-        <Button
+
+        {/* <Button
           onClick={() => setCurrentStep(prev => Math.max(0, prev - 1))}
           disabled={currentStep === 0}
-          className={`px-4 py-2 bg-gray-200 text-gray-700 rounded ${currentStep === 0 ? 'opacity-50 cursor-not-allowed' : ''}`}
+          className={`px-4 py-2 bg-gray-200 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-600 hover:to-pink-600 transition-colors duration-300 ${currentStep === 0 ? 'opacity-50 cursor-not-allowed' : ''}`}
         >
           Previous
         </Button>
 
+        {currentStep !== 0 &&
+          <Button
+            onClick={() => setCurrentStep(prev => Math.min(4 - 1, prev + 1))}
+            disabled={currentStep === 4}
+            className={`px-4 py-2 bg-gray-200 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-600 hover:to-pink-600 transition-colors duration-300 ${currentStep === 0 ? 'opacity-50 cursor-not-allowed' : ''}`}
+          >
+            Next
+          </Button>}
+ */}
+
+
       </div>
 
-    </div>
+    </div >
   );
 };
 

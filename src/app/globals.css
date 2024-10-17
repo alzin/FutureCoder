@@ -121,9 +121,30 @@
     }
 }
 
-@media (max-width:500px) {
+@media (max-width:640px) {
+    .rmdp-wrapper {
+        width: 100% !important;
+
+    }
+
+    .rmdp-day-picker {
+        justify-content: center;
+    }
 
     .rmdp-week {
-        gap: 5px;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between !important;
+    }
+
+    .rmdp-calendar {
+        width: 100%;
+    }
+}
+
+
+@media (max-width:460px) {
+    .rmdp-week {
+        gap: 10px;
     }
 }

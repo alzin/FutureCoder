@@ -19,9 +19,9 @@ interface HeroProps {
 const Hero: React.FC<HeroProps> = ({ data }) => {
     return (
         <Container>
-            <section id='hero' className='mt-20 xl:my-0 xl:min-h-[calc(100vh-4rem)] w-full flex items-start xl:items-center justify-between gap-20 xl:gap-1 flex-col xl:flex-row'>
+            <section id='hero' className='mt-20 lg:my-0 lg:min-h-[calc(100vh-4rem)] w-full flex items-center lg:items-center justify-between gap-20 lg:gap-1 flex-col lg:flex-row'>
                 <motion.div
-                    className='xl:w-[55%]'
+                    className='lg:w-[55%] lg:text-left text-center'
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
@@ -59,7 +59,7 @@ const Hero: React.FC<HeroProps> = ({ data }) => {
                     </motion.div>
                 </motion.div>
                 <motion.div
-                    className='xl:w-[43%] w-full h-auto aspect-square relative'
+                    className='lg:w-[43%] sm:w-1/2 w-full h-auto aspect-square relative'
                     initial={{ opacity: 0, scale: 0.8 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.5, delay: 0.8 }}
