@@ -8,15 +8,15 @@ import { headers } from "@/constants/headers";
 interface BlogPageProps {
   params: { id: string }
 }
-interface Blogs {
-  data: Blog[]
-}
+// interface Blogs {
+//   data: Blog[]
+// }
 
-export async function generateStaticParams() {
-  const response = await fetch(`${Api}/blogs`, { headers })
-  const { data }: Blogs = await response.json()
-  return data.map(({ id }) => id)
-}
+// export async function generateStaticParams() {
+//   const response = await fetch(`${Api}/blogs`, { headers })
+//   const { data }: Blogs = await response.json()
+//   return data.map(({ id }) => id)
+// }
 
 export async function generateMetadata({
   params: { id }
@@ -47,7 +47,6 @@ export default function BlogPage({
 }: BlogPageProps) {
 
   const t = useTranslations()
-  console.log(id)
 
   const BlogPageData = {
     lang: t.raw("shared.lang"),

@@ -8,13 +8,13 @@ import { headers } from "@/constants/headers";
 interface CoursePageProps {
   params: { id: string }
 }
-interface Courses {
-  0: {
-    data: {
-      data: Course[]
-    }
-  }
-}
+// interface Courses {
+//   0: {
+//     data: {
+//       data: Course[]
+//     }
+//   }
+// }
 
 interface Coursee {
   0: {
@@ -23,11 +23,11 @@ interface Coursee {
 }
 
 
-export async function generateStaticParams() {
-  const response = await fetch(`${Api}/courses`, { headers })
-  const courses: Courses = await response.json()
-  return courses[0].data.data.map(({ id }) => id)
-}
+// export async function generateStaticParams() {
+//   const response = await fetch(`${Api}/courses`, { headers })
+//   const courses: Courses = await response.json()
+//   return courses[0].data.data.map(({ id }) => id)
+// }
 
 export async function generateMetadata({
   params: { id }
