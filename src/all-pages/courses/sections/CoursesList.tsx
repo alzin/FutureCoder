@@ -34,9 +34,9 @@ const CoursesList: React.FC = () => {
                         {courses?.map((item: any, index: number) => (
                             <motion.div
                                 key={index}
-                                initial={{ opacity: 0, scale: .8 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
-                                transition={{ duration: 0.5, delay: 0.2 * index }}
+                                initial={{ opacity: 0, x: -50 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                transition={{ duration: 0.5, delay: 0.1 * index }}
                             >
                                 <CourseCard key={item.id} courseData={item} />
                             </motion.div>

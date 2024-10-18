@@ -24,7 +24,7 @@ export async function generateMetadata({
 
   const response = await fetch(`${Api}/blogs?id=${id}`, { headers })
   const blog: Blog = await response.json()
-
+  console.log(blog)
   return {
     title: blog.title,
     description: blog.description,

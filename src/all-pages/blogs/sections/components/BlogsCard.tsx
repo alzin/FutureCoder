@@ -39,7 +39,7 @@ const BlogsCard: React.FC<BlogsCardProps> = ({ blogData }) => {
                 <CardFooter className="text-small flex-col">
                     <Button
                         as={Link}
-                        href={`blogs/${blogData.id}`}
+                        href={`/blogs/${blogData.id}`}
                         className="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-600 hover:to-pink-600 transition-colors duration-300"
                     >
                         Show More

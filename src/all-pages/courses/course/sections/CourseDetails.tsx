@@ -36,10 +36,10 @@ const CourseDetails: React.FC<CourseDetailsProps> = ({ data, id }) => {
                         <h1 className='text-4xl font-black text-purple-700'>{findCourse?.title}</h1>
                         <div className='flex items-start justify-center lg:flex-row flex-col gap-10'>
                             <div className="w-full lg:w-2/3">
-                                <div className="relative w-full h-[500px]">
+                                <div className="relative w-full sm:h-[500px] h-[300px]">
                                     <Image
                                         fill
-                                        className=' object-cover'
+                                        className='object-contain'
                                         src={findCourse?.imagePath}
                                         alt={findCourse?.title}
                                     />
@@ -62,7 +62,7 @@ const CourseDetails: React.FC<CourseDetailsProps> = ({ data, id }) => {
                                     <p className="text-gray-500 inline">{findCourse?.teacher}</p>
                                 </div>
                                 <div>
-                                    <b className="inline text-purple-700">Started Reservation : </b>
+                                    <b className="inline text-purple-700">Course Start : </b>
                                     <p className="text-gray-500 inline">{findCourse?.course_start_date}</p>
                                 </div>
                                 <Button className='w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-600 hover:to-pink-600 transition-colors duration-300'>
