@@ -11,8 +11,9 @@ interface CourseCard {
 const CourseCard: React.FC<CourseCard> = ({ courseData }) => {
     return (
         <motion.div
-            whileHover={{ scale: 1.05, rotate: [0, -1, 1, -1, 0] }}
+            whileHover={{ y: -10 }}
             whileTap={{ scale: 0.95 }}
+            transition={{ duration: 0.3 }}
             className="relative"
         >
             <Card className='sm:mb-0 mb-7 border-2 border-purple-200 hover:border-purple-400 transition-colors duration-300 overflow-hidden'>
@@ -49,10 +50,12 @@ const CourseCard: React.FC<CourseCard> = ({ courseData }) => {
                 </CardBody>
 
                 <CardFooter className="text-small flex-col">
-                    <Button className='w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-600 hover:to-pink-600 transition-colors duration-300'>
-                        <Link href={`courses/${courseData?.id}`} className='w-full'>
-                            View Details
-                        </Link>
+                    <Button
+                        as={Link}
+                        href={`/courses/${courseData.id}`}
+                        className="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-600 hover:to-pink-600 transition-colors duration-300"
+                    >
+                        View Details
                     </Button>
                 </CardFooter>
             </Card>
