@@ -66,8 +66,8 @@ const Footer: React.FC<FooterProps> = ({ data }) => {
                             </ul>
                             <div className='flex items-center justify-start gap-4'>
                                 <SocialLink name='whatsapp' link='https://wa.me/message/WMTMY6ZZOZ2KH1' />
-                                <SocialLink name='facebook' link='https://www.instagram.com/futurecoder5/profilecard/?igsh=eTlhN3cwYXl6NXUy' />
-                                <SocialLink name='instagram' link='https://www.facebook.com/FutureCoderOnlineSchool' />
+                                <SocialLink name='instagram' link='https://www.instagram.com/futurecoder5/profilecard/?igsh=eTlhN3cwYXl6NXUy' />
+                                <SocialLink name='facebook' link='https://www.facebook.com/FutureCoderOnlineSchool' />
                             </div>
                         </motion.div>
                         <motion.div
