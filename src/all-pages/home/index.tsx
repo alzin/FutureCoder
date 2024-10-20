@@ -13,7 +13,7 @@ import Testimonials from "./sections/Testimonials";
 
 // Components
 import Loading from "@/shared-components/Loading";
-
+import WhatsappContact from "@/shared-components/WhatsappContact";
 
 const index = ({ data }: any) => {
     return (
@@ -25,6 +25,7 @@ const index = ({ data }: any) => {
             <LastBlogs data={data.headerSection} />
             <Testimonials data={data.testimonialSection} />
             <Footer data={data.footerSection} />
+            <WhatsappContact link="https://wa.me/message/WMTMY6ZZOZ2KH1" />
         </>
     );
 }

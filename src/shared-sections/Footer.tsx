@@ -8,7 +8,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { addSubscriber } from '@/services/subscribers/handleRequests';
 import { motion } from 'framer-motion';
-
+import SocialLink from './components/SocialLink';
 interface FooterProps {
     data: {
         links: Array<{ id: string; href: string; name: string }>;
@@ -64,6 +64,11 @@ const Footer: React.FC<FooterProps> = ({ data }) => {
                                     </motion.li>
                                 ))}
                             </ul>
+                            <div className='flex items-center justify-start gap-4'>
+                                <SocialLink name='whatsapp' link='https://wa.me/message/WMTMY6ZZOZ2KH1' />
+                                <SocialLink name='facebook' link='https://www.instagram.com/futurecoder5/profilecard/?igsh=eTlhN3cwYXl6NXUy' />
+                                <SocialLink name='instagram' link='https://www.facebook.com/FutureCoderOnlineSchool' />
+                            </div>
                         </motion.div>
                         <motion.div
                             className="mt-5 lg:mt-0 w-full sm:w-96"

@@ -32,7 +32,7 @@ const BlogsCard: React.FC<BlogsCardProps> = ({ blogData }) => {
                         <span>
                             <p className='text-xs text-white text-center py-1 px-2 bg-purple-500 rounded'>tags</p>
                         </span>
-                        <p className="text-sm text-center text-purple-500">{blogData.created_at.split('T')[0]}</p>
+                        <p className="text-sm text-center text-purple-500">{blogData.created_at?.split('T')[0]}</p>
                     </div>
                 </CardBody>
 

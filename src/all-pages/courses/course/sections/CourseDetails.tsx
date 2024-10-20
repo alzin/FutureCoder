@@ -5,13 +5,9 @@ import Link from 'next/link';
 import { useEffect } from "react"
 import { Button } from "@nextui-org/react";
 import { useDispatch, useSelector } from 'react-redux';
-
 import { getCourseById } from '@/services/courses/handleRequests';
-
 import Container from '@/shared-components/Container';
 import LoadingData from '@/shared-components/LoadingData';
-
-
 interface CourseDetailsProps {
     data: Record<string, any>;
     id: string
@@ -23,6 +19,7 @@ const CourseDetails: React.FC<CourseDetailsProps> = ({ data, id }) => {
     const dispatch = useDispatch()
     const { findCourse } = useSelector((state: any) => state.courses)
 
+
     useEffect(() => {
         dispatch(getCourseById({ courseId: id }))
     }, [dispatch, id])
@@ -31,6 +28,7 @@ const CourseDetails: React.FC<CourseDetailsProps> = ({ data, id }) => {
     return (
         <section>
             <Container>
+                <div id="google_translate_element"></div>
                 <LoadingData data={findCourse} className="min-h-[calc(100vh-400px)] w-full mt-[100px]">
                     <div id="CourseDetails" className='w-full space-y-10'>
                         <h1 className='text-4xl font-black text-purple-700'>{findCourse?.title}</h1>
@@ -65,10 +63,8 @@ const CourseDetails: React.FC<CourseDetailsProps> = ({ data, id }) => {
                                     <b className="inline text-purple-700">Course Start : </b>
                                     <p className="text-gray-500 inline">{findCourse?.course_start_date}</p>
                                 </div>
-                                <Button className='w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-600 hover:to-pink-600 transition-colors duration-300'>
-                                    <Link href={`reservation/${findCourse?.id}`} className='w-full'>
-                                        Reserve
-                                    </Link>
+                                <Button as={Link} href={findCourse?.payment_url || "/"} className='w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-600 hover:to-pink-600 transition-colors duration-300'>
+                                    Buy Now
                                 </Button>
                             </div>
 
