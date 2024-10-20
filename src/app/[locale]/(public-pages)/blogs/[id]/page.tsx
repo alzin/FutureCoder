@@ -8,9 +8,9 @@ import { headers } from "@/constants/headers";
 interface BlogPageProps {
   params: { id: string }
 }
-// interface Blogs {
-//   data: Blog[]
-// }
+interface Blogg {
+  data: Blog
+}
 
 // export async function generateStaticParams() {
 //   const response = await fetch(`${Api}/blogs`, { headers })
@@ -23,16 +23,15 @@ export async function generateMetadata({
 }: BlogPageProps): Promise<Metadata> {
 
   const response = await fetch(`${Api}/blogs?id=${id}`, { headers })
-  const blog: Blog = await response.json()
-  console.log(blog)
+  const blog: Blogg = await response.json()
   return {
-    title: blog.title,
-    description: blog.description,
+    title: blog.data.title,
+    description: blog.data.description,
     openGraph: {
       type: "article",
       images: [
         {
-          url: blog.ImagePath,
+          url: blog.data.ImagePath,
           type: "image/png",
           width: "1200",
           height: "630"
