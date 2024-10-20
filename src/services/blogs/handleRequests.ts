@@ -10,21 +10,16 @@ export const getBlogs: any = createAsyncThunk(
       const response = await fetch(`${Api}/blogs?page=${currentPage}`, {
         method: "GET",
         headers,
-        body: JSON.stringify({ "language": "ar" }),
-
       });
       const data = await response.json();
-      console.log("kkk")
+
       if (response.ok) {
         return data;
       } else {
         return rejectWithValue(data);
       }
     } catch (error: any) {
-      console.log(error)
-
       return rejectWithValue(error.message);
-
     }
   }
 );
