@@ -4,9 +4,11 @@ import { motion } from 'framer-motion';
 
 interface BlogsCardProps {
     blogData: Blog
+    data: any
+    lang: string
 }
 
-const BlogsCard: React.FC<BlogsCardProps> = ({ blogData }) => {
+const BlogsCard: React.FC<BlogsCardProps> = ({ blogData, data, lang }) => {
     return (
         <motion.div
             whileHover={{ y: -10 }}
@@ -24,7 +26,7 @@ const BlogsCard: React.FC<BlogsCardProps> = ({ blogData }) => {
                     />
                 </CardHeader>
 
-                <CardBody className="px-7 mt-3">
+                <CardBody className={`px-7 mt-3 flex flex-col items-start ${lang === "en" ? "text-left" : "text-right"}`}>
                     <h1 className="text-xl font-bold text-purple-700">{blogData.title}</h1>
                     <p className="my-3 text-purple-500 line-clamp-2">{blogData.description}</p>
 
@@ -42,7 +44,7 @@ const BlogsCard: React.FC<BlogsCardProps> = ({ blogData }) => {
                         href={`/blogs/${blogData.id}`}
                         className="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-600 hover:to-pink-600 transition-colors duration-300"
                     >
-                        Show More
+                        {data.readMoreBtn}
                     </Button>
                 </CardFooter>
             </Card>

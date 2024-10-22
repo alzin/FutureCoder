@@ -1,13 +1,13 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { Api } from "@/constants/api";
-import { headers } from "@/constants/headers";
+import { Api, headers } from "@/constants";
+
 
 // get all valid testimonials
 export const getTestimonials: any = createAsyncThunk(
   "testimonials/getTestimonials",
-  async (_, { rejectWithValue }) => {
+  async ({ lang }: { lang: string }, { rejectWithValue }) => {
     try {
-      const response = await fetch(`${Api}/Testimonial/validTestimonial`, {
+      const response = await fetch(`${Api}/Testimonial/validTestimonial?language=${lang}`, {
         method: "GET",
         headers,
       });

@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getCoursesTimes, getCoursesTimesById, getCourseDatesByCourseId, getCourseTimesByDate, addCoursesTimes, updateCoursesTimes, deleteCoursesTimes, getCouseseTimeByTimezone } from "./handleRequests";
+import { getCoursesTimes, getCoursesTimesById, getCourseDatesByCourseId, getCourseTimesByDate, getCouseseTimeByTimezone } from "./handleRequests";
 import { toast } from "react-toastify";
 
 
@@ -98,48 +98,6 @@ export const coursesTimesSlice = createSlice({
         toast.error(payload as string);
         state.loading = false
 
-      });
-
-    // addCoursesTimes
-    builder
-      .addCase(addCoursesTimes.pending, (state, { payload }) => {
-        state.loading = true
-      })
-      .addCase(addCoursesTimes.fulfilled, (state, { payload }) => {
-        state.loading = false;
-        toast.success("Succsessfull addCoursesTimes");
-      })
-      .addCase(addCoursesTimes.rejected, (state, { payload }) => {
-        state.loading = false;
-        toast.error(payload as string);
-      });
-
-    // updateCoursesTimes
-    builder
-      .addCase(updateCoursesTimes.pending, (state, { payload }) => {
-        state.loading = true
-      })
-      .addCase(updateCoursesTimes.fulfilled, (state, { payload }) => {
-        state.loading = false;
-        toast.success("Succsessfull updateCoursesTimes");
-      })
-      .addCase(updateCoursesTimes.rejected, (state, { payload }) => {
-        state.loading = false;
-        toast.error(payload as string);
-      });
-
-    // deleteCoursesTimes
-    builder
-      .addCase(deleteCoursesTimes.pending, (state, { payload }) => {
-        state.loading = true
-      })
-      .addCase(deleteCoursesTimes.fulfilled, (state, { payload }) => {
-        state.loading = false;
-        toast.success("Succsessfull deleteCoursesTimes");
-      })
-      .addCase(deleteCoursesTimes.rejected, (state, { payload }) => {
-        state.loading = false;
-        toast.error(payload as string);
       });
   },
 });

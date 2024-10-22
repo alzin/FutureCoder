@@ -35,10 +35,17 @@ export default function HomePage() {
       description: t.raw("homePage.coursesSection.description"),
       viewAllBtn: t.raw("homePage.coursesSection.viewAllBtn"),
       href: t.raw("homePage.coursesSection.href"),
-      courses: t.raw("homePage.coursesSection.courses")
+      courses: t.raw("homePage.coursesSection.courses"),
+      viewCourseBtn: t.raw("homePage.coursesSection.viewCourseBtn")
+    },
+
+    latestBlogSection: {
+      title: t.raw("homePage.latestBlogSection.title"),
+      readMoreBtn: t.raw("homePage.latestBlogSection.readMoreBtn")
     },
 
     testimonialSection: {
+      title: t.raw("homePage.testimonialSection.title"),
       testimonials: t.raw("homePage.testimonialSection.testimonials")
     },
 

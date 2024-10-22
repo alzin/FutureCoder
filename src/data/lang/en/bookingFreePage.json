@@ -1,0 +1,44 @@
+{
+  "bookingFreePage": {
+    "pageName": "bookingFreePage",
+    "link": "/booking-free",
+    "lang": "en",
+    "bookFreeSection": {
+      "nextBtn": "Next",
+      "previousBtn": "Previous",
+      "stepOne": {
+        "label": "Step 1",
+        "title": "All Courses",
+        "coursesList": {
+          "title": "Course Title",
+          "age": "Target Age",
+          "years": "Years",
+          "showTimesBtn": "Show Dates and Times"
+        }
+      },
+      "stepTwo": {
+        "label": "Step 2",
+        "noSelectMsg": "Please Select Time for free session",
+        "Times": "Times",
+        "date": "Date",
+        "time": "Time",
+        "nextBtn": "Next",
+        "previousBtn": "Previous"
+      },
+      "stepThree": {
+        "label": "Step 3",
+        "agePlaceholder": "Enter your Age",
+        "firstNamePlaceholder": "Enter your First Name",
+        "lastNamePlaceholder": "Enter your Last Name",
+        "emailPlaceholder": "Enter your Email",
+        "nextBtn": "Next",
+        "previousBtn": "Previous"
+      },
+      "stepFour": {
+        "label": "Finished",
+        "verifyEmail": "Verify Your Email",
+        "weSent": "We sent a verification link to your email address. Please check it"
+      }
+    }
+  }
+}

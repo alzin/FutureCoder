@@ -83,9 +83,15 @@
           "href": "/courses",
           "image": "/images/image.png"
         }
-      ]
+      ],
+      "viewCourseBtn": "التفاصيل"
+    },
+    "latestBlogSection": {
+      "title": "اخر المدونات",
+      "readMoreBtn": "قراءة المزيد"
     },
     "testimonialSection": {
+      "title": "الشهادات",
       "testimonials": [
         {
           "id": 1,

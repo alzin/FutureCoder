@@ -1,6 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { Api } from "@/constants/api";
-import { headers } from "@/constants/headers";
+import { Api, headers } from "@/constants";
 
 
 // get all coursesTimes
@@ -116,80 +115,3 @@ export const getCouseseTimeByTimezone: any = createAsyncThunk(
     }
   }
 )
-
-// add CoursesTimes
-export const addCoursesTimes = createAsyncThunk(
-  "coursesTimes/addCoursesTimes",
-  async (
-    { coursesTimesData }: { coursesTimesData: FormData },
-    { rejectWithValue }
-  ) => {
-    try {
-      const response = await fetch(`${Api}/courses_time`, {
-        method: "POST",
-        headers,
-        body: JSON.stringify(coursesTimesData),
-      });
-      const data = await response.json();
-
-      if (response.ok) {
-        return data;
-      } else {
-        return rejectWithValue(data);
-      }
-    } catch (error: any) {
-      return rejectWithValue(error.message);
-    }
-  }
-);
-
-//  update CoursesTimes
-export const updateCoursesTimes = createAsyncThunk(
-  "coursesTimes/updateCoursesTimes",
-  async ({ newCoursesTimesData, coursesTimesId }: { newCoursesTimesData: FormData, coursesTimesId: string }, { rejectWithValue }) => {
-
-    newCoursesTimesData.append("_method", "put");
-
-    try {
-      const response = await fetch(`${Api}/courses_time/${coursesTimesId}`, {
-        method: "POST",
-        headers: {
-
-        },
-        body: JSON.stringify(newCoursesTimesData),
-      });
-      const data = await response.json();
-
-      if (response.ok) {
-        return data;
-      } else {
-        return rejectWithValue(data);
-      }
-    } catch (error: any) {
-      return rejectWithValue(error.message);
-    }
-  }
-);
-
-// delete CoursesTimes
-export const deleteCoursesTimes = createAsyncThunk(
-  "coursesTimes/deleteCoursesTimes",
-  async ({ coursesTimesId }: { coursesTimesId: string }, { rejectWithValue }) => {
-
-    try {
-      const response = await fetch(`${Api}/courses_time?id=${coursesTimesId}`, {
-        method: "DELETE",
-        headers,
-      });
-      const data = await response.json();
-
-      if (response.ok) {
-        return data;
-      } else {
-        return rejectWithValue(data);
-      }
-    } catch (error: any) {
-      return rejectWithValue(error.message);
-    }
-  }
-);

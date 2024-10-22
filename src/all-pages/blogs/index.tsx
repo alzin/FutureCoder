@@ -12,7 +12,7 @@ const index = ({ data }: any) => {
     return (
         <>
             <Header data={data.headerSection} />
-            <BlogsList />
+            <BlogsList data={data.blogsListSection} lang={data.lang} />
             <Footer data={data.footerSection} />
         </>
     )

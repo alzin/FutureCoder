@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getCourses, getAvilableCourses, getCourseById, getCoursesByAge, addCourse, updateCourse, deleteCourse } from "./handleRequests";
+import { getCourses, getAvilableCourses, getCourseById } from "./handleRequests";
 import { toast } from "react-toastify";
 
 
@@ -30,8 +30,8 @@ export const coursesSlice = createSlice({
         state.totalCount = 0
       })
       .addCase(getCourses.fulfilled, (state, { payload }) => {
-        state.courses = payload[0].data.data
-        state.totalCount = payload[0].data.total
+        state.courses = payload.data.data
+        state.totalCount = payload.data.total
         // toast.success("Succsessfull getCourses");
       })
       .addCase(getCourses.rejected, (state, { payload }) => {
@@ -59,68 +59,10 @@ export const coursesSlice = createSlice({
         state.findCourse = null
       })
       .addCase(getCourseById.fulfilled, (state, { payload }) => {
-        state.findCourse = payload[0].data
+        state.findCourse = payload.data
         // toast.success("Succsessfull getCourseById");
       })
       .addCase(getCourseById.rejected, (state, { payload }) => {
-        toast.error(payload as string);
-      });
-
-    // getCoursesByAge
-    builder
-      .addCase(getCoursesByAge.pending, (state, { payload }) => {
-        state.coursesByAge = null
-        state.loading = true
-      })
-      .addCase(getCoursesByAge.fulfilled, (state, { payload }) => {
-        state.coursesByAge = payload
-        state.loading = false
-        // toast.success("Succsessfull getCoursesByAge");
-      })
-      .addCase(getCoursesByAge.rejected, (state, { payload }) => {
-        state.loading = false
-        toast.error(payload as string);
-      });
-
-    // addCourse
-    builder
-      .addCase(addCourse.pending, (state, { payload }) => {
-        state.loading = true
-      })
-      .addCase(addCourse.fulfilled, (state, { payload }) => {
-        state.loading = false;
-        toast.success("Succsessfull addCourse");
-      })
-      .addCase(addCourse.rejected, (state, { payload }) => {
-        state.loading = false;
-        toast.error(payload as string);
-      });
-
-    // updateCourse
-    builder
-      .addCase(updateCourse.pending, (state, { payload }) => {
-        state.loading = true
-      })
-      .addCase(updateCourse.fulfilled, (state, { payload }) => {
-        state.loading = false;
-        toast.success("Succsessfull updateCourse");
-      })
-      .addCase(updateCourse.rejected, (state, { payload }) => {
-        state.loading = false;
-        toast.error(payload as string);
-      });
-
-    // deleteCourse
-    builder
-      .addCase(deleteCourse.pending, (state, { payload }) => {
-        state.loading = true
-      })
-      .addCase(deleteCourse.fulfilled, (state, { payload }) => {
-        state.loading = false;
-        toast.success("Succsessfull deleteCourse");
-      })
-      .addCase(deleteCourse.rejected, (state, { payload }) => {
-        state.loading = false;
         toast.error(payload as string);
       });
   },

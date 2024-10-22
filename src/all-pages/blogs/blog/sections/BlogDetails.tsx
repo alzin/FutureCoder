@@ -14,17 +14,18 @@ import LoadingData from '@/shared-components/LoadingData';
 interface BlogDetailsProps {
     data: Record<string, any>;
     id: string
+    lang: string
 }
 
 
-const BlogDetails: React.FC<BlogDetailsProps> = ({ data, id }) => {
+const BlogDetails: React.FC<BlogDetailsProps> = ({ data, id, lang }) => {
 
     const dispatch = useDispatch()
     const { findBlog } = useSelector((state: any) => state.blogs)
 
     useEffect(() => {
-        dispatch(getBlogById({ blogId: id }))
-    }, [dispatch, id])
+        dispatch(getBlogById({ blogId: id, lang }))
+    }, [dispatch, id, lang])
 
     return (
         <Container>
@@ -65,7 +66,7 @@ const BlogDetails: React.FC<BlogDetailsProps> = ({ data, id }) => {
                     <p>{findBlog?.description}</p>
 
                     <div className="tags">
-                        <h1 className='my-20 text-2xl font-black text-purple-700'>Tags</h1>
+                        <h1 className='my-20 text-2xl font-black text-purple-700'>{data.tags}</h1>
                     </div>
                 </div>
             </LoadingData>

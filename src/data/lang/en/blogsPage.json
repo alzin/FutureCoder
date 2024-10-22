@@ -1,7 +1,10 @@
 {
   "blogsPage": {
-    "pageName":"Blogs",
-    "link":"/blogs",
-    "lang": "en"
+    "pageName": "Blogs",
+    "link": "/blogs",
+    "lang": "en",
+    "blogsListSection": {
+      "readMoreBtn": "Show More"
+    }
   }
 }

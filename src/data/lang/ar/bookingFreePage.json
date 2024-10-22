@@ -1,0 +1,44 @@
+{
+  "bookingFreePage": {
+    "pageName": "bookingFreePage",
+    "link": "/booking-free",
+    "lang": "ar",
+    "bookFreeSection": {
+      "nextBtn": "التالي",
+      "previousBtn": "السابق",
+      "stepOne": {
+        "label": "الخطوة 1",
+        "title": "جميع الدروس",
+        "coursesList": {
+          "title": "عنوان الدرس",
+          "age": "العمر المستهدف",
+          "years": "سنين",
+          "showTimesBtn": "عرض التواريخ والأوقات"
+        }
+      },
+      "stepTwo": {
+        "label": "الخطوة 2",
+        "noSelectMsg": "الرجاء تحديد الوقت للجلسة المجانية",
+        "times": "الأوقات",
+        "date": "التاريخ",
+        "time": "الوقت",
+        "nextBtn": "التالي",
+        "previousBtn": "السابق"
+      },
+      "stepThree": {
+        "label": "الخطوة 3",
+        "agePlaceholder": "أدخل عمرك",
+        "firstNamePlaceholder": "أدخل اسمك الأول",
+        "lastNamePlaceholder": "أدخل اسمك الأخير",
+        "emailPlaceholder": "أدخل بريدك الإلكتروني",
+        "nextBtn": "التالي",
+        "previousBtn": "السابق"
+      },
+      "stepFour": {
+        "label": "انتهى",
+        "verifyEmail": "التحقق من البريد الإلكتروني الخاص بك",
+        "weSent": "لقد أرسلنا رابط التحقق إلى عنوان بريدك الإلكتروني. يرجى التحقق من ذلك"
+      }
+    }
+  }
+}

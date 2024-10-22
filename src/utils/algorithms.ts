@@ -12,3 +12,5 @@ export const logFormDataValues = (formData: FormData) => {
         console.log(`Name: ${name}, Value: ${value}`);
     });
 }
+
+export const sleep = (delay: number) => new Promise((resolve) => setTimeout(resolve, delay))

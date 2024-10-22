@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getBlogs, getLastBlogs, getBlogById, addBlog, updateBlog, deleteBlog } from "./handleRequests";
+import { getBlogs, getLastBlogs, getBlogById } from "./handleRequests";
 import { toast } from "react-toastify";
 
 
@@ -69,48 +69,6 @@ export const blogsSlice = createSlice({
         // toast.success("Succsessfull getBlogById");
       })
       .addCase(getBlogById.rejected, (state, { payload }) => {
-        state.loading = false;
-        toast.error(payload as string);
-      });
-
-    // addBlog
-    builder
-      .addCase(addBlog.pending, (state, { payload }) => {
-        state.loading = true
-      })
-      .addCase(addBlog.fulfilled, (state, { payload }) => {
-        state.loading = false;
-        toast.success("Succsessfull addBlog");
-      })
-      .addCase(addBlog.rejected, (state, { payload }) => {
-        state.loading = false;
-        toast.error(payload as string);
-      });
-
-    // updateBlog
-    builder
-      .addCase(updateBlog.pending, (state, { payload }) => {
-        state.loading = true
-      })
-      .addCase(updateBlog.fulfilled, (state, { payload }) => {
-        state.loading = false;
-        toast.success("Succsessfull updateBlog");
-      })
-      .addCase(updateBlog.rejected, (state, { payload }) => {
-        state.loading = false;
-        toast.error(payload as string);
-      });
-
-    // deleteBlog
-    builder
-      .addCase(deleteBlog.pending, (state, { payload }) => {
-        state.loading = true
-      })
-      .addCase(deleteBlog.fulfilled, (state, { payload }) => {
-        state.loading = false;
-        toast.success("Succsessfull deleteBlog");
-      })
-      .addCase(deleteBlog.rejected, (state, { payload }) => {
         state.loading = false;
         toast.error(payload as string);
       });

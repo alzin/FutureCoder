@@ -13,6 +13,7 @@ import Container from '@/shared-components/Container';
 import LoadingData from '@/shared-components/LoadingData';
 import CourseCard from './components/CourseCard';
 import { getCourses } from '@/services/courses/handleRequests';
+import { currentLanguage } from '@/constants';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -26,17 +27,19 @@ interface CoursesProps {
         description: string;
         href: string;
         viewAllBtn: string;
+        viewCourseBtn: string
     };
+    lang: string
 }
 
-const Courses: React.FC<CoursesProps> = ({ data }) => {
+const Courses: React.FC<CoursesProps> = ({ data, lang }) => {
 
     const { courses, currentPage } = useSelector((state: any) => state.courses)
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(getCourses({ currentPage }))
-    }, [dispatch, currentPage])
+        dispatch(getCourses({ currentPage, lang }))
+    }, [dispatch, currentPage, lang])
 
     return (
         <Container>
@@ -97,7 +100,7 @@ const Courses: React.FC<CoursesProps> = ({ data }) => {
                                         exit={{ opacity: 0, y: -50 }}
                                         transition={{ duration: 0.5, delay: 0.1 * index }}
                                     >
-                                        <CourseCard courseData={course} />
+                                        <CourseCard courseData={course} viewCourseBtn={data.viewCourseBtn} />
                                     </motion.div>
                                 </SwiperSlide>
                             ))}

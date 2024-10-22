@@ -20,9 +20,11 @@ interface CourseCalendar {
     bookingData: BookingFreeCourse;
     setBookingData: React.Dispatch<React.SetStateAction<BookingFreeCourse>>;
     setCurrentStep: React.Dispatch<React.SetStateAction<number>>
+    lang: string
+    data: any
 }
 
-const CourseCalendar: React.FC<CourseCalendar> = ({ bookingData, setBookingData, setCurrentStep }) => {
+const CourseCalendar: React.FC<CourseCalendar> = ({ bookingData, setBookingData, setCurrentStep, lang, data }) => {
 
     const dispatch = useDispatch()
     const { timeZone } = useCurrentTimezone()
@@ -70,7 +72,7 @@ const CourseCalendar: React.FC<CourseCalendar> = ({ bookingData, setBookingData,
         e.preventDefault()
 
         if (!bookingData.sessionTimings) {
-            toast.warning("Please Select Time for free session")
+            toast.warning(data.noSelectMsg)
             return
         }
         setCurrentStep(prev => Math.min(4 - 1, prev + 1))
@@ -100,29 +102,28 @@ const CourseCalendar: React.FC<CourseCalendar> = ({ bookingData, setBookingData,
                         onChange={handelSelectDate}
                         mapDays={courseTimes && isValidDate}
                     />
-                    <div className='max-h-full w-40 flex flex-col items-center justify-start text-sm pb-2 '>
-                        <p className='pt-4 pb-3 border-b-2 w-full text-center'>Times {timeZone}</p>
+                    <div className='max-h-full w-40 flex flex-col items-center justify-start text-sm pb-2'>
+                        <p className='pt-4 pb-3 border-b-2 w-full text-center'>{data.times} - {timeZone}</p>
                         <div className='max-h-[310px] overflow-y-auto overflow-x-hidden gap-2 scroll flex flex-col items-center w-full p-2' style={{ scrollbarWidth: "thin" }}>
                             {reservation.date && courseTimes?.filter((item: any) => item.SessionTimings === reservation.date).map((item: any, index: number) =>
                                 <Button key={index} color="primary" size="sm" className='m-0 min-h-8 w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-600 hover:to-pink-600 transition-colors duration-300' onClick={() => handelSelectTime(item)}>{item.startTime} - {item.endTime}</Button>
                             )}
                         </div>
-
                     </div>
                 </motion.div>
 
                 <motion.div
-                    className='my-10 text-center block'
+                    className='my-10 flex flex-col items-start'
                     initial={{ opacity: 0, x: -50 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: 0.5 }}
                 >
-                    <span className='text-left block'>
-                        <b className='text-purple-500 '>Date : </b>
+                    <span className='block'>
+                        <b className='text-purple-500 '>{data.date} : </b>
                         <p className='text-gray-500 inline'>{reservation.date}</p>
                     </span>
-                    <span className='text-left block'>
-                        <b className='text-purple-500'>Time :</b>
+                    <span className='block'>
+                        <b className='text-purple-500'>{data.time} :</b>
                         <p className='text-gray-500 inline'>{reservation.time}</p>
                     </span>
                 </motion.div>
@@ -132,9 +133,11 @@ const CourseCalendar: React.FC<CourseCalendar> = ({ bookingData, setBookingData,
                         onClick={() => setCurrentStep(prev => Math.max(0, prev - 1))}
                         className='bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-600 hover:to-pink-600 transition-colors duration-300'
                     >
-                        Previous
+                        {data.previousBtn}
                     </Button>
-                    <Button isLoading={loading} className='bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-600 hover:to-pink-600 transition-colors duration-300' type='submit'>Next</Button>
+                    <Button isLoading={loading} className='bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-600 hover:to-pink-600 transition-colors duration-300' type='submit'>
+                        {data.nextBtn}
+                    </Button>
 
                 </form>
             </LoadingData>

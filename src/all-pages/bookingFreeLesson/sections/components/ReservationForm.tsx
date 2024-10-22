@@ -13,9 +13,11 @@ interface ReservationFormProps {
   bookingData: BookingFreeCourse;
   setBookingData: React.Dispatch<React.SetStateAction<BookingFreeCourse>>;
   setCurrentStep: React.Dispatch<React.SetStateAction<number>>
+  data: any
+
 }
 
-const ReservationForm: React.FC<ReservationFormProps> = ({ bookingData, setBookingData, setCurrentStep }) => {
+const ReservationForm: React.FC<ReservationFormProps> = ({ bookingData, setBookingData, setCurrentStep, data }) => {
 
   const { loading } = useSelector((state: any) => state.bookings)
   const { setValue, clearAll } = useLocalStorage()
@@ -57,7 +59,7 @@ const ReservationForm: React.FC<ReservationFormProps> = ({ bookingData, setBooki
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}
         type='number'
-        placeholder="Enter your Age"
+        placeholder={data.agePlaceholder}
         className='p-2 outline-purple-400 w-full bg-gray-100 hover:bg-gray-200 rounded-xl'
         name='age'
         required
@@ -71,7 +73,7 @@ const ReservationForm: React.FC<ReservationFormProps> = ({ bookingData, setBooki
         transition={{ duration: 0.5, delay: 0.4 }}
         type='text'
         className='p-2 outline-purple-400 w-full bg-gray-100 hover:bg-gray-200 rounded-xl'
-        placeholder="Enter your First Name"
+        placeholder={data.firstNamePlaceholder}
         name="firstName"
         required
         value={bookingData.firstName}
@@ -82,7 +84,7 @@ const ReservationForm: React.FC<ReservationFormProps> = ({ bookingData, setBooki
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5, delay: 0.6 }}
         type='text'
-        placeholder="Enter your Last Name"
+        placeholder={data.lastNamePlaceholder}
         name="lastName"
         className='p-2 outline-purple-400 w-full bg-gray-100 hover:bg-gray-200 rounded-xl'
         required
@@ -94,7 +96,7 @@ const ReservationForm: React.FC<ReservationFormProps> = ({ bookingData, setBooki
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5, delay: 0.8 }}
         type='email'
-        placeholder="Enter your Email"
+        placeholder={data.emailPlaceholder}
         className='p-2 outline-purple-400 w-full bg-gray-100 hover:bg-gray-200 rounded-xl'
         name='email'
         required
@@ -108,7 +110,7 @@ const ReservationForm: React.FC<ReservationFormProps> = ({ bookingData, setBooki
           onClick={() => setCurrentStep(prev => Math.max(0, prev - 1))}
           className='bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-600 hover:to-pink-600 transition-colors duration-300'
         >
-          Previous
+          {data.previousBtn}
         </Button>
 
         <Button
@@ -116,7 +118,7 @@ const ReservationForm: React.FC<ReservationFormProps> = ({ bookingData, setBooki
           type='submit'
           className="bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-600 hover:to-pink-600 transition-colors duration-300"
         >
-          Next
+          {data.nextBtn}
         </Button>
       </div>
 

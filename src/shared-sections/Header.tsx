@@ -1,11 +1,12 @@
 "use client";
 
 import React from 'react';
-import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button, NavbarMenuToggle, NavbarMenu, NavbarMenuItem } from "@nextui-org/react";
+import { Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuToggle, NavbarMenu, NavbarMenuItem } from "@nextui-org/react";
+import { Link } from '@/navigation';
 import { motion } from "framer-motion";
 import { BookOpen, Home, PenTool } from "lucide-react";
 import RobotLogo from "./components/RobotLogo"
-// import SelectLanguage from "./components/SelectLanguage";
+import SelectLanguage from "./components/SelectLanguage";
 
 
 interface HeaderProps {
@@ -41,7 +42,7 @@ const Header: React.FC<HeaderProps> = ({ data }) => {
                         </Link>
                     </NavbarMenuItem>
                 ))}
-                {/* <SelectLanguage lang={data.langList} localeActive={data.lang} /> */}
+                <SelectLanguage lang={data.langList} localeActive={data.lang} />
             </NavbarMenu>
 
             {/* nav items */}
@@ -66,7 +67,7 @@ const Header: React.FC<HeaderProps> = ({ data }) => {
                     </NavbarItem>
                 ))}
 
-                {/* <SelectLanguage lang={data.langList} localeActive={data.lang} /> */}
+                <SelectLanguage lang={data.langList} localeActive={data.lang} />
             </NavbarContent>
 
             {/* logo */}

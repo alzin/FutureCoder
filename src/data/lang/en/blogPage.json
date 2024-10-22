@@ -1,0 +1,9 @@
+{
+  "blogPage": {
+    "pageName": "Blog",
+    "lang": "en",
+    "blogDetailsSection": {
+      "tags": "Tags"
+    }
+  }
+}

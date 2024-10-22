@@ -14,7 +14,7 @@ const index = ({ data }: any) => {
     return (
         <>
             <Header data={data.headerSection} />
-            <CoursesList />
+            <CoursesList data={data.coursesListSection} lang={data.lang} />
             <Footer data={data.footerSection} />
         </>
     )

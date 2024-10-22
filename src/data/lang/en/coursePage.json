@@ -1,0 +1,17 @@
+{
+  "coursePage": {
+    "pageName": "Courses",
+    "link": "/courses",
+    "lang": "en",
+    "courseDetailsSection": {
+      "age": "Target Age",
+      "duration": "Duration",
+      "teacher": "Teacher",
+      "courseStart": "Course Start ",
+      "buyBtn": "Buy Now",
+      "years": "Years",
+      "hours": "Hours",
+      "outline": "Course Outline"
+    }
+  }
+}

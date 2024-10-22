@@ -83,9 +83,15 @@
           "href": "/courses",
           "image": "/images/image.png"
         }
-      ]
+      ],
+      "viewCourseBtn": "View Details"
+    },
+    "latestBlogSection": {
+      "title": "Latest Blog Posts",
+      "readMoreBtn": "Show More"
     },
     "testimonialSection": {
+      "title": "Testimonials",
       "testimonials": [
         {
           "id": 1,
