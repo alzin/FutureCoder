@@ -22,7 +22,12 @@ export default function FreeLessonPage() {
     },
 
     bookFreeSection: {
-      courses: t.raw("homePage.coursesSection.courses")
+      nextBtn: t.raw("bookingFreePage.bookFreeSection.nextBtn"),
+      previousBtn: t.raw("bookingFreePage.bookFreeSection.previousBtn"),
+      stepOne: t.raw("bookingFreePage.bookFreeSection.stepOne"),
+      stepTwo: t.raw("bookingFreePage.bookFreeSection.stepTwo"),
+      stepThree: t.raw("bookingFreePage.bookFreeSection.stepThree"),
+      stepFour: t.raw("bookingFreePage.bookFreeSection.stepFour"),
     },
 
     footerSection: {

@@ -14,14 +14,15 @@ interface HeroProps {
         hrefLesson: string;
         heroImage: string;
     };
+    lang: string
 }
 
-const Hero: React.FC<HeroProps> = ({ data }) => {
+const Hero: React.FC<HeroProps> = ({ data, lang }) => {
     return (
         <Container>
             <section id='hero' className='mt-20 lg:my-0 lg:min-h-[calc(100vh-4rem)] w-full flex items-center lg:items-center justify-between gap-20 lg:gap-1 flex-col lg:flex-row'>
                 <motion.div
-                    className='lg:w-[55%] lg:text-left text-center'
+                    className={`lg:w-[55%] ${lang === "en" ? "lg:text-left" : "lg:text-right"} text-center items-center`}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}

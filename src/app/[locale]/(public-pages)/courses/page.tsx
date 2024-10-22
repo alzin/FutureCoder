@@ -20,7 +20,12 @@ export default function CoursesPage() {
       logIn: t.raw("shared.headerSection.logIn"),
       lang: t.raw("shared.lang"),
     },
-
+    coursesListSection: {
+      age: t.raw("coursesPage.coursesListSection.age"),
+      duration: t.raw("coursesPage.coursesListSection.duration"),
+      outline: t.raw("coursesPage.coursesListSection.outline"),
+      detailsBtn: t.raw("coursesPage.coursesListSection.detailsBtn"),
+    },
     footerSection: {
       links: t.raw("shared.footerSection.links"),
       subscribe: t.raw("shared.footerSection.subscribe"),

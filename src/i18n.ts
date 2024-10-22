@@ -12,8 +12,12 @@ export default getRequestConfig(async ({ locale }) => {
     messages: {
       ...(await import(`./data/lang/${locale}/homePage.json`)),
       ...(await import(`./data/lang/${locale}/coursesPage.json`)),
+      ...(await import(`./data/lang/${locale}/coursePage.json`)),
       ...(await import(`./data/lang/${locale}/blogsPage.json`)),
+      ...(await import(`./data/lang/${locale}/blogPage.json`)),
+      ...(await import(`./data/lang/${locale}/bookingFreePage.json`)),
       ...(await import(`./data/lang/${locale}/shared.json`)),
+
     },
   };
 });

@@ -19,11 +19,11 @@ const index = ({ data }: any) => {
     return (
         <>
             <Header data={data.headerSection} />
-            <Hero data={data.heroSection} />
+            <Hero data={data.heroSection} lang={data.lang} />
             <Features data={data.featuresSection} />
-            <Courses data={data.coursesSection} />
-            <LastBlogs data={data.headerSection} />
-            <Testimonials data={data.testimonialSection} />
+            <Courses data={data.coursesSection} lang={data.lang} />
+            <LastBlogs data={data.latestBlogSection} lang={data.lang} />
+            <Testimonials data={data.testimonialSection} lang={data.lang} />
             <Footer data={data.footerSection} />
             <WhatsappContact link="https://wa.me/message/WMTMY6ZZOZ2KH1" />
         </>

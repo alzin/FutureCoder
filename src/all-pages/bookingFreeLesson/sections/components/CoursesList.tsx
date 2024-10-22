@@ -11,12 +11,14 @@ import { setCurrentPage } from '@/services/courses/coursesSlice';
 import useCurrentTimezone from '@/hooks/useCurrentTimezone';
 
 interface CoursesListProps {
-    bookingData: BookingFreeCourse;
+    // bookingData: BookingFreeCourse;
     setBookingData: React.Dispatch<React.SetStateAction<BookingFreeCourse>>;
     setCurrentStep: React.Dispatch<React.SetStateAction<number>>
+    data: any
+
 }
 
-const CoursesList: React.FC<CoursesListProps> = ({ bookingData, setBookingData, setCurrentStep }) => {
+const CoursesList: React.FC<CoursesListProps> = ({ setBookingData, setCurrentStep, data }) => {
 
     const dispatch = useDispatch()
     const { setValue } = useLocalStorage()
@@ -45,7 +47,7 @@ const CoursesList: React.FC<CoursesListProps> = ({ bookingData, setBookingData, 
 
     return (
         <div id="CoursesList" className='w-full'>
-            <span className='text-3xl font-bold pb-5 block text-purple-700'>All Courses  : </span>
+            <span className='text-3xl font-bold pb-5 block text-purple-700'>{data.title}  : </span>
             <LoadingData data={courses} emptyMessage="Not Found any Course for this age">
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full gap-5 '>
                     {courses?.map((item: any, index: number) =>
@@ -71,19 +73,19 @@ const CoursesList: React.FC<CoursesListProps> = ({ bookingData, setBookingData, 
                                 <CardFooter className="text-small flex-col">
                                     <div className='flex items-start flex-col pb-3 w-full'>
                                         <span className='text-sm text-center'>
-                                            <b className='text-purple-500'>Course Title : </b>
+                                            <b className='text-purple-500'>{data.coursesList.title} : </b>
                                             <p className='text-gray-500 inline'>{item.title}</p>
                                         </span>
                                         <span className="text-sm text-center">
-                                            <b className='text-purple-500'>Course Age :  </b>
-                                            <p className='text-gray-500 inline'>{item.min_age} - {item.max_age} year</p>
+                                            <b className='text-purple-500'>{data.coursesList.age} :  </b>
+                                            <p className='text-gray-500 inline'>{item.min_age} - {item.max_age} {data.coursesList.years}</p>
                                         </span>
                                     </div>
                                     <Button
                                         className="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-600 hover:to-pink-600 transition-colors duration-300"
                                         onClick={() => handleSelectCourse(item.id)}
                                     >
-                                        Show Dates and Times
+                                        {data.coursesList.showTimesBtn}
                                     </Button>
                                 </CardFooter>
                             </Card>

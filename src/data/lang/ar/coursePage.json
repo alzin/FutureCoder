@@ -1,0 +1,17 @@
+{
+  "coursePage": {
+    "pageName": "Courses",
+    "link": "/courses",
+    "lang": "ar",
+    "courseDetailsSection": {
+      "age": "العمر المستهدف",
+      "duration": "المدة",
+      "teacher": "المدرس",
+      "courseStart": "بداية الدرس",
+      "buyBtn": "اشتري الآن",
+      "years": "سنين",
+      "hours": "ساعات",
+      "outline": "مخطط الدرس"
+    }
+  }
+}

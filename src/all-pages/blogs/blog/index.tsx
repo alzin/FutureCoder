@@ -18,7 +18,7 @@ const index: React.FC<BlogProps> = ({ data, id }) => {
     return (
         <>
             <Header data={data.headerSection} />
-            <BlogDetails data={data} id={id} />
+            <BlogDetails data={data.blogDetailsSection} id={id} lang={data.lang} />
             <Footer data={data.footerSection} />
         </>
     )

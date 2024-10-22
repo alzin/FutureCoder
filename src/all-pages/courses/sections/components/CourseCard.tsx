@@ -6,9 +6,16 @@ import { motion } from 'framer-motion';
 
 interface CourseCard {
     courseData: Course
+    lang: string
+    data: {
+        age: string,
+        duration: string,
+        outline: string,
+        detailsBtn: string
+    }
 }
 
-const CourseCard: React.FC<CourseCard> = ({ courseData }) => {
+const CourseCard: React.FC<CourseCard> = ({ courseData, lang, data }) => {
     return (
         <motion.div
             whileHover={{ y: -10 }}
@@ -27,24 +34,24 @@ const CourseCard: React.FC<CourseCard> = ({ courseData }) => {
                     />
                 </CardHeader>
 
-                <CardBody className="px-7">
+                <CardBody className={`px-7 flex flex-col items-start ${lang === "en" ? "text-left" : "text-right"}`}>
                     <h1 className="text-2xl font-bold text-purple-700">{courseData?.title}</h1>
-                    <p className="my-3 text-gray-500 line-clamp-2">{courseData?.description}</p>
+                    <p className="my-3 px-1 text-gray-500 line-clamp-2">{courseData?.description}</p>
 
                     <div className='flex items-center justify-between pb-3 w-full'>
                         <p className='text-sm text-center text-gray-500'>${courseData?.price}</p>
                         <span className="text-sm text-center">
-                            <b className="text-purple-500 inline">Age:</b>
+                            <b className="text-purple-500 inline">{data.age}:</b>
                             <p className="inline text-gray-500">{courseData?.min_age}-{courseData.max_age} years</p>
                         </span>
                     </div>
 
                     <span>
-                        <b className="text-purple-500 inline">Duration : </b>
+                        <b className="text-purple-500 inline">{data.duration} : </b>
                         <p className="inline text-gray-500">{courseData?.duration_in_session} Hours</p>
                     </span>
                     <span>
-                        <b className="text-purple-500 inline">Course Outline : </b>
+                        <b className="text-purple-500 inline">{data.outline} : </b>
                         <p className="inline text-gray-500">{courseData?.course_outline}</p>
                     </span>
                 </CardBody>
@@ -55,7 +62,7 @@ const CourseCard: React.FC<CourseCard> = ({ courseData }) => {
                         href={`/courses/${courseData.id}`}
                         className="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-600 hover:to-pink-600 transition-colors duration-300"
                     >
-                        View Details
+                        {data.detailsBtn}
                     </Button>
                 </CardFooter>
             </Card>

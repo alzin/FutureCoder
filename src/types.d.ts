@@ -17,6 +17,16 @@ type Course = {
     course_start_date: string,
 }
 
+type Testimonial = {
+    id: string;
+    rating: number;
+    description: string;
+    user: {
+        firstName: string;
+        lastName: string;
+    }
+}
+
 type Blog = {
     id: string,
     title: string,

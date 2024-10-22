@@ -1,7 +1,13 @@
 {
   "coursesPage": {
-    "pageName":"Courses",
-    "link":"/courses",
-    "lang": "en"
+    "pageName": "Courses",
+    "link": "/courses",
+    "lang": "en",
+    "coursesListSection": {
+      "age": "Age",
+      "duration": "Duration",
+      "outline": "Course Outline",
+      "detailsBtn": "View Details"
+    }
   }
 }

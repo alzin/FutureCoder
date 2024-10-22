@@ -9,17 +9,21 @@ import BlogsCard from './components/BlogsCard';
 import { motion } from 'framer-motion';
 
 interface LastBlogsProps {
-    data: Record<string, any>;
+    data: {
+        title: string,
+        readMoreBtn: string
+    }
+    lang: string
 }
 
-const LastBlogs: React.FC<LastBlogsProps> = ({ data }) => {
+const LastBlogs: React.FC<LastBlogsProps> = ({ data, lang }) => {
 
     const { lastBlogs } = useSelector((state: any) => state.blogs)
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(getLastBlogs())
-    }, [dispatch])
+        dispatch(getLastBlogs({ lang }))
+    }, [dispatch, lang])
 
     return (
         <Container>
@@ -30,7 +34,7 @@ const LastBlogs: React.FC<LastBlogsProps> = ({ data }) => {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
                 >
-                    Latest Blog Posts
+                    {data.title}
                 </motion.h1>
                 <LoadingData data={lastBlogs} emptyMessage="Blogs is Empty">
                     <div className="gap-5 grid grid-cols-1 sm:grid-cols-3 w-full mt-7">
@@ -42,7 +46,7 @@ const LastBlogs: React.FC<LastBlogsProps> = ({ data }) => {
                                 exit={{ opacity: 0, y: -50 }}
                                 transition={{ duration: 0.5, delay: 0.1 * index }}
                             >
-                                <BlogsCard key={item.id} blogData={item} />
+                                <BlogsCard key={item.id} blogData={item} readMoreBtn={data.readMoreBtn} lang={lang} />
                             </motion.div>
                         ))}
                     </div>

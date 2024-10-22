@@ -1,13 +1,12 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { Api } from "@/constants/api";
-import { headers } from "@/constants/headers";
+import { Api, headers } from "@/constants";
 
 // get all blogs
 export const getBlogs: any = createAsyncThunk(
   "blogs/getBlogs",
-  async ({ currentPage }: { currentPage: number }, { rejectWithValue }) => {
+  async ({ currentPage, lang }: { currentPage: number, lang: string }, { rejectWithValue }) => {
     try {
-      const response = await fetch(`${Api}/blogs?page=${currentPage}`, {
+      const response = await fetch(`${Api}/blogs?page=${currentPage}&&language=${lang}`, {
         method: "GET",
         headers,
       });
@@ -27,9 +26,9 @@ export const getBlogs: any = createAsyncThunk(
 // getLastBlogs
 export const getLastBlogs: any = createAsyncThunk(
   "blogs/getLastBlogs",
-  async (_, { rejectWithValue }) => {
+  async ({ lang }: { lang: string }, { rejectWithValue }) => {
     try {
-      const response = await fetch(`${Api}/blogs/lastThree`, {
+      const response = await fetch(`${Api}/blogs/lastThree?language=${lang}`, {
         method: "GET",
         headers,
       });
@@ -49,87 +48,10 @@ export const getLastBlogs: any = createAsyncThunk(
 // get blog by id
 export const getBlogById: any = createAsyncThunk(
   "blogs/getBlogById",
-  async ({ blogId }: { blogId: string }, { rejectWithValue }) => {
+  async ({ blogId, lang }: { blogId: string, lang: string }, { rejectWithValue }) => {
     try {
-      const response = await fetch(`${Api}/blogs?id=${blogId}`, {
+      const response = await fetch(`${Api}/blogs?id=${blogId}&&language=${lang}`, {
         method: "GET",
-        headers,
-      });
-      const data = await response.json();
-
-      if (response.ok) {
-        return data;
-      } else {
-        return rejectWithValue(data);
-      }
-    } catch (error: any) {
-      return rejectWithValue(error.message);
-    }
-  }
-);
-
-// add blog
-export const addBlog = createAsyncThunk(
-  "blogs/addBlog",
-  async (
-    { blogData }: { blogData: FormData },
-    { rejectWithValue }
-  ) => {
-    try {
-      const response = await fetch(`${Api}/blogs`, {
-        method: "POST",
-        headers,
-        body: JSON.stringify(blogData),
-      });
-      const data = await response.json();
-
-      if (response.ok) {
-        return data;
-      } else {
-        return rejectWithValue(data);
-      }
-    } catch (error: any) {
-      return rejectWithValue(error.message);
-    }
-  }
-);
-
-//  update blog
-export const updateBlog = createAsyncThunk(
-  "blogs/updateBlog",
-  async ({ newBlogData, blogId }: { newBlogData: FormData, blogId: string }, { rejectWithValue }) => {
-
-    newBlogData.append("_method", "put");
-
-    try {
-      const response = await fetch(`${Api}/blogs/${blogId}`, {
-        method: "POST",
-        headers: {
-
-        },
-        body: JSON.stringify(newBlogData),
-      });
-      const data = await response.json();
-
-      if (response.ok) {
-        return data;
-      } else {
-        return rejectWithValue(data);
-      }
-    } catch (error: any) {
-      return rejectWithValue(error.message);
-    }
-  }
-);
-
-// delete blog
-export const deleteBlog = createAsyncThunk(
-  "blogs/deleteBlog",
-  async ({ blogId }: { blogId: string }, { rejectWithValue }) => {
-
-    try {
-      const response = await fetch(`${Api}/blogs?id=${blogId}`, {
-        method: "DELETE",
         headers,
       });
       const data = await response.json();

@@ -12,14 +12,19 @@ import BlogsCard from "./components/BlogsCard";
 import LoadingData from '@/shared-components/LoadingData';
 import Container from "@/shared-components/Container";
 
-const BlogsList: React.FC = () => {
+interface BlogsListProps {
+    data: any
+    lang: string
+}
+
+const BlogsList: React.FC<BlogsListProps> = ({ data, lang }) => {
 
     const dispatch = useDispatch()
     const { blogs, currentPage, totalCount } = useSelector((state: any) => state.blogs)
 
     useEffect(() => {
-        dispatch(getBlogs({ currentPage }))
-    }, [dispatch, currentPage])
+        dispatch(getBlogs({ currentPage, lang }))
+    }, [dispatch, currentPage, lang])
 
 
     const handleChangePage = (page: number) => {
@@ -27,7 +32,7 @@ const BlogsList: React.FC = () => {
     }
 
     return (
-        <section className=" overflow-hidden">
+        <section className="overflow-hidden">
             <Container>
                 <LoadingData data={blogs} emptyMessage="Blogs is Empty" className="min-h-[calc(100vh-200px)] w-full mt-[100px]">
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -38,7 +43,7 @@ const BlogsList: React.FC = () => {
                                 whileInView={{ opacity: 1, x: 0 }}
                                 transition={{ duration: 0.5, delay: 0.1 * index }}
                             >
-                                <BlogsCard key={item.id} blogData={item} />
+                                <BlogsCard key={item.id} blogData={item} data={data} lang={lang} />
                             </motion.div>
                         ))}
                     </div>

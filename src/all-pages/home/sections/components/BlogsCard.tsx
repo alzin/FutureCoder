@@ -3,9 +3,11 @@ import Link from 'next/link';
 
 interface BlogsCardProps {
     blogData: Blog
+    readMoreBtn: string
+    lang: string
 }
 
-const BlogsCard: React.FC<BlogsCardProps> = ({ blogData }) => {
+const BlogsCard: React.FC<BlogsCardProps> = ({ blogData, readMoreBtn, lang }) => {
     return (
         <Card className='sm:mb-0 mb-7 border-2 border-purple-200 hover:border-purple-400 transition-colors duration-300 overflow-hidden'>
             <CardHeader className="overflow-visible p-0">
@@ -18,9 +20,9 @@ const BlogsCard: React.FC<BlogsCardProps> = ({ blogData }) => {
                 />
             </CardHeader>
 
-            <CardBody className="px-7 mt-3">
+            <CardBody className={`px-7 mt-3 flex flex-col items-start ${lang === "en" ? "text-left" : "text-right"}`}>
                 <h1 className="text-xl font-bold text-purple-700">{blogData.title}</h1>
-                <p className="my-3 text-purple-500 line-clamp-2">{blogData.description}</p>
+                <p className="my-3 px-1 text-purple-500 line-clamp-2">{blogData.description}</p>
 
                 <div className='flex items-center justify-between pb-3 w-full'>
                     <span>
@@ -36,7 +38,7 @@ const BlogsCard: React.FC<BlogsCardProps> = ({ blogData }) => {
                     href={`blogs/${blogData.id}`}
                     className="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-600 hover:to-pink-600 transition-colors duration-300"
                 >
-                    Show More
+                    {readMoreBtn}
                 </Button>
             </CardFooter>
         </Card>

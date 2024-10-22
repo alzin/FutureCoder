@@ -4,9 +4,10 @@ import { motion } from 'framer-motion';
 
 interface CourseCard {
     courseData: Course
+    viewCourseBtn: string
 }
 
-const CourseCard: React.FC<CourseCard> = ({ courseData }) => {
+const CourseCard: React.FC<CourseCard> = ({ courseData, viewCourseBtn }) => {
     return (
         <motion.div
             whileHover={{ scale: 1.05, rotate: [0, -1, 1, -1, 0] }}
@@ -37,7 +38,7 @@ const CourseCard: React.FC<CourseCard> = ({ courseData }) => {
                         href={`courses/${courseData.id}`}
                         className="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-600 hover:to-pink-600 transition-colors duration-300"
                     >
-                        View Details
+                        {viewCourseBtn}
                     </Button>
                 </CardFooter>
             </Card>

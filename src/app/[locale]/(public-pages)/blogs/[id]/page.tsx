@@ -2,9 +2,8 @@ import type { Metadata } from "next";
 
 import Blog from "@/all-pages/blogs/blog";
 import { useTranslations } from "next-intl";
-import { Api } from "@/constants/api";
-import { headers } from "@/constants/headers";
-
+import { Api, headers } from "@/constants";
+import { cookies } from "next/headers";
 interface BlogPageProps {
   params: { id: string }
 }
@@ -22,7 +21,7 @@ export async function generateMetadata({
   params: { id }
 }: BlogPageProps): Promise<Metadata> {
 
-  const response = await fetch(`${Api}/blogs?id=${id}`, { headers })
+  const response = await fetch(`${Api}/blogs?id=${id}&language=${cookies().get("NEXT_LOCALE")?.value}`, { headers })
   const blog: Blogg = await response.json()
   return {
     title: blog.data.title,
@@ -55,6 +54,10 @@ export default function BlogPage({
       langList: t.raw("shared.headerSection.langList"),
       logIn: t.raw("shared.headerSection.logIn"),
       lang: t.raw("shared.lang"),
+    },
+
+    blogDetailsSection: {
+      tags: t.raw("blogPage.blogDetailsSection.tags")
     },
 
     footerSection: {

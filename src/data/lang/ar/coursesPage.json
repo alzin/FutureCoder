@@ -1,7 +1,13 @@
 {
   "coursesPage": {
-    "pageName":"Courses",
-    "link":"/courses",
-    "lang": "ar"
+    "pageName": "Courses",
+    "link": "/courses",
+    "lang": "ar",
+    "coursesListSection": {
+      "age": "العمر",
+      "duration": "المدة",
+      "outline": "مخطط الدرس",
+      "detailsBtn": "التفاصيل"
+    }
   }
 }

@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { Api } from "@/constants/api";
-import { headers } from "@/constants/headers";
+import { Api, headers } from "@/constants";
+
 // get all guestUsers
 export const getGuestUsers = createAsyncThunk(
   "guestUsers/getGuestUsers",

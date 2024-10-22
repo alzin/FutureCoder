@@ -21,7 +21,9 @@ export default function BlogsPage() {
       logIn: t.raw("shared.headerSection.logIn"),
       lang: t.raw("shared.lang"),
     },
-
+    blogsListSection: {
+      readMoreBtn: t.raw("blogsPage.blogsListSection.readMoreBtn"),
+    },
     footerSection: {
       links: t.raw("shared.footerSection.links"),
       subscribe: t.raw("shared.footerSection.subscribe"),
