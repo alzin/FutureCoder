@@ -7,7 +7,9 @@
       "age": "Age",
       "duration": "Duration",
       "outline": "Course Outline",
-      "detailsBtn": "View Details"
+      "detailsBtn": "View Details",
+      "years": "Years",
+      "hours": "Hours"
     }
   }
 }

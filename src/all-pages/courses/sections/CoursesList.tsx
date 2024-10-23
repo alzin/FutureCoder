@@ -18,7 +18,9 @@ interface CoursesListProps {
         age: string,
         duration: string,
         outline: string,
-        detailsBtn: string
+        detailsBtn: string,
+        years: string,
+        hours: string
     }
 }
 

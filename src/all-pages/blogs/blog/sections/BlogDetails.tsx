@@ -63,11 +63,11 @@ const BlogDetails: React.FC<BlogDetailsProps> = ({ data, id, lang }) => {
                         />
                     </motion.div>
 
-                    <p>{findBlog?.description}</p>
+                    <p className="text-justify text-gray-600 leading-8">{findBlog?.description}</p>
 
-                    <div className="tags">
+                    {/* <div className="tags">
                         <h1 className='my-20 text-2xl font-black text-purple-700'>{data.tags}</h1>
-                    </div>
+                    </div> */}
                 </div>
             </LoadingData>
         </Container>

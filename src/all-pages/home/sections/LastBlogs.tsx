@@ -37,7 +37,7 @@ const LastBlogs: React.FC<LastBlogsProps> = ({ data, lang }) => {
                     {data.title}
                 </motion.h1>
                 <LoadingData data={lastBlogs} emptyMessage="Blogs is Empty">
-                    <div className="gap-5 grid grid-cols-1 sm:grid-cols-3 w-full mt-7">
+                    <div className="gap-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 w-full mt-7">
                         {lastBlogs?.map((item: any, index: number) => (
                             <motion.div
                                 key={index}

@@ -7,7 +7,9 @@
       "age": "العمر",
       "duration": "المدة",
       "outline": "مخطط الدرس",
-      "detailsBtn": "التفاصيل"
+      "detailsBtn": "التفاصيل",
+      "years": "سنين",
+      "hours": "ساعات"
     }
   }
 }

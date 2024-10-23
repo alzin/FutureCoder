@@ -31,7 +31,7 @@ const CourseCard: React.FC<CourseCard> = ({ courseData, viewCourseBtn }) => {
                 <CardFooter className="flex-col items-start">
                     <div className="flex items-center justify-between py-3 w-full">
                         <h3 className="font-bold text-lg text-purple-700 mb-2">{courseData.title}</h3>
-                        <span className="text-purple-700 font-bold">{courseData.price}</span>
+                        <span className="text-purple-700 font-bold">${courseData.price}</span>
                     </div>
                     <Button
                         as={Link}

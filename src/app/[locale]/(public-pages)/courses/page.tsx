@@ -25,6 +25,8 @@ export default function CoursesPage() {
       duration: t.raw("coursesPage.coursesListSection.duration"),
       outline: t.raw("coursesPage.coursesListSection.outline"),
       detailsBtn: t.raw("coursesPage.coursesListSection.detailsBtn"),
+      years: t.raw("coursesPage.coursesListSection.years"),
+      hours: t.raw("coursesPage.coursesListSection.hours"),
     },
     footerSection: {
       links: t.raw("shared.footerSection.links"),
