@@ -63,7 +63,11 @@ const BlogDetails: React.FC<BlogDetailsProps> = ({ data, id, lang }) => {
                         />
                     </motion.div>
 
-                    <p className="text-justify text-gray-600 leading-8">{findBlog?.description}</p>
+                    {findBlog?.description.split("\n").map((item: string, index: number) => (
+                        <p className="text-justify text-gray-600 leading-8" key={index}>
+                            {item}
+                        </p>
+                    ))}
 
                     {/* <div className="tags">
                         <h1 className='my-20 text-2xl font-black text-purple-700'>{data.tags}</h1>

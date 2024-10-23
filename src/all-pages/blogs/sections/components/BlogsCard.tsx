@@ -27,9 +27,9 @@ const BlogsCard: React.FC<BlogsCardProps> = ({ blogData, data, lang }) => {
                     />
                 </CardHeader>
 
-                <CardBody className={`px-7 mt-3 flex flex-col items-start ${lang === "en" ? "text-left" : "text-right"}`}>
-                    <h1 className="text-xl font-bold text-purple-700 line-clamp-5 h-28">{blogData.title}</h1>
-                    <p className="my-3 text-purple-500 line-clamp-2">{blogData.description}</p>
+                <CardBody className={`px-7 mt-3  flex flex-col items-start ${lang === "en" ? "text-left" : "text-right"}`}>
+                    <h1 className="text-xl font-bold text-purple-700 line-clamp-5 h-28 px-1">{blogData.title}</h1>
+                    <p className="my-3 text-purple-500 line-clamp-2 px-1">{blogData.description}</p>
 
                     <div className='flex items-center justify-between pb-3 w-full'>
                         <p className="text-sm text-center text-purple-500">{blogData.created_at?.split('T')[0]}</p>
