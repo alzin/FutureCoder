@@ -82,11 +82,11 @@ const Courses: React.FC<CoursesProps> = ({ data, lang }) => {
                                 spaceBetween: 20,
                             },
                             1024: {
-                                slidesPerView: 3,
+                                slidesPerView: 2,
                                 spaceBetween: 30,
                             },
                             1200: {
-                                slidesPerView: 4,
+                                slidesPerView: 3,
                                 spaceBetween: 30,
                             }
                         }}
@@ -95,6 +95,7 @@ const Courses: React.FC<CoursesProps> = ({ data, lang }) => {
                             {courses?.map((course: Course, index: number) => (
                                 <SwiperSlide key={course.id}>
                                     <motion.div
+                                        className='w-full'
                                         initial={{ opacity: 0, y: 50 }}
                                         whileInView={{ opacity: 1, y: 0 }}
                                         exit={{ opacity: 0, y: -50 }}
