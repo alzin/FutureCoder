@@ -21,7 +21,7 @@ export const SubscribersSlice = createSlice({
   },
 
   extraReducers: (builder) => {
-    
+
     // getSubscribers
     builder
       .addCase(getSubscribers.pending, (state, { payload }) => {
@@ -35,26 +35,26 @@ export const SubscribersSlice = createSlice({
         state.totalCount = payload.total
         // toast.success("Succsessfull getSubscribers");
       })
-      .addCase(getSubscribers.rejected, (state, { payload} :any) => {
+      .addCase(getSubscribers.rejected, (state, { payload }: any) => {
         state.loading = false;
         toast.error(payload.message);
       });
 
     // getSubscriberById
     builder
-    .addCase(getSubscriberById.pending, (state, { payload }) => {
-      state.loading = true
-      state.findSubscriber = null
-    })
-    .addCase(getSubscriberById.fulfilled, (state, { payload }) => {
-      state.loading = false;
-      state.findSubscriber = payload
-      // toast.success("Succsessfull getSubscriberById");
-    })
-    .addCase(getSubscriberById.rejected, (state, { payload }) => {
-      state.loading = false;
-      toast.error(payload as string);
-    });
+      .addCase(getSubscriberById.pending, (state, { payload }) => {
+        state.loading = true
+        state.findSubscriber = null
+      })
+      .addCase(getSubscriberById.fulfilled, (state, { payload }) => {
+        state.loading = false;
+        state.findSubscriber = payload
+        // toast.success("Succsessfull getSubscriberById");
+      })
+      .addCase(getSubscriberById.rejected, (state, { payload }) => {
+        state.loading = false;
+        toast.error(payload as string);
+      });
 
     // addSubscriber
     builder
@@ -63,26 +63,26 @@ export const SubscribersSlice = createSlice({
       })
       .addCase(addSubscriber.fulfilled, (state, { payload }) => {
         state.loading = false;
-        toast.success("Succsessfull addSubscriber");
+        toast.success("Please verify your email!");
       })
       .addCase(addSubscriber.rejected, (state, { payload }) => {
         state.loading = false;
         toast.error(payload as string);
       });
 
-      // updateSubscriber
+    // updateSubscriber
     builder
-    .addCase(updateSubscriber.pending, (state, { payload }) => {
-      state.loading = true
-    })
-    .addCase(updateSubscriber.fulfilled, (state, { payload }) => {
-      state.loading = false;
-      toast.success("Succsessfull updateSubscriber");
-    })
-    .addCase(updateSubscriber.rejected, (state, { payload }) => {
-      state.loading = false;
-      toast.error(payload as string);
-    });
+      .addCase(updateSubscriber.pending, (state, { payload }) => {
+        state.loading = true
+      })
+      .addCase(updateSubscriber.fulfilled, (state, { payload }) => {
+        state.loading = false;
+        toast.success("Succsessfull updateSubscriber");
+      })
+      .addCase(updateSubscriber.rejected, (state, { payload }) => {
+        state.loading = false;
+        toast.error(payload as string);
+      });
 
     // deleteSubscriber
     builder

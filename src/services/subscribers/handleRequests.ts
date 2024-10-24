@@ -64,7 +64,7 @@ export const addSubscriber: any = createAsyncThunk(
       if (response.ok) {
         return data;
       } else {
-        return rejectWithValue(data.message);
+        return rejectWithValue("Thank you, you've already an active subscription.");
       }
     } catch (error: any) {
       return rejectWithValue(error.message);

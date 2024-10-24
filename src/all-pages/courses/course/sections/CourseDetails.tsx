@@ -43,7 +43,13 @@ const CourseDetails: React.FC<CourseDetailsProps> = ({ data, id, lang }) => {
                                         alt={findCourse?.title}
                                     />
                                 </div>
-                                <p className='mt-5 text-gray-500 '>{findCourse?.description}</p>
+
+
+                                {findCourse?.description.split("\n").map((item: string, index: number) => (
+                                    <p className='mt-5 text-gray-500 ' key={index}>
+                                        {item}
+                                    </p>
+                                ))}
                             </div>
 
                             <div className="w-full lg:w-1/3 p-3 bg-gray-200 rounded space-y-5">
@@ -73,7 +79,11 @@ const CourseDetails: React.FC<CourseDetailsProps> = ({ data, id, lang }) => {
                         </div>
                         <div>
                             <h1 className='text-2xl font-black text-purple-700'>{data.outline} </h1>
-                            <p className='text-gray-500 py-1'>{findCourse?.course_outline}</p>
+                            {findCourse?.course_outline.split("\n").map((item: string, index: number) => (
+                                <p className='text-gray-500 py-1' key={index}>
+                                    {item}
+                                </p>
+                            ))}
                         </div>
                     </div>
                 </LoadingData>
