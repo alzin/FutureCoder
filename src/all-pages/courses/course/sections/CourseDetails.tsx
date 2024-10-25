@@ -35,10 +35,9 @@ const CourseDetails: React.FC<CourseDetailsProps> = ({ data, id, lang }) => {
                         <h1 className='text-4xl font-black text-purple-700'>{findCourse?.title}</h1>
                         <div className='flex items-start justify-center lg:flex-row flex-col gap-10'>
                             <div className="w-full lg:w-2/3">
-                                <div className="relative w-full sm:h-[500px] h-[300px]">
+                                <div className="relative w-full sm:h-[500px] h-[300px">
                                     <Image
                                         fill
-                                        className='object-contain'
                                         src={findCourse?.imagePath}
                                         alt={findCourse?.title}
                                     />

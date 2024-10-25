@@ -3,7 +3,7 @@ import React from 'react';
 import Container from '@/shared-components/Container';
 import { Button } from "@nextui-org/react";
 import Image from 'next/image';
-import Link from 'next/link';
+import { Link } from '@/navigation';
 import { motion } from 'framer-motion';
 
 interface HeroProps {
@@ -11,7 +11,7 @@ interface HeroProps {
         title: string;
         paragraph: string;
         lessonBtn: string;
-        hrefLesson: string;
+        hrefLesson: any
         heroImage: string;
     };
     lang: string

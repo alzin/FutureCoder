@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { Button, Card, CardBody, Image, CardFooter, Pagination } from '@nextui-org/react';
+import { Button, Card, CardBody, CardFooter, Pagination } from '@nextui-org/react';
 import { motion } from 'framer-motion';
-
+import Image from 'next/image';
 
 import LoadingData from '@/shared-components/LoadingData';
 import { useEffect } from 'react';
@@ -47,7 +47,7 @@ const CoursesList: React.FC<CoursesListProps> = ({ setBookingData, setCurrentSte
 
     return (
         <div id="CoursesList" className='w-full'>
-            <span className='text-3xl font-bold pb-5 block text-purple-700'>{data.title}  : </span>
+            <h1 className='text-3xl font-bold pb-5 block text-purple-700'>{data.title}  : </h1>
             <LoadingData data={courses} emptyMessage="Not Found any Course for this age">
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full gap-5 '>
                     {courses?.map((item: any, index: number) =>
@@ -59,14 +59,11 @@ const CoursesList: React.FC<CoursesListProps> = ({ setBookingData, setCurrentSte
                             transition={{ duration: 0.5, delay: 0.1 * index }}
                         >
                             <Card key={item.id} shadow="sm" className='sm:mb-0 mb-7 border-2 border-purple-200 hover:border-purple-400 transition-colors duration-300 overflow-hidden'>
-                                <CardBody className="overflow-visible p-0">
+                                <CardBody className="overflow-visible p-0 relative h-60">
                                     <Image
-                                        shadow='none'
-                                        radius="lg"
-                                        width="100%"
-                                        height={300}
+                                        fill
                                         alt={item.title}
-                                        className="w-full object-cover aspect-auto"
+                                        className="w-full aspect-auto"
                                         src={item.imagePath}
                                     />
                                 </CardBody>

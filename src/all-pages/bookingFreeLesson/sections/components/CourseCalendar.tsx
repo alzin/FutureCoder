@@ -80,8 +80,14 @@ const CourseCalendar: React.FC<CourseCalendar> = ({ bookingData, setBookingData,
     }
 
     useEffect(() => {
+        setReservation({
+            date: "",
+            time: ""
+        })
+        setBookingData(prev => ({ ...prev, sessionTimings: "" }))
         dispatch(getCouseseTimeByTimezone({ course_id: bookingData.courseId, timezone: bookingData.timeZone }))
-    }, [dispatch, bookingData.timeZone, bookingData.courseId])
+
+    }, [dispatch, bookingData.timeZone, bookingData.courseId, setBookingData])
 
     return (
         <div id="Calender" className='mt-[50px] mx-auto w-full sm:w-fit'>

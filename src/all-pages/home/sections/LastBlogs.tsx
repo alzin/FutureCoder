@@ -28,14 +28,14 @@ const LastBlogs: React.FC<LastBlogsProps> = ({ data, lang }) => {
     return (
         <Container>
             <div id="lastBlogs" className='mt-40 w-full'>
-                <motion.h1
+                <motion.h2
                     className='text-4xl text-purple-700 font-black'
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
                 >
                     {data.title}
-                </motion.h1>
+                </motion.h2>
                 <LoadingData data={lastBlogs} emptyMessage="Blogs is Empty">
                     <div className="gap-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 w-full mt-7">
                         {lastBlogs?.map((item: any, index: number) => (
