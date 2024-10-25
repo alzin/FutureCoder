@@ -39,7 +39,7 @@ const CourseCard: React.FC<CourseCard> = ({ courseData, lang, data }) => {
                     </CardHeader>
 
                     <CardBody className={`px-7 flex flex-col items-start ${lang === "en" ? "text-left" : "text-right"}`}>
-                        <h1 className="text-xl lg:text-2xl font-bold text-purple-700">{courseData?.title}</h1>
+                        <h2 className="text-xl lg:text-2xl font-bold text-purple-700">{courseData?.title}</h2>
                         <p className="my-3 px-1 text-gray-500 line-clamp-2">{courseData?.description}</p>
 
                         <div className='flex items-center justify-between pb-3 w-full'>
