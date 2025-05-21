@@ -32,6 +32,7 @@ export const coursesSlice = createSlice({
       .addCase(getCourses.fulfilled, (state, { payload }) => {
         state.courses = payload.data.data
         state.totalCount = payload.data.total
+
         // toast.success("Succsessfull getCourses");
       })
       .addCase(getCourses.rejected, (state, { payload }) => {
@@ -59,7 +60,7 @@ export const coursesSlice = createSlice({
         state.findCourse = null
       })
       .addCase(getCourseById.fulfilled, (state, { payload }) => {
-        state.findCourse = payload.data
+        state.findCourse = payload[0].data
         // toast.success("Succsessfull getCourseById");
       })
       .addCase(getCourseById.rejected, (state, { payload }) => {

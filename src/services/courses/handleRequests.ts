@@ -12,9 +12,8 @@ export const getCourses: any = createAsyncThunk(
         headers,
       });
       const data = await response.json();
-
       if (response.ok) {
-        return data;
+        return data[0];
       } else {
         return rejectWithValue(data.message);
       }
