@@ -17,14 +17,15 @@ export async function generateMetadata({
   params: { id }
 }: CoursePageProps): Promise<Metadata> {
   const response = await fetch(`${Api}/courses?id=${id}&language=${cookies().get("NEXT_LOCALE")?.value}`, { headers })
-  const course: Coursee = await response.json()
+  const course = await response.json()
+
   return {
-    title: course.data.title,
-    description: course.data.description,
+    title: course[0].data.title,
+    description: course[0].data.description,
     openGraph: {
       images: [
         {
-          url: course.data.imagePath,
+          url: course[0].data.imagePath,
           type: "image/png",
           width: "1200",
           height: "630"

@@ -22,15 +22,17 @@ export async function generateMetadata({
 }: BlogPageProps): Promise<Metadata> {
 
   const response = await fetch(`${Api}/blogs?id=${id}&language=${cookies().get("NEXT_LOCALE")?.value}`, { headers })
-  const blog: Blogg = await response.json()
+  const blog = await response.json()
+
+  console.log(blog)
   return {
-    title: blog.data.title,
-    description: blog.data.description,
+    title: blog.title,
+    description: blog.description,
     openGraph: {
       type: "article",
       images: [
         {
-          url: blog.data.ImagePath,
+          url: blog.ImagePath,
           type: "image/png",
           width: "1200",
           height: "630"

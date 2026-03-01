@@ -32,8 +32,8 @@ export const blogsSlice = createSlice({
       })
       .addCase(getBlogs.fulfilled, (state, { payload }) => {
         state.loading = false;
-        state.blogs = payload.data.data
-        state.totalCount = payload.data.total
+        state.blogs = payload.data
+        state.totalCount = payload.total
         // toast.success("Succsessfull getBlogs");
       })
       .addCase(getBlogs.rejected, (state, { payload }) => {
@@ -65,7 +65,7 @@ export const blogsSlice = createSlice({
       })
       .addCase(getBlogById.fulfilled, (state, { payload }) => {
         state.loading = false;
-        state.findBlog = payload.data
+        state.findBlog = payload
         // toast.success("Succsessfull getBlogById");
       })
       .addCase(getBlogById.rejected, (state, { payload }) => {
