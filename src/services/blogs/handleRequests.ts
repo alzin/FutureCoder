@@ -29,7 +29,7 @@ export const getLastBlogs: any = createAsyncThunk(
   async ({ lang }: { lang: string }, { rejectWithValue }) => {
     try {
       const response = await fetch(`${Api}/blogs/lastThree?language=${lang}`, {
-        method: "PUT",
+        method: "GET",
         headers,
       });
       const data = await response.json();

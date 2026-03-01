@@ -13,7 +13,7 @@ export const getCourses: any = createAsyncThunk(
       });
       const data = await response.json();
       if (response.ok) {
-        return data[0];
+        return data;
       } else {
         return rejectWithValue(data.message);
       }

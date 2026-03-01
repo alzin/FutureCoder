@@ -1,9 +1,9 @@
 import Cookies from 'js-cookie';
 
 
-export const Api: string = "https://futuercoder-api-production.up.railway.app/api"
+export const Api: string = "http://localhost:8000/api"
 
-export const baseUrl: string = "https://future-coder.vercel.app"
+export const baseUrl: string = "http://localhost:3000"
 
 export const token: string = process.env.NEXT_PUBLIC_TOKEN!
 
