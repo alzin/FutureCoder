@@ -1,9 +1,8 @@
 import Cookies from 'js-cookie';
 
+export const Api: string = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/api";
 
-export const Api: string = "http://localhost:8000/api"
-
-export const baseUrl: string = "http://localhost:3000"
+export const baseUrl: string = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
 
 export const token: string = process.env.NEXT_PUBLIC_TOKEN!
 
