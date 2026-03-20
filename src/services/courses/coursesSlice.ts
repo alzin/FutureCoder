@@ -60,7 +60,7 @@ export const coursesSlice = createSlice({
         state.findCourse = null
       })
       .addCase(getCourseById.fulfilled, (state, { payload }) => {
-        state.findCourse = payload[0].data
+        state.findCourse = payload.data
         // toast.success("Succsessfull getCourseById");
       })
       .addCase(getCourseById.rejected, (state, { payload }) => {

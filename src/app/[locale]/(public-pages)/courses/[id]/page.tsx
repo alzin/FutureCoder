@@ -20,12 +20,12 @@ export async function generateMetadata({
   const course = await response.json()
 
   return {
-    title: course[0].data.title,
-    description: course[0].data.description,
+    title: course.data.title,
+    description: course.data.description,
     openGraph: {
       images: [
         {
-          url: course[0].data.imagePath,
+          url: course.data.imagePath,
           type: "image/png",
           width: "1200",
           height: "630"
